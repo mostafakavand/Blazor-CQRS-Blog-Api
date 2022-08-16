@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32505.426
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dayana.Server", "Dayana\Server\Dayana.Server.csproj", "{1132D521-1936-46B2-8235-049ABCFC3D94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dayana.Server", "Dayana\Server\Dayana.Server.csproj", "{1132D521-1936-46B2-8235-049ABCFC3D94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dayana.Client", "Dayana\Client\Dayana.Client.csproj", "{17D34F2A-B54E-418C-8FAD-54DF862E68B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dayana.Client", "Dayana\Client\Dayana.Client.csproj", "{17D34F2A-B54E-418C-8FAD-54DF862E68B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dayana.Shared", "Dayana\Shared\Dayana.Shared.csproj", "{B5DD02A2-307F-45FC-A063-B590B0A4C12B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dayana.Shared", "Dayana\Shared\Dayana.Shared.csproj", "{B5DD02A2-307F-45FC-A063-B590B0A4C12B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD27303A-5E48-407A-A78F-05284B5FCE75}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
