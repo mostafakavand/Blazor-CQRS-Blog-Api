@@ -4,10 +4,10 @@ namespace Dayana.Shared.Domains.Identity.Claims;
 
 internal class Claims : BaseDomain
 {
-    public int UserId { get; set; }
     public string Value { get; set; }
 
     #region Navigations
+    public int UserId { get; set; }
 
     public User User { get; set; }
 
