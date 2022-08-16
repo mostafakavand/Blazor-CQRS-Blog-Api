@@ -31,6 +31,10 @@ app.UseRouting();
 
 app.MapRazorPages();
 app.MapControllers();
-app.MapFallbackToFile("index.html");
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages(); // <- Add this (for prerendering)
+    endpoints.MapFallbackToPage("/_Host"); // <- Change method + file (for prerendering)
+});
 app.Run();
