@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dayana.Shared.Domains.Blog.Issues;
 
 namespace Dayana.Shared.Domains.Blog.BlogPosts;
 internal class PostCategory: BaseDomain
@@ -14,6 +10,8 @@ internal class PostCategory: BaseDomain
     #region Navigation
 
     public List<Post> CategoryPosts { get; set; }
+
+    public List<PostCategoryIssue> BlogPostCategoryIssues { get; set; }
 
     #endregion
 }
