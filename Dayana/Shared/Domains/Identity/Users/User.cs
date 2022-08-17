@@ -1,4 +1,6 @@
-﻿using System.Security.Claims;
+﻿using Dayana.Shared.Domains.Blog.BlogPosts;
+using Dayana.Shared.Domains.Blog.Comments;
+using System.Security.Claims;
 
 namespace Dayana.Shared.Domains.Identity.Users;
 
@@ -44,6 +46,8 @@ internal class User: BaseDomain
 
     public ICollection<Claim> Claims { get; set; }
     public ICollection<UserRole> UserRoles { get; set; }
-
+    public ICollection<Post> UserPosts { get; set; }
+    public ICollection<PostCategoryComment> PostCategoryComments { get; set; }
+    public ICollection<PostCategoryIssueComment> PostCategoryIssueComments { get; set; }
     #endregion
 }

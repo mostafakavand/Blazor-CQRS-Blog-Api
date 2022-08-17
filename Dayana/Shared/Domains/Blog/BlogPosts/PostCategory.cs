@@ -1,4 +1,8 @@
-﻿using Dayana.Shared.Domains.Blog.Issues;
+﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Domains.Blog.Issues;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
+using Dayana.Shared.Domains.Blog.Comments;
 
 namespace Dayana.Shared.Domains.Blog.BlogPosts;
 internal class PostCategory: BaseDomain
@@ -9,9 +13,26 @@ internal class PostCategory: BaseDomain
 
     #region Navigation
 
-    public List<Post> CategoryPosts { get; set; }
-
-    public List<PostCategoryIssue> BlogPostCategoryIssues { get; set; }
-
+    public ICollection<Post> CategoryPosts { get; set; }
+    public ICollection<PostCategoryIssue> BlogPostCategoryIssues { get; set; }
+    public ICollection<PostCategoryComment> PostCategoryComments { get; set; }
     #endregion
+}
+
+internal class PostCategoryEntityConfiguration : IEntityTypeConfiguration<PostCategory>
+{
+    public void Configure(EntityTypeBuilder<PostCategory> builder)
+    {
+        #region Properties features
+
+        builder.HasKey(e => e.Id);
+
+        builder.Property(e => e.CategoryTitle).IsRequired().HasMaxLength(Defaults.ShortLength3);
+
+        builder.Property(e => e.CategorySubject).IsRequired().HasMaxLength(Defaults.ShortLength5);
+
+        builder.Property(e => e.CategoryIcon).IsRequired();
+
+        #endregion
+    }
 }
