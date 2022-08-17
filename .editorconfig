@@ -21,6 +21,12 @@ csharp_style_expression_bodied_local_functions = false:silent
 # CS8625: Cannot convert null literal to non-nullable reference type.
 dotnet_diagnostic.CS8625.severity = silent
 
+# CS8603: Possible null reference return.
+dotnet_diagnostic.CS8603.severity = silent
+
+# CS8604: Possible null reference argument.
+dotnet_diagnostic.CS8604.severity = silent
+
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 tab_width = 4
