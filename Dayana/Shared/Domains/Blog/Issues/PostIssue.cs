@@ -1,4 +1,5 @@
 ﻿using Dayana.Shared.Domains.Blog.BlogPosts;
+using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Domains.Identity.Users;
 
 namespace Dayana.Shared.Domains.Blog.Issues;
@@ -15,6 +16,6 @@ internal class PostIssue: BaseDomain
 
     public int IssueWriterId { get; set; }
     public User IssueWriter { get; set; }
-
+    public ICollection<PostIssueComment> PostIssueComments { get; set; }
     #endregion
 }
