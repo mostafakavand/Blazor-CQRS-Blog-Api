@@ -3,6 +3,7 @@ using Dayana.Shared.Domains.Blog.Issues;
 using Dayana.Shared.Domains.Identity.Users;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Dayana.Shared.Domains.Blog.Comments;
 
 namespace Dayana.Shared.Domains.Blog.BlogPosts;
 internal class Post: BaseDomain
@@ -13,15 +14,14 @@ internal class Post: BaseDomain
     public string PostBody { get; set; }
 
     #region Navigation
-
     public int PostWriterId { get; set; }
     public User PostWriter { get; set; }
 
     public int PostCategoryId { get; set; }
     public PostCategory PostCategory { get; set; }
 
-    public List<PostIssue> BlogPostIssues { get; set; }
-
+    public ICollection<PostIssue> PostIssues { get; set; }
+    public ICollection<PostComment> PostComments { get; set; }
     #endregion
 }
 

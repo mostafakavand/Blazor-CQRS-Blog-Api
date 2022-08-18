@@ -23,7 +23,6 @@ internal class PostCategoryIssueComment:BaseDomain
     #endregion
 }
 
-
 internal class PostCategoryIssueCommentEntityConfiguration : IEntityTypeConfiguration<PostCategoryIssueComment>
 {
     public void Configure(EntityTypeBuilder<PostCategoryIssueComment> builder)

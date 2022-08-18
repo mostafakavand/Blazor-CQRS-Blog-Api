@@ -1,6 +1,12 @@
-﻿using Dayana.Shared.Domains.Blog.BlogPosts;
+﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Domains.Blog.Comments;
-using System.Security.Claims;
+using Dayana.Shared.Domains.Blog.Issues;
+using Dayana.Shared.Domains.Identity.Claims;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Domains.Identity.Users;
 
@@ -49,5 +55,71 @@ internal class User: BaseDomain
     public ICollection<Post> UserPosts { get; set; }
     public ICollection<PostCategoryComment> PostCategoryComments { get; set; }
     public ICollection<PostCategoryIssueComment> PostCategoryIssueComments { get; set; }
+    public ICollection<PostComment> PostComments { get; set; }
+    public ICollection<PostIssueComment> PostIssueComments { get; set; }
+    public ICollection<PostCategoryIssue> PostCategoryIssues { get; set; }
+    public ICollection<PostIssue> PostIssues { get; set; }
     #endregion
+}
+
+internal class UserEntityConfiguration : IEntityTypeConfiguration<User>
+{
+    public void Configure(EntityTypeBuilder<User> builder)
+    {
+        builder.HasKey(x => x.Id);
+
+        builder.HasIndex(b => b.Username).IsUnique();
+
+        #region Mappings
+
+        builder.Property(b => b.Username)
+            .HasMaxLength(Defaults.UsernameLength)
+            .IsRequired();
+
+        builder.Property(b => b.Mobile)
+            .HasMaxLength(Defaults.MobileNumberLength);
+
+        builder.Property(b => b.Email)
+            .HasMaxLength(Defaults.EmailLength);
+
+        builder.Property(b => b.PasswordHash)
+            .HasMaxLength(Defaults.PasswordHashLength);
+
+        builder.Property(b => b.SecurityStamp)
+            .IsConcurrencyToken()
+            .HasMaxLength(Defaults.SecurityStampLength)
+            .IsFixedLength();
+
+        builder.Property(b => b.ConcurrencyStamp)
+            .IsConcurrencyToken()
+            .HasMaxLength(Defaults.SecurityStampLength);
+
+        #endregion
+
+        #region Conversions
+
+        builder.Property(x => x.State)
+            .HasConversion(new EnumToStringConverter<UserState>())
+            .HasMaxLength(UserState.Active.GetMaxLength());
+
+        #endregion
+
+        #region Navigations
+
+
+        builder
+            .HasMany(x => x.Claims)
+            .WithOne(x => x.User)
+            .HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder
+            .HasMany(x => x.UserRoles)
+            .WithOne(x => x.User)
+            .HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+        #endregion
+
+
+    }
 }
