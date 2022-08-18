@@ -53,5 +53,6 @@ internal class User: BaseDomain
     public ICollection<PostComment> PostComments { get; set; }
     public ICollection<PostIssueComment> PostIssueComments { get; set; }
     public ICollection<PostCategoryIssue> PostCategoryIssues { get; set; }
+    public ICollection<PostIssue> PostIssues { get; set; }
     #endregion
 }

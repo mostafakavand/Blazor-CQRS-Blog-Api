@@ -21,7 +21,6 @@ internal class PostCategoryIssue: BaseDomain
     #endregion
 }
 
-
 internal class PostCategoryIssueEntityConfiguration : IEntityTypeConfiguration<PostCategoryIssue>
 {
     public void Configure(EntityTypeBuilder<PostCategoryIssue> builder)
