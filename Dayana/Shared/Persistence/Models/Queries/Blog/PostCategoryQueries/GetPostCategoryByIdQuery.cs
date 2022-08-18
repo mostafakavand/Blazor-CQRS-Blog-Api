@@ -2,11 +2,11 @@
 using Dayana.Shared.Infrastructure.Operations;
 using MediatR;
 
-namespace Dayana.Shared.Persistence.Models.Queries.Blog.WeblogPostCategoryQueries;
+namespace Dayana.Shared.Persistence.Models.Queries.Blog.PostCategoryQueries;
 
-public class GetWeblogPostCategoryByIdQuery : IRequestInfo, IRequest<OperationResult>
+public class GetPostCategoryByIdQuery : IRequestInfo, IRequest<OperationResult>
 {
-    public GetWeblogPostCategoryByIdQuery(RequestInfo requestInfo)
+    public GetPostCategoryByIdQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }

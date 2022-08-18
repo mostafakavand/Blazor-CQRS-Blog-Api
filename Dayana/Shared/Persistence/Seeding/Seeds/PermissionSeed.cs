@@ -2,7 +2,7 @@
 
 namespace Dayana.Shared.Persistence.Seeding.Seeds;
 
-internal static class PermissionSeed
+public static class PermissionSeed
 {
     public static List<Permission> All => IdentityPermissions.ToList();
 

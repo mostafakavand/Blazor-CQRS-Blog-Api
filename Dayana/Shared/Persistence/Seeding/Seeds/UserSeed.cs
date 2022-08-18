@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.Seeding.Seeds;
 
-internal static class UserSeed
+public static class UserSeed
 {
     public static List<User> All => new List<User>()
     {

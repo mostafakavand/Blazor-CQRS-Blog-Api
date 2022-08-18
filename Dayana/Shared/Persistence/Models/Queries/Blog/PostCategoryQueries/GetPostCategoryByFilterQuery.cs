@@ -3,7 +3,7 @@ using Dayana.Shared.Infrastructure.Operations;
 using MediatR;
 using Dayana.Shared.Persistence.Models.Filters.Blog.PostCategoryFilters;
 
-namespace Dayana.Shared.Persistence.Models.Queries.Blog.WeblogPostCategoryQueries;
+namespace Dayana.Shared.Persistence.Models.Queries.Blog.PostCategoryQueries;
 
 public class GetWeblogPostCategoryByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {

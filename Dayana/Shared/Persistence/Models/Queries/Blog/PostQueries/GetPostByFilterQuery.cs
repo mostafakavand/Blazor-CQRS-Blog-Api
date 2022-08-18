@@ -3,11 +3,11 @@ using Dayana.Shared.Infrastructure.Operations;
 using MediatR;
 using Dayana.Shared.Persistence.Models.Filters.Blog.PostFilters;
 
-namespace Dayana.Shared.Persistence.Models.Queries.Blog.WeblogPostQueries;
+namespace Dayana.Shared.Persistence.Models.Queries.Blog.PostQueries;
 
-public class GetWeblogPostByFilterQuery : IRequestInfo, IRequest<OperationResult>
+public class GetPostByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
-    public GetWeblogPostByFilterQuery(RequestInfo requestInfo)
+    public GetPostByFilterQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }

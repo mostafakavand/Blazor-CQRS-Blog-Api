@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Domains.Identity.Permissions;
 
-internal class Permission: BaseDomain
+public class Permission: BaseDomain
 {
     public string Name { get; set; }
     public string Title { get; set; }
@@ -18,7 +18,7 @@ internal class Permission: BaseDomain
     #endregion
 }
 
-internal class PermissionEntityConfiguration : IEntityTypeConfiguration<Permission>
+public class PermissionEntityConfiguration : IEntityTypeConfiguration<Permission>
 {
     public void Configure(EntityTypeBuilder<Permission> builder)
     {

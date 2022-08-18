@@ -1,11 +1,8 @@
-﻿using Dayana.Shared.Persistence;
+﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Persistence.Extensions.Identity;
+using Dayana.Shared.Persistence.Interfaces.Repositories;
 using Dayana.Shared.Persistence.Models.Filters.Users;
-using Dayana.Shared.Persistence.Repositories;
-using Illegible_Cms_V2.Identity.Application.Interfaces.Repositories;
-using Illegible_Cms_V2.Identity.Domain.Users;
-using Illegible_Cms_V2.Identity.Persistence.Extensions;
-using Illegible_Cms_V2.Shared.BasicShared.Extension;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.Repositories.Users;

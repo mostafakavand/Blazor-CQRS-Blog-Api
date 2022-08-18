@@ -1,5 +1,6 @@
 ﻿
 using Dayana.Shared.Domains.Identity.Permissions;
+using Dayana.Shared.Persistence.Models.Filters.Permissions;
 
 namespace Dayana.Shared.Persistence.Extensions.Identity;
 

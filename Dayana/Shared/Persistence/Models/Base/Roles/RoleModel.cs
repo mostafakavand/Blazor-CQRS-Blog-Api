@@ -13,5 +13,5 @@ public class RoleModel
 
     public ICollection<UserRoleModel> UserRoles { get; set; }
     public ICollection<RolePermissionModel> RolePermission { get; set; }
-    public List<PermissionModel> Permissions { get; internal set; }
+    public List<PermissionModel> Permissions { get; public set; }
 }

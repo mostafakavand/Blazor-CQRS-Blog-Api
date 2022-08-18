@@ -2,7 +2,7 @@
 
 namespace Dayana.Shared.Persistence.Seeding.Seeds;
 
-internal static class RolePermissionSeed
+public static class RolePermissionSeed
 {
     public static List<RolePermission> All => new List<RolePermission>()
     {

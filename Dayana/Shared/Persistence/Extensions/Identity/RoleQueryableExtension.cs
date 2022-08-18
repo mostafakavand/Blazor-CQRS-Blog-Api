@@ -1,4 +1,6 @@
-﻿using Dayana.Shared.Domains.Identity.Roles;s
+﻿using Dayana.Shared.Domains.Identity.Roles;
+using Dayana.Shared.Persistence.Models.Filters.Roles;
+
 namespace Dayana.Shared.Persistence.Extensions.Identity;
 
 public static class RoleQueryableExtension

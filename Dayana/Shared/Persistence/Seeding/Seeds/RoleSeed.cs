@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.Seeding.Seeds;
 
-internal static class RoleSeed
+public static class RoleSeed
 {
     public static List<Role> All => new List<Role>
     {

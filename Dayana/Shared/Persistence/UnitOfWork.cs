@@ -1,5 +1,5 @@
-﻿using Illegible_Cms_V2.Identity.Application.Interfaces;
-using Illegible_Cms_V2.Identity.Application.Interfaces.Repositories;
+﻿using Dayana.Shared.Persistence.Interfaces;
+using Dayana.Shared.Persistence.Interfaces.Repositories;
 using Illegible_Cms_V2.Identity.Persistence.Repositories.Claims;
 using Illegible_Cms_V2.Identity.Persistence.Repositories.Permissions;
 using Illegible_Cms_V2.Identity.Persistence.Repositories.Roles;

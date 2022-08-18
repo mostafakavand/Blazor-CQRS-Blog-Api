@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Domains.Identity.Users;
 
-internal class User: BaseDomain
+public class User: BaseDomain
 {
     #region Identity
 
@@ -62,7 +62,7 @@ internal class User: BaseDomain
     #endregion
 }
 
-internal class UserEntityConfiguration : IEntityTypeConfiguration<User>
+public class UserEntityConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
