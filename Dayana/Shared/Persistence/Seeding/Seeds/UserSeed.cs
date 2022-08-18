@@ -1,7 +1,8 @@
-﻿using Illegible_Cms_V2.Identity.Application.Helpers;
-using Illegible_Cms_V2.Identity.Domain.Users;
-using Illegible_Cms_V2.Shared.BasicShared.Constants;
+﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
+using Dayana.Shared.Domains.Identity.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Dayana.Shared.Persistence.Seeding.Seeds;
 

@@ -1,5 +1,5 @@
-﻿using Dayana.Shared.Persistence.Models.Base.Claims;
-using Illegible_Cms_V2.Identity.Domain.Users;
+﻿using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Persistence.Models.Base.Claims;
 
 namespace Dayana.Shared.Persistence.Models.Base.Users;
 

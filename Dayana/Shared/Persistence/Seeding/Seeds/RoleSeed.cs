@@ -1,5 +1,6 @@
-﻿using Illegible_Cms_V2.Identity.Domain.Roles;
+﻿using Dayana.Shared.Domains.Identity.Roles;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Dayana.Shared.Persistence.Seeding.Seeds;
 

@@ -1,9 +1,9 @@
 ﻿using Dayana.Shared.Persistence.Interfaces;
 using Dayana.Shared.Persistence.Interfaces.Repositories;
-using Illegible_Cms_V2.Identity.Persistence.Repositories.Claims;
-using Illegible_Cms_V2.Identity.Persistence.Repositories.Permissions;
-using Illegible_Cms_V2.Identity.Persistence.Repositories.Roles;
-using Illegible_Cms_V2.Identity.Persistence.Repositories.Users;
+using Dayana.Shared.Persistence.Repositories.Claims;
+using Dayana.Shared.Persistence.Repositories.Permissions;
+using Dayana.Shared.Persistence.Repositories.Roles;
+using Dayana.Shared.Persistence.Repositories.Users;
 
 namespace Dayana.Shared.Persistence;
 
@@ -24,8 +24,6 @@ public class UnitOfWork : IUnitOfWork
         Roles = new RoleRepository(_context);
         Claims = new ClaimRepository(_context);
         Permissions = new PermissionRepository(_context);
-
-
     }
 
     public async Task<bool> CommitAsync()

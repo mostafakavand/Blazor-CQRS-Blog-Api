@@ -1,4 +1,4 @@
-﻿using Illegible_Cms_V2.Identity.Domain.Permissions;
+﻿using Dayana.Shared.Domains.Identity.Permissions;
 
 namespace Dayana.Shared.Persistence.Seeding.Seeds;
 
