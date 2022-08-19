@@ -1,5 +1,5 @@
-﻿using Illegible_Cms_V2.Server.Domain.Weblog;
-using Illegible_Cms_V2.Shared.BasicShared.Constants.ConstantMethods;
+﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+using Dayana.Shared.Domains.Blog.BlogPosts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -11,11 +11,11 @@ public class DeletePostResultFilter : ResultFilterAttribute
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is WeblogPost value)
+        if (result?.Value is Post value)
             result.Value = new
             {
-                Eid = value.Id.Encode(),
-                value.Title
+                Eid = value.Id.EncodeInt(),
+                value.PostTitle
             };
 
         await next();

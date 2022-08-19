@@ -12,6 +12,6 @@ public class GetPostByFilterQuery : IRequestInfo, IRequest<OperationResult>
         RequestInfo = requestInfo;
     }
 
-    public WeblogPostFilter Filter { get; set; }
+    public PostFilter Filter { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }

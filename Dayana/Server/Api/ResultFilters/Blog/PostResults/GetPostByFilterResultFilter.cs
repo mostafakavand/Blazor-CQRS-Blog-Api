@@ -1,6 +1,6 @@
-﻿using Illegible_Cms_V2.Server.Application.Models.Base.Weblog;
-using Illegible_Cms_V2.Shared.BasicShared.Constants.ConstantMethods;
-using Illegible_Cms_V2.Shared.Infrastructure.Pagination;
+﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Persistence.Models.Base.Blog;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -12,7 +12,7 @@ public class GetPostByFilterResultFilter : ResultFilterAttribute
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is PaginatedList<WeblogPostModel> value)
+        if (result?.Value is PaginatedList<PostModel> value)
             result.Value = new
             {
                 value.Page,
@@ -20,10 +20,10 @@ public class GetPostByFilterResultFilter : ResultFilterAttribute
                 value.TotalCount,
                 Data = value.Data.Select(x => new
                 {
-                    Eid = x.Id.Encode(),
-                    x.Title,
+                    Eid = x.Id.EncodeInt(),
+                    x.PostTitle,
                     x.Summery,
-                    x.TextContent
+                    x.PostBody,
 
                 })
             };

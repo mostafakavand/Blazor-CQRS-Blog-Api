@@ -1,5 +1,5 @@
-﻿using Illegible_Cms_V2.Server.Application.Models.Base.Weblog;
-using Illegible_Cms_V2.Shared.BasicShared.Constants.ConstantMethods;
+﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+using Dayana.Shared.Persistence.Models.Base.Blog;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -11,12 +11,12 @@ public class GetPostByIdResultFilter : ResultFilterAttribute
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is WeblogPostModel value)
+        if (result?.Value is PostModel value)
             result.Value = new
             {
-                Eid = value.Id.Encode(),
-                value.Title,
-                value.TextContent,
+                Eid = value.Id.EncodeInt(),
+                value.PostTitle,
+                value.PostBody,
                 value.Summery
             };
 

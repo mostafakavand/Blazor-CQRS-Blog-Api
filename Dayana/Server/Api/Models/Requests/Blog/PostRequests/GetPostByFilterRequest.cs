@@ -1,5 +1,5 @@
-﻿using Illegible_Cms_V2.Server.Application.Models.Filters.Weblog.WeblogPostFilters;
-using Illegible_Cms_V2.Shared.Infrastructure.Pagination;
+﻿using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Persistence.Models.Filters.Blog.PostFilters;
 
 namespace Dayana.Server.Api.Models.Requests.Blog.PostRequests;
 
@@ -14,5 +14,5 @@ public class GetPostByFilterRequest : PaginationFilter
     }
 
     public string? Keyword { get; set; }
-    public WeblogPostSortBy SortBy { get; set; }
+    public PostSortBy SortBy { get; set; }
 }
