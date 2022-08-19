@@ -1,5 +1,5 @@
 ﻿using Dayana.Shared.Domains.Identity.Claims;
-using Dayana.Shared.Persistence.Models.Filters.Claims;
+using Dayana.Shared.Persistence.Models.Identity.Filters.Claims;
 
 namespace Dayana.Shared.Persistence.Extensions.Identity;
 
