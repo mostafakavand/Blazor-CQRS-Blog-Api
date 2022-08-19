@@ -1,6 +1,6 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Configs;
 using Dayana.Shared.Domains.Identity.Users;
-using Dayana.Shared.Persistence.Models.Commands.Users;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
 
 namespace Dayana.Shared.Basic.MethodsAndObjects.Helpers;
 

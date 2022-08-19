@@ -1,12 +1,12 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Domains.Blog.Issues;
 using Dayana.Shared.Domains.Identity.Users;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using Dayana.Shared.Domains.Blog.Comments;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Blog.BlogPosts;
-public class Post: BaseDomain
+public class Post : BaseDomain
 {
     public string PostTitle { get; set; }
     public string Subject { get; set; }
@@ -50,7 +50,7 @@ public class PostEntityConfiguration : IEntityTypeConfiguration<Post>
 
         #region Navigations
 
-        builder.HasOne(e => e.PostWriter).WithMany(e=>e.UserPosts).HasForeignKey(e=>e.PostWriterId);
+        builder.HasOne(e => e.PostWriter).WithMany(e => e.UserPosts).HasForeignKey(e => e.PostWriterId);
         builder.HasOne(e => e.PostCategory).WithMany(e => e.CategoryPosts).HasForeignKey(e => e.PostCategoryId);
 
         #endregion

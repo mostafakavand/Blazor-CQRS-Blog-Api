@@ -1,10 +1,10 @@
 ﻿using Dayana.Shared.Domains.Identity.Permissions;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Identity.Roles;
 
-public class RolePermission: BaseDomain
+public class RolePermission : BaseDomain
 {
     #region Navigations
 

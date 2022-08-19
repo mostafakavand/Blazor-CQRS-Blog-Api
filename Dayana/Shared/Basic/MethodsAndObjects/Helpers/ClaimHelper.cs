@@ -1,5 +1,5 @@
 ﻿using Dayana.Shared.Domains.Identity.Claims;
-using Dayana.Shared.Persistence.Models.Commands.Users;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
 
 namespace Dayana.Shared.Basic.MethodsAndObjects.Helpers;
 

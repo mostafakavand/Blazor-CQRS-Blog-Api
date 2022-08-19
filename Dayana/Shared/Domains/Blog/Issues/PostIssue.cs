@@ -2,11 +2,11 @@
 using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Domains.Identity.Users;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Blog.Issues;
-public class PostIssue: BaseDomain
+public class PostIssue : BaseDomain
 {
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }

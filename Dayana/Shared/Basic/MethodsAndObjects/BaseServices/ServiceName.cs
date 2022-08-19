@@ -3,5 +3,6 @@
 public enum ServiceName
 {
     None = 0,
-    Identity
+    Identity,
+    Blog
 }

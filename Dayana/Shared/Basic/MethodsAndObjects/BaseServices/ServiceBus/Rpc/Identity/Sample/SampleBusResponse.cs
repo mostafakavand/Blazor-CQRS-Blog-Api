@@ -1,5 +1,3 @@
-using Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc;
-
 namespace Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc.Identity.Sample;
 
 public class SampleBusResponse : BusResponse
