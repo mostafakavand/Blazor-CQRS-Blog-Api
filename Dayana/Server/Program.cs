@@ -71,6 +71,7 @@ try
         app.UseHsts();
     }
 
+
     // Configure the HTTP request pipeline.
     app.UseHttpsRedirection();
     app.UseDeveloperExceptionPage();

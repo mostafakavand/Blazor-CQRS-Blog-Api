@@ -8,7 +8,8 @@ public static class DatabaseInjection
     public static IServiceCollection AddConfiguredDatabase(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("ServerDbConnection")));
+            options.UseSqlServer(configuration.GetConnectionString("ServerDbConnection"))
+            .EnableDetailedErrors());
 
         return services;
     }
