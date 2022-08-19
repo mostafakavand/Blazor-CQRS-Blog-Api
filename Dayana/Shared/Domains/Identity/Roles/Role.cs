@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Domains.Identity.Roles;
 
-internal class Role: BaseDomain
+public class Role: BaseDomain
 {
     public string Title { get; set; }
 
@@ -15,7 +15,7 @@ internal class Role: BaseDomain
 
     #endregion
 }
-internal class RoleEntityConfiguration : IEntityTypeConfiguration<Role>
+public class RoleEntityConfiguration : IEntityTypeConfiguration<Role>
 {
     public void Configure(EntityTypeBuilder<Role> builder)
     {

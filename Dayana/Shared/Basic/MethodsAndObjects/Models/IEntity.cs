@@ -1,5 +1,5 @@
 ﻿namespace Dayana.Shared.Basic.MethodsAndObjects.Models;
 
-internal interface IEntity
+public interface IEntity
 {
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Dayana.Shared.Domains.Blog.Comments;
 
 namespace Dayana.Shared.Domains.Blog.BlogPosts;
-internal class Post: BaseDomain
+public class Post: BaseDomain
 {
     public string PostTitle { get; set; }
     public string Subject { get; set; }
@@ -25,7 +25,7 @@ internal class Post: BaseDomain
     #endregion
 }
 
-internal class PostEntityConfiguration : IEntityTypeConfiguration<Post>
+public class PostEntityConfiguration : IEntityTypeConfiguration<Post>
 {
     public void Configure(EntityTypeBuilder<Post> builder)
     {
