@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Persistence.Models.Filters.Roles;
 
-namespace Dayana.Shared.Persistence.Interfaces.Repositories;
+namespace Dayana.Shared.Persistence.Interfaces.IdentityRepositories;
 
 public interface IRoleRepository : IRepository<Role>
 {

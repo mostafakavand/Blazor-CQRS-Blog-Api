@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using Dayana.Shared.Persistence.Interfaces.Repositories;
+using Dayana.Shared.Persistence.Interfaces.IdentityRepositories;
 
 namespace Dayana.Shared.Persistence.Repositories;
 

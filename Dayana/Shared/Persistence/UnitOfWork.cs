@@ -1,9 +1,9 @@
 ﻿using Dayana.Shared.Persistence.Interfaces;
-using Dayana.Shared.Persistence.Interfaces.Repositories;
-using Dayana.Shared.Persistence.Repositories.Claims;
-using Dayana.Shared.Persistence.Repositories.Permissions;
-using Dayana.Shared.Persistence.Repositories.Roles;
-using Dayana.Shared.Persistence.Repositories.Users;
+using Dayana.Shared.Persistence.Interfaces.IdentityRepositories;
+using Dayana.Shared.Persistence.Repositories.IdentityRepositories.Claims;
+using Dayana.Shared.Persistence.Repositories.IdentityRepositories.Permissions;
+using Dayana.Shared.Persistence.Repositories.IdentityRepositories.Roles;
+using Dayana.Shared.Persistence.Repositories.IdentityRepositories.Users;
 
 namespace Dayana.Shared.Persistence;
 

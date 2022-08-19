@@ -1,11 +1,11 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Interfaces.Repositories;
+using Dayana.Shared.Persistence.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Models.Filters.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dayana.Shared.Persistence.Repositories.Users;
+namespace Dayana.Shared.Persistence.Repositories.IdentityRepositories.Users;
 
 public class UserRepository : Repository<User>, IUserRepository
 {

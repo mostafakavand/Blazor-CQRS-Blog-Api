@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using System.Linq.Expressions;
 
-namespace Dayana.Shared.Persistence.Interfaces.Repositories;
+namespace Dayana.Shared.Persistence.Interfaces.IdentityRepositories;
 
 public interface IRepository<TEntity> where TEntity : class, IEntity
 {

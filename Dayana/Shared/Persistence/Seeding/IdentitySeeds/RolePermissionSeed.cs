@@ -1,7 +1,6 @@
-﻿
-using Dayana.Shared.Domains.Identity.Roles;
+﻿using Dayana.Shared.Domains.Identity.Roles;
 
-namespace Dayana.Shared.Persistence.Seeding.Seeds;
+namespace Dayana.Shared.Persistence.Seeding.IdentitySeeds;
 
 public static class RolePermissionSeed
 {

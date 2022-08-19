@@ -1,11 +1,11 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Claims;
 using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Interfaces.Repositories;
+using Dayana.Shared.Persistence.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Models.Filters.Claims;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dayana.Shared.Persistence.Repositories.Claims;
+namespace Dayana.Shared.Persistence.Repositories.IdentityRepositories.Claims;
 
 public class ClaimRepository : Repository<Claim>, IClaimRepository
 {

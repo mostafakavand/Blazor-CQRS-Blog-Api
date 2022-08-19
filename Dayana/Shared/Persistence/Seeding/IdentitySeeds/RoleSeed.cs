@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Dayana.Shared.Persistence.Seeding.Seeds;
+namespace Dayana.Shared.Persistence.Seeding.IdentitySeeds;
 
 public static class RoleSeed
 {
