@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Domains.Blog.Issues;
-internal class PostIssue: BaseDomain
+public class PostIssue: BaseDomain
 {
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }
@@ -23,7 +23,7 @@ internal class PostIssue: BaseDomain
     #endregion
 }
 
-internal class PostIssueEntityConfiguration : IEntityTypeConfiguration<PostIssue>
+public class PostIssueEntityConfiguration : IEntityTypeConfiguration<PostIssue>
 {
     public void Configure(EntityTypeBuilder<PostIssue> builder)
     {

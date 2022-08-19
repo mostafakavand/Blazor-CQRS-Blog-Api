@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Dayana.Shared.Domains.Identity.Users;
 
-internal class UserRole: BaseDomain
+public class UserRole: BaseDomain
 {
     #region Navigations
 
@@ -22,7 +22,7 @@ internal class UserRole: BaseDomain
 
     #endregion
 }
-internal class UserRoleEntityConfiguration : IEntityTypeConfiguration<UserRole>
+public class UserRoleEntityConfiguration : IEntityTypeConfiguration<UserRole>
 {
     public void Configure(EntityTypeBuilder<UserRole> builder)
     {

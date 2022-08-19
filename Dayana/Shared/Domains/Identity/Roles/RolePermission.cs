@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Domains.Identity.Roles;
 
-internal class RolePermission: BaseDomain
+public class RolePermission: BaseDomain
 {
     #region Navigations
 
@@ -17,7 +17,7 @@ internal class RolePermission: BaseDomain
     #endregion
 }
 
-internal class RolePermissionEntityConfiguration : IEntityTypeConfiguration<RolePermission>
+public class RolePermissionEntityConfiguration : IEntityTypeConfiguration<RolePermission>
 {
     public void Configure(EntityTypeBuilder<RolePermission> builder)
     {

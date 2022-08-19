@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dayana.Shared.Domains.Identity.Users;
 
-internal enum UserState
+public enum UserState
 {
     Active = 1,
     InActive,

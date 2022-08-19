@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Domains.Blog.Comments;
-internal class PostCategoryComment:BaseDomain
+public class PostCategoryComment:BaseDomain
 {
     public string CommentText { get; set; }
     public bool IsReply { get; set; }
@@ -23,7 +23,7 @@ internal class PostCategoryComment:BaseDomain
     #endregion
 }
 
-internal class PostCategoryCommentEntityConfiguration : IEntityTypeConfiguration<PostCategoryComment>
+public class PostCategoryCommentEntityConfiguration : IEntityTypeConfiguration<PostCategoryComment>
 {
     public void Configure(EntityTypeBuilder<PostCategoryComment> builder)
     {

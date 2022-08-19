@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Dayana.Shared.Domains.Identity.Claims;
 
-internal class Claim : BaseDomain
+public class Claim : BaseDomain
 {
     public string Value { get; set; }
 
@@ -19,7 +19,7 @@ internal class Claim : BaseDomain
     #endregion
 }
 
-internal class ClaimEntityConfiguration : IEntityTypeConfiguration<Claim>
+public class ClaimEntityConfiguration : IEntityTypeConfiguration<Claim>
 {
     public void Configure(EntityTypeBuilder<Claim> builder)
     {

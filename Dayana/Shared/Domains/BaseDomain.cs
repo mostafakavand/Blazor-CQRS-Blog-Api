@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dayana.Shared.Domains;
 
-internal class BaseDomain: IEntity
+public class BaseDomain: IEntity
 {
     public int Id { get; set; }
     public DateTime CreatedAt { get; set; }
