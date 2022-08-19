@@ -1,6 +1,6 @@
 ﻿using Dayana.Shared.Domains.Identity.Permissions;
 
-namespace Dayana.Shared.Persistence.Seeding.IdentitySeeds;
+namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.Seeding.IdentitySeeds;
 
 public static class PermissionSeed
 {

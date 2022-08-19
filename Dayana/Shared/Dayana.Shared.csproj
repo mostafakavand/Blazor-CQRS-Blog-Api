@@ -36,6 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Persistence\Interfaces\BlogRepository\" />
+    <Folder Include="Persistence\EntityFrameWorkObjects\RepositoryObjects\Interfaces\BlogRepository\" />
   </ItemGroup>
 </Project>

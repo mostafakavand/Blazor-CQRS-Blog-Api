@@ -1,4 +1,4 @@
-﻿using Dayana.Shared.Persistence;
+﻿using Dayana.Shared.Persistence.EntityFrameWorkObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Server.Api.Extensions.DependencyInjection;

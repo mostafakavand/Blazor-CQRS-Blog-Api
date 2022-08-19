@@ -5,10 +5,10 @@ using Dayana.Shared.Domains.Identity.Claims;
 using Dayana.Shared.Domains.Identity.Permissions;
 using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Domains.Identity.Users;
-using Dayana.Shared.Persistence.Seeding.IdentitySeeds;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.Seeding.IdentitySeeds;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dayana.Shared.Persistence;
+namespace Dayana.Shared.Persistence.EntityFrameWorkObjects;
 
 public sealed class AppDbContext : DbContext
 {

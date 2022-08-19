@@ -1,10 +1,11 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
 using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Dayana.Shared.Persistence.Seeding.IdentitySeeds;
+namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.Seeding.IdentitySeeds;
 
 public static class UserSeed
 {

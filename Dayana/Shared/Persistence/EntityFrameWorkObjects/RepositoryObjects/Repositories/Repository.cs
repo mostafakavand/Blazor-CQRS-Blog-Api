@@ -1,9 +1,9 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using Dayana.Shared.Persistence.Interfaces.IdentityRepositories;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces;
 
-namespace Dayana.Shared.Persistence.Repositories;
+namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories;
 
 public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
 {

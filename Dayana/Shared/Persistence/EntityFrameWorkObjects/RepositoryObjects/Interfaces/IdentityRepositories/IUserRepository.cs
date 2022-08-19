@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Persistence.Models.Filters.Users;
 
-namespace Dayana.Shared.Persistence.Interfaces.IdentityRepositories;
+namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 
 public interface IUserRepository : IRepository<User>
 {

@@ -1,11 +1,13 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Roles;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories;
 using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Models.Filters.Roles;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dayana.Shared.Persistence.Repositories.IdentityRepositories.Roles;
+namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Roles;
 
 public class RoleRepository : Repository<Role>, IRoleRepository
 {
