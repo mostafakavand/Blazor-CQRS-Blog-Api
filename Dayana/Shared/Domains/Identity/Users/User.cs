@@ -4,13 +4,13 @@ using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Domains.Blog.Issues;
 using Dayana.Shared.Domains.Identity.Claims;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Domains.Identity.Users;
 
-public class User: BaseDomain
+public class User : BaseDomain
 {
     #region Identity
 

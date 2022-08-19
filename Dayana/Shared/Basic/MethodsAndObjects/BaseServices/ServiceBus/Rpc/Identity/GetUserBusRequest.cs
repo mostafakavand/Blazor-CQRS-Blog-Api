@@ -1,6 +1,4 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc;
-
-namespace Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc.Identity;
+﻿namespace Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc.Identity;
 
 public class GetUserBusRequest : BusRequest
 {

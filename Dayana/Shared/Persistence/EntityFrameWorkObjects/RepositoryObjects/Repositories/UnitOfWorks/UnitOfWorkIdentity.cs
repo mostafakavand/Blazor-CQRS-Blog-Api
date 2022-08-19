@@ -7,7 +7,7 @@ using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Reposit
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.UnitOfWorks;
 
-public class UnitOfWorkIdentity: IUnitOfWorkIdentity
+public class UnitOfWorkIdentity : IUnitOfWorkIdentity
 {
     private readonly AppDbContext _context;
 

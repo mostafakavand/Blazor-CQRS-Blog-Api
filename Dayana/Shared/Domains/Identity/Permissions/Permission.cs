@@ -1,11 +1,11 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Domains.Identity.Roles;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Identity.Permissions;
 
-public class Permission: BaseDomain
+public class Permission : BaseDomain
 {
     public string Name { get; set; }
     public string Title { get; set; }

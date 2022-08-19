@@ -1,5 +1,4 @@
 ﻿using HashidsNet;
-using System;
 namespace Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 
 public static class HashId

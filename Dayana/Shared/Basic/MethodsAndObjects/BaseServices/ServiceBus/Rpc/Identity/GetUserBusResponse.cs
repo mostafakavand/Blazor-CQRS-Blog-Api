@@ -1,5 +1,4 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc;
-using Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc.Identity.Models;
+﻿using Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc.Identity.Models;
 
 namespace Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc.Identity;
 

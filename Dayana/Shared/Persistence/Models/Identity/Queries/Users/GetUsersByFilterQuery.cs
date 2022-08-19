@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Infrastructure.Operations;
-using MediatR;
 using Dayana.Shared.Persistence.Models.Identity.Filters.Users;
+using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Queries.Users;
 

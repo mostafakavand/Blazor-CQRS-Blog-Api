@@ -1,11 +1,11 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
-using Dayana.Shared.Domains.Blog.Issues;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
 using Dayana.Shared.Domains.Blog.Comments;
+using Dayana.Shared.Domains.Blog.Issues;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Blog.BlogPosts;
-public class PostCategory: BaseDomain
+public class PostCategory : BaseDomain
 {
     public string CategoryTitle { get; set; }
     public string CategorySubject { get; set; }
