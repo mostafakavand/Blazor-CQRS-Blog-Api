@@ -1,10 +1,11 @@
-﻿using Dayana.Shared.Domains.Identity.Users;
+﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
+using Dayana.Shared.Domains.Identity.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Identity.Roles;
 
-public class Role : BaseDomain
+public class Role : BaseDomain, IEntity
 {
     public string Title { get; set; }
 

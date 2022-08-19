@@ -1,11 +1,12 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Domains.Identity.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Blog.Comments;
-public class PostCategoryComment : BaseDomain
+public class PostCategoryComment : BaseDomain, IEntity
 {
     public string CommentText { get; set; }
     public bool IsReply { get; set; }

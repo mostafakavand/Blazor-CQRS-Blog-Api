@@ -1,4 +1,5 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Domains.Blog.Issues;
 using Dayana.Shared.Domains.Identity.Users;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Blog.BlogPosts;
-public class Post : BaseDomain
+public class Post : BaseDomain, IEntity
 {
     public string PostTitle { get; set; }
     public string Subject { get; set; }

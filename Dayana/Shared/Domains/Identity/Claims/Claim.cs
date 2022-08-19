@@ -1,11 +1,12 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Domains.Identity.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Identity.Claims;
 
-public class Claim : BaseDomain
+public class Claim : BaseDomain, IEntity
 {
     public string Value { get; set; }
 
