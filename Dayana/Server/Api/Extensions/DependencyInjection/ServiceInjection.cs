@@ -1,5 +1,5 @@
-﻿using Illegible_Cms_V2.Server.Application.Interfaces;
-using Illegible_Cms_V2.Server.Persistence;
+﻿using Dayana.Shared.Persistence;
+using Dayana.Shared.Persistence.Interfaces;
 
 namespace Dayana.Server.Api.Extensions.DependencyInjection;
 

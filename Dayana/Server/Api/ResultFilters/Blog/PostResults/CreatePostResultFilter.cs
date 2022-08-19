@@ -3,9 +3,9 @@ using Illegible_Cms_V2.Shared.BasicShared.Constants.ConstantMethods;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Dayana.Server.Api.ResultFilters.Weblog.WeblogPostResults;
+namespace Dayana.Server.Api.ResultFilters.Blog.PostResults;
 
-public class UpdateWeblogPostResultFilter : ResultFilterAttribute
+public class CreatePostResultFilter : ResultFilterAttribute
 {
     public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
@@ -16,6 +16,8 @@ public class UpdateWeblogPostResultFilter : ResultFilterAttribute
             {
                 Eid = value.Id.Encode(),
                 value.Title,
+                value.Summery,
+                TextContext = value.TextContent
             };
 
         await next();

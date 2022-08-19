@@ -1,6 +1,6 @@
-﻿namespace Dayana.Server.Api.Models.Requests.Weblog.WeblogPostRequests;
+﻿namespace Dayana.Server.Api.Models.Requests.Blog.PostRequests;
 
-public class CreateWeblogPostRequest
+public class UpdatePostRequest
 {
     public string Title { get; set; }
     public string Summery { get; set; }

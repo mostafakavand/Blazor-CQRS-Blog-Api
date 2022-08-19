@@ -4,15 +4,15 @@ using Illegible_Cms_V2.Shared.Infrastructure.Pagination;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Dayana.Server.Api.ResultFilters.Weblog.WeblogPostCategoryResults;
+namespace Dayana.Server.Api.ResultFilters.Blog.PostResults;
 
-public class GetWeblogPostCategoryByFilterResultFilter : ResultFilterAttribute
+public class GetPostByFilterResultFilter : ResultFilterAttribute
 {
     public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is PaginatedList<WeblogPostCategoryModel> value)
+        if (result?.Value is PaginatedList<WeblogPostModel> value)
             result.Value = new
             {
                 value.Page,
@@ -21,8 +21,10 @@ public class GetWeblogPostCategoryByFilterResultFilter : ResultFilterAttribute
                 Data = value.Data.Select(x => new
                 {
                     Eid = x.Id.Encode(),
-                    x.CategoryTitle,
-                    x.CategoryIcon
+                    x.Title,
+                    x.Summery,
+                    x.TextContent
+
                 })
             };
 

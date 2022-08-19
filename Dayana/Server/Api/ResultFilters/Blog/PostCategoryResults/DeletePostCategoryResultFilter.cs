@@ -3,21 +3,19 @@ using Illegible_Cms_V2.Shared.BasicShared.Constants.ConstantMethods;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Dayana.Server.Api.ResultFilters.Weblog.WeblogPostResults;
+namespace Dayana.Server.Api.ResultFilters.Blog.PostCategoryResults;
 
-public class CreateWeblogPostResultFilter : ResultFilterAttribute
+public class DeletePostCategoryResultFilter : ResultFilterAttribute
 {
     public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is WeblogPost value)
+        if (result?.Value is WeblogPostCategory value)
             result.Value = new
             {
                 Eid = value.Id.Encode(),
-                value.Title,
-                value.Summery,
-                TextContext = value.TextContent
+                value.CategoryTitle
             };
 
         await next();

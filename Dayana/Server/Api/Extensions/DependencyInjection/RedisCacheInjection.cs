@@ -1,5 +1,5 @@
-﻿using Illegible_Cms_V2.Shared.BasicShared.Configurations;
-using Illegible_Cms_V2.Shared.BasicShared.DependencyInjection;
+﻿using Dayana.Shared.Basic.ConfigAndConstants.Configs;
+using Dayana.Shared.Basic.ConfigAndConstants.DependencyInjection;
 
 namespace Dayana.Server.Api.Extensions.DependencyInjection;
 
