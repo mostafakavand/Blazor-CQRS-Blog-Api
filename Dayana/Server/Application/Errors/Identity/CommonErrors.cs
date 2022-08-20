@@ -1,6 +1,3 @@
-using Illegible_Cms_V2.Shared.BasicShared.Constants;
-using Illegible_Cms_V2.Shared.Infrastructure.Errors;
-
 namespace Dayana.Server.Application.Errors.Identity;
 
 public static class CommonErrors

@@ -1,10 +1,4 @@
 ﻿using AutoMapper;
-using Illegible_Cms_V2.Identity.Application.Interfaces;
-using Illegible_Cms_V2.Identity.Application.Models.Base.Roles;
-using Illegible_Cms_V2.Identity.Application.Models.Filters.Roles;
-using Illegible_Cms_V2.Identity.Application.Models.Queries.Roles;
-using Illegible_Cms_V2.Shared.Infrastructure.Operations;
-using Illegible_Cms_V2.Shared.Infrastructure.Pagination;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Roles;

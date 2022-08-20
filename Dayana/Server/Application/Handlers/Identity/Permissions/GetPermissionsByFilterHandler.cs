@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using Illegible_Cms_V2.Identity.Application.Interfaces;
-using Illegible_Cms_V2.Identity.Application.Models.Base.Permissions;
-using Illegible_Cms_V2.Identity.Application.Models.Queries.Permissions;
-using Illegible_Cms_V2.Shared.Infrastructure.Operations;
-using Illegible_Cms_V2.Shared.Infrastructure.Pagination;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Permissions;

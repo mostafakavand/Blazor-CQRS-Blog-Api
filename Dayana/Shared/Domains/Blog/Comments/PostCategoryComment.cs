@@ -39,7 +39,7 @@ public class PostCategoryCommentEntityConfiguration : IEntityTypeConfiguration<P
 
         builder.HasOne(e => e.PostCategory).WithMany(e => e.PostCategoryComments).HasForeignKey(e => e.PostCategoryId);
         builder.HasOne(e => e.CommentOwner).WithMany(e => e.PostCategoryComments)
-            .HasForeignKey(e => e.CommentOwnerId).OnDelete(DeleteBehavior.NoAction); 
+            .HasForeignKey(e => e.CommentOwnerId).OnDelete(DeleteBehavior.NoAction);
         #endregion
     }
 }

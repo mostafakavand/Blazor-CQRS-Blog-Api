@@ -1,8 +1,4 @@
 ﻿using Dayana.Server.Application.Errors.Identity;
-using Illegible_Cms_V2.Identity.Application.Interfaces;
-using Illegible_Cms_V2.Identity.Application.Models.Commands.Users;
-using Illegible_Cms_V2.Identity.Domain.Users;
-using Illegible_Cms_V2.Shared.Infrastructure.Operations;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Users;
