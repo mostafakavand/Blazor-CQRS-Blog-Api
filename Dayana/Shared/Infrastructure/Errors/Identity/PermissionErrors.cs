@@ -1,4 +1,4 @@
-﻿namespace Dayana.Server.Application.Errors.Identity;
+﻿namespace Dayana.Shared.Infrastructure.Errors.Identity;
 
 public static class PermissionErrors
 {

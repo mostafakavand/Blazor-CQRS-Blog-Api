@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Dayana.Server.Application.Errors.Identity;
+using Dayana.Shared.Infrastructure.Errors.Identity;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Roles;
