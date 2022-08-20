@@ -51,7 +51,8 @@ public class PostEntityConfiguration : IEntityTypeConfiguration<Post>
 
         #region Navigations
 
-        builder.HasOne(e => e.PostWriter).WithMany(e => e.UserPosts).HasForeignKey(e => e.PostWriterId);
+        builder.HasOne(e => e.PostWriter).WithMany(e => e.UserPosts).HasForeignKey(e => e.PostWriterId)
+            .OnDelete(DeleteBehavior.NoAction);
         builder.HasOne(e => e.PostCategory).WithMany(e => e.CategoryPosts).HasForeignKey(e => e.PostCategoryId);
 
         #endregion

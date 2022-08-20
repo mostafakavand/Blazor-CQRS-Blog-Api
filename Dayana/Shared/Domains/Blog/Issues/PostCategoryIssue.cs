@@ -37,7 +37,8 @@ public class PostCategoryIssueEntityConfiguration : IEntityTypeConfiguration<Pos
 
         #region Navigations
         builder.HasOne(e => e.PostCategory).WithMany(e => e.PostCategoryIssues).HasForeignKey(e => e.PostCategoryId);
-        builder.HasOne(e => e.IssueWriter).WithMany(e => e.PostCategoryIssues).HasForeignKey(e => e.IssueWriterId);
+        builder.HasOne(e => e.IssueWriter).WithMany(e => e.PostCategoryIssues)
+            .HasForeignKey(e => e.IssueWriterId).OnDelete(DeleteBehavior.NoAction); ;
         #endregion
     }
 }

@@ -20,7 +20,6 @@ public class PostCategoryIssueComment : BaseDomain, IEntity
     public User CommentOwner { get; set; }
 
     public int? ReplyToCommentId { get; set; }
-    public PostCategoryIssueComment ReplyToComment { get; set; }
     #endregion
 }
 
@@ -39,8 +38,8 @@ public class PostCategoryIssueCommentEntityConfiguration : IEntityTypeConfigurat
         #region Navigations
 
         builder.HasOne(e => e.PostCategoryIssue).WithMany(e => e.PostCategoryIssueComments).HasForeignKey(e => e.PostCategoryIssueId);
-        builder.HasOne(e => e.CommentOwner).WithMany(e => e.PostCategoryIssueComments).HasForeignKey(e => e.CommentOwnerId);
-        builder.HasOne(e => e.ReplyToComment).WithOne(e => e.ReplyToComment).HasForeignKey<PostCategoryIssueComment>(x => x.ReplyToCommentId);
+        builder.HasOne(e => e.CommentOwner).WithMany(e => e.PostCategoryIssueComments)
+            .HasForeignKey(e => e.CommentOwnerId).OnDelete(DeleteBehavior.NoAction); ;
         #endregion
     }
 }
