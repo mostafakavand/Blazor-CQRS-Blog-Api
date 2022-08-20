@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -29,6 +29,13 @@
   <ItemGroup>
     <ProjectReference Include="..\Client\Dayana.Client.csproj" />
     <ProjectReference Include="..\Shared\Dayana.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\Behaviors\Blog\" />
+    <Folder Include="Application\Errors\Blog\" />
+    <Folder Include="Application\Handlers\Blog\" />
+    <Folder Include="Application\Specifications\Blog\" />
   </ItemGroup>
 
 
