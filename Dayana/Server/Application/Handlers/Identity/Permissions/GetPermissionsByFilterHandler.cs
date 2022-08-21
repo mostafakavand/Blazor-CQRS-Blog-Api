@@ -1,14 +1,19 @@
 ﻿using AutoMapper;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Base.Permissions;
+using Dayana.Shared.Persistence.Models.Identity.Queries.Permissions;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Permissions;
 
 public class GetPermissionsByFilterHandler : IRequestHandler<GetPermissionsByFilterQuery, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
     private readonly IMapper _mapper;
 
-    public GetPermissionsByFilterHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public GetPermissionsByFilterHandler(IUnitOfWorkIdentity unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;

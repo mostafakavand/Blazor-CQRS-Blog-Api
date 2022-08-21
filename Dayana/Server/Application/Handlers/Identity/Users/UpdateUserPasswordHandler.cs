@@ -1,13 +1,17 @@
-﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+﻿using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
+using Dayana.Shared.Infrastructure.Errors.Identity;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Users;
 
 public class UpdateUserPasswordHandler : IRequestHandler<UpdateUserPasswordCommand, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
 
-    public UpdateUserPasswordHandler(IUnitOfWork unitOfWork)
+    public UpdateUserPasswordHandler(IUnitOfWorkIdentity unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }

@@ -1,14 +1,20 @@
 ﻿using AutoMapper;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Base.Users;
+using Dayana.Shared.Persistence.Models.Identity.Filters.Users;
+using Dayana.Shared.Persistence.Models.Identity.Queries.Users;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Users;
 
 public class GetUsersByFilterHandler : IRequestHandler<GetUsersByFilterQuery, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
     private readonly IMapper _mapper;
 
-    public GetUsersByFilterHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public GetUsersByFilterHandler(IUnitOfWorkIdentity unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;

@@ -1,14 +1,20 @@
 ﻿using AutoMapper;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Base.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Filters.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Queries.Roles;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Roles;
 
 public class GetRolesByFilterHandler : IRequestHandler<GetRolesByFilterQuery, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
     private readonly IMapper _mapper;
 
-    public GetRolesByFilterHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public GetRolesByFilterHandler(IUnitOfWorkIdentity unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;

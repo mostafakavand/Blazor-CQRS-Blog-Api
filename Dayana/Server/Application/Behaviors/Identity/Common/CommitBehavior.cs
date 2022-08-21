@@ -1,12 +1,14 @@
-﻿using MediatR;
+﻿using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using MediatR;
 
 namespace Dayana.Server.Application.Behaviors.Identity.Common;
 
 public class CommitBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, OperationResult> where TRequest : IRequest<OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
 
-    public CommitBehavior(IUnitOfWork unitOfWork)
+    public CommitBehavior(IUnitOfWorkIdentity unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }

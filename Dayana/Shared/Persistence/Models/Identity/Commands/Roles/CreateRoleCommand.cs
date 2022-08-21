@@ -1,5 +1,6 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Models;
+using Dayana.Shared.Infrastructure.Errors.Identity;
 using Dayana.Shared.Infrastructure.Operations;
 using FluentValidation;
 using MediatR;
@@ -35,6 +36,5 @@ public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
         RuleFor(x => x.Title)
             .NotEmpty()
             .WithState(_ => CommonErrors.InvalidTitleValidationError);
-
     }
 }

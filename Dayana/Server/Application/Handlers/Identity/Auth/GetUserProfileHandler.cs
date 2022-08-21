@@ -1,15 +1,19 @@
 ﻿using AutoMapper;
 using Dayana.Shared.Infrastructure.Errors.Identity;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Base.Users;
+using Dayana.Shared.Persistence.Models.Identity.Queries.Auth;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Auth;
 
 internal class GetUserProfileHandler : IRequestHandler<GetUserProfileQuery, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
     private readonly IMapper _mapper;
 
-    public GetUserProfileHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public GetUserProfileHandler(IUnitOfWorkIdentity unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;

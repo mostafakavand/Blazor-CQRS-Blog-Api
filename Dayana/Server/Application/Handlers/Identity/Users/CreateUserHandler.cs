@@ -1,13 +1,20 @@
-﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+﻿using Dayana.Server.Application.Specifications.Identity.Users;
+using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors.Identity;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Users;
 
 public class CreateUserHandler : IRequestHandler<CreateUserCommand, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
 
-    public CreateUserHandler(IUnitOfWork unitOfWork)
+    public CreateUserHandler(IUnitOfWorkIdentity unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }

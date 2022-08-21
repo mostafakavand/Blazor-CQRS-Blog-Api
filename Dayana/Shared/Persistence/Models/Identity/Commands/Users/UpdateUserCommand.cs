@@ -1,5 +1,6 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors.Identity;
 using Dayana.Shared.Infrastructure.Operations;
 using FluentValidation;
 using MediatR;

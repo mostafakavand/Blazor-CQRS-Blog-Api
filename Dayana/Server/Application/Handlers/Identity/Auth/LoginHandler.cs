@@ -1,13 +1,19 @@
-﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+﻿using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors.Identity;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Auth;
+using Dayana.Shared.Persistence.Models.Identity.Results.Auth;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Auth;
 
 internal class LoginHandler : IRequestHandler<LoginCommand, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity  _unitOfWork;
 
-    public LoginHandler(IUnitOfWork unitOfWork)
+    public LoginHandler(IUnitOfWorkIdentity unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }

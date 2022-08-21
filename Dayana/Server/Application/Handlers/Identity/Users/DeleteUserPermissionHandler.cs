@@ -1,13 +1,16 @@
 ﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Users;
 
 public class DeleteUserPermissionHandler : IRequestHandler<DeleteUserPermissionCommand, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
 
-    public DeleteUserPermissionHandler(IUnitOfWork unitOfWork)
+    public DeleteUserPermissionHandler(IUnitOfWorkIdentity unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }

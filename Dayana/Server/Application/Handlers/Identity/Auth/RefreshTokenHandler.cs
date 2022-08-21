@@ -1,13 +1,18 @@
-﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+﻿using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
+using Dayana.Shared.Infrastructure.Errors.Identity;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Queries.Auth;
+using Dayana.Shared.Persistence.Models.Identity.Results.Auth;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Auth;
 
 internal class RefreshTokenHandler : IRequestHandler<RefreshTokenQuery, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
 
-    public RefreshTokenHandler(IUnitOfWork unitOfWork)
+    public RefreshTokenHandler(IUnitOfWorkIdentity unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }

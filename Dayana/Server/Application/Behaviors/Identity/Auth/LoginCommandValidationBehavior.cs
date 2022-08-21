@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Auth;
+using MediatR;
 
 namespace Dayana.Server.Application.Behaviors.Identity.Auth;
 

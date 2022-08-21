@@ -1,13 +1,18 @@
-﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+﻿using Dayana.Server.Application.Specifications.Identity.Roles;
+using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
+using Dayana.Shared.Infrastructure.Errors.Identity;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Roles;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity.Roles;
 
 public class UpdateRoleHandler : IRequestHandler<UpdateRoleCommand, OperationResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
 
-    public UpdateRoleHandler(IUnitOfWork unitOfWork)
+    public UpdateRoleHandler(IUnitOfWorkIdentity unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
