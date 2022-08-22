@@ -11,7 +11,7 @@ namespace Dayana.Server.Application.Handlers.Identity.Auth;
 
 internal class LoginHandler : IRequestHandler<LoginCommand, OperationResult>
 {
-    private readonly IUnitOfWorkIdentity  _unitOfWork;
+    private readonly IUnitOfWorkIdentity _unitOfWork;
 
     public LoginHandler(IUnitOfWorkIdentity unitOfWork)
     {
