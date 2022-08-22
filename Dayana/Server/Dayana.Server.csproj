@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Application\Errors\**" />
+    <Content Remove="Application\Errors\**" />
+    <EmbeddedResource Remove="Application\Errors\**" />
+    <None Remove="Application\Errors\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
@@ -32,8 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Behaviors\Blog\" />
-    <Folder Include="Application\Errors\Blog\" />
     <Folder Include="Application\Handlers\Blog\" />
     <Folder Include="Application\Specifications\Blog\" />
   </ItemGroup>

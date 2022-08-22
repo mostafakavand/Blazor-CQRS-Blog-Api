@@ -1,9 +1,10 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
-using Dayana.Shared.Infrastructure.Operations;
-using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
+﻿using Illegible_Cms_V2.Identity.Application.Helpers;
+using Illegible_Cms_V2.Identity.Application.Models.Commands.Users;
+using Illegible_Cms_V2.Identity.Application.Validators.Users;
+using Illegible_Cms_V2.Shared.Infrastructure.Operations;
 using MediatR;
 
-namespace Dayana.Server.Application.Behaviors.Identity.Users;
+namespace Dayana.Server.Application.Behaviors.Users;
 
 public class DeleteUserPermissionValidationBehavior<TRequest, TResponse>
     : IPipelineBehavior<DeleteUserPermissionCommand, OperationResult>

@@ -1,14 +1,14 @@
-﻿using Dayana.Shared.Infrastructure.Operations;
-using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+﻿using Illegible_Cms_V2.Identity.Application.Interfaces;
+using Illegible_Cms_V2.Shared.Infrastructure.Operations;
 using MediatR;
 
-namespace Dayana.Server.Application.Behaviors.Identity.Common;
+namespace Dayana.Server.Application.Behaviors.Common;
 
 public class CommitBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, OperationResult> where TRequest : IRequest<OperationResult>
 {
-    private readonly IUnitOfWorkIdentity _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public CommitBehavior(IUnitOfWorkIdentity unitOfWork)
+    public CommitBehavior(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }

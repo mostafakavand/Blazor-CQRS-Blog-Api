@@ -1,7 +1,7 @@
-﻿using Dayana.Shared.Infrastructure.Operations;
+﻿using Illegible_Cms_V2.Shared.Infrastructure.Operations;
 using MediatR;
 
-namespace Dayana.Server.Application.Behaviors.Identity.Common;
+namespace Dayana.Server.Application.Behaviors.Common;
 
 public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, OperationResult> where TRequest : IRequest<OperationResult>
 {

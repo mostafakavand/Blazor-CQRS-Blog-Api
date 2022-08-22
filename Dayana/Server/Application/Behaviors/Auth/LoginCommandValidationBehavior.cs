@@ -1,8 +1,9 @@
-﻿using Dayana.Shared.Infrastructure.Operations;
-using Dayana.Shared.Persistence.Models.Identity.Commands.Auth;
+﻿using Illegible_Cms_V2.Identity.Application.Models.Commands.Auth;
+using Illegible_Cms_V2.Identity.Application.Validators.Auth;
+using Illegible_Cms_V2.Shared.Infrastructure.Operations;
 using MediatR;
 
-namespace Dayana.Server.Application.Behaviors.Identity.Auth;
+namespace Dayana.Server.Application.Behaviors.Auth;
 
 public class LoginCommandValidationBehavior<TRequest, TResponse> : IPipelineBehavior<LoginCommand, OperationResult>
 {
