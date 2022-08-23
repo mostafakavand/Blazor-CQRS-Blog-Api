@@ -1,4 +1,11 @@
-﻿using MediatR;
+﻿using Dayana.Server.Api.ResultFilters.Identity.Auth;
+using Dayana.Server.Api.Routes;
+using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Auth;
+using Dayana.Shared.Persistence.Models.Identity.Queries.Auth;
+using Dayana.Shared.Persistence.Models.Identity.Requests.Auth;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dayana.Server.Api.Controllers.Identity;
@@ -12,7 +19,7 @@ public class AuthController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost(Routes.Auth + "login")]
+    [HttpPost(IdentityRoutes.Auth + "login")]
     [LoginResultFilter]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
@@ -25,7 +32,7 @@ public class AuthController : ControllerBase
         return this.ReturnResponse(operation);
     }
 
-    [HttpGet(Routes.Auth + "token")]
+    [HttpGet(IdentityRoutes.Auth + "token")]
     [TokenResultFilter]
     public async Task<IActionResult> GetAccessToken([FromHeader] string refresh)
     {
@@ -37,11 +44,11 @@ public class AuthController : ControllerBase
         return this.ReturnResponse(operation);
     }
 
-    [HttpGet(Routes.Auth + "profile/{ueid}")]
+    [HttpGet(IdentityRoutes.Auth + "profile/{ueid}")]
     [GetProfileResultFilter]
     public async Task<IActionResult> Profile([FromRoute] string ueid)
     {
-        var id = ueid.Decode();
+        var id = ueid.DecodeInt();
 
         var operation = await _mediator.Send(new GetUserProfileQuery(Request.GetRequestInfo())
         {

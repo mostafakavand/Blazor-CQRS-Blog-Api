@@ -1,4 +1,6 @@
-﻿using MassTransit;
+﻿using Dayana.Server.Api.Routes;
+using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dayana.Server.Api.Controllers.Identity;
@@ -13,17 +15,17 @@ public class DevController : ControllerBase
         _publishEndpoint = publishEndpoint;
     }
 
-    [HttpGet(Routes.Dev + "hashid/encode/{id}")] // api/dev/hashid/encode/id
-                                                 //[Authorize(Permission.DevelopmentAll)]
+    [HttpGet(IdentityRoutes.Dev + "hashid/encode/{id}")] // api/dev/hashid/encode/id
+                                                         //[Authorize(Permission.DevelopmentAll)]
     public ActionResult GetEncodedId([FromRoute] int id)
     {
-        return Ok(id.Encode());
+        return Ok(id.EncodeInt());
     }
 
-    [HttpGet(Routes.Dev + "hashid/decode/{eid}")] // api/dev/hashid/decode/eid
-                                                  //[Authorize(Permission.DevelopmentAll)]
+    [HttpGet(IdentityRoutes.Dev + "hashid/decode/{eid}")] // api/dev/hashid/decode/eid
+                                                          //[Authorize(Permission.DevelopmentAll)]
     public ActionResult GetDecodedEid([FromRoute] string eid)
     {
-        return Ok(eid.Decode());
+        return Ok(eid.DecodeInt());
     }
 }

@@ -1,4 +1,12 @@
-﻿using MediatR;
+﻿using Dayana.Server.Api.ResultFilters.Identity.Users;
+using Dayana.Server.Api.Routes;
+using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
+using Dayana.Shared.Persistence.Models.Identity.Queries.Users;
+using Dayana.Shared.Persistence.Models.Identity.Requests.Users;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dayana.Server.Api.Controllers.Identity;
@@ -15,7 +23,7 @@ public class UserController : ControllerBase
 
     #region User
 
-    [HttpPost(Routes.Users)]
+    [HttpPost(IdentityRoutes.Users)]
     [CreateUserResultFilter]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
     {
@@ -25,17 +33,17 @@ public class UserController : ControllerBase
             Email = request.Email,
             Password = request.Password,
             Mobile = request.Mobile,
-            State = Domain.Users.UserState.Suspended
+            State = UserState.Suspended
         });
 
         return this.ReturnResponse(operation);
     }
 
-    [HttpPut(Routes.Users + "{ueid}")]
+    [HttpPut(IdentityRoutes.Users + "{ueid}")]
     [UpdateUserResultFilter]
     public async Task<IActionResult> UpdateUser([FromRoute] string ueid, [FromBody] UpdateUserRequest request)
     {
-        var userId = ueid.Decode();
+        var userId = ueid.DecodeInt();
 
         var operation = await _mediator.Send(new UpdateUserCommand(Request.GetRequestInfo())
         {
@@ -49,11 +57,11 @@ public class UserController : ControllerBase
         return this.ReturnResponse(operation);
     }
 
-    [HttpGet(Routes.Users + "{ueid}")]
+    [HttpGet(IdentityRoutes.Users + "{ueid}")]
     [GetUserByIdResultFilter]
     public async Task<IActionResult> GetUserById([FromRoute] string ueid)
     {
-        var userId = ueid.Decode();
+        var userId = ueid.DecodeInt();
 
         var operation = await _mediator.Send(new GetUserByIdQuery(Request.GetRequestInfo())
         {
@@ -65,11 +73,11 @@ public class UserController : ControllerBase
 
 
     // Patch Password
-    [HttpPatch(Routes.Users + "{ueid}/password")]
+    [HttpPatch(IdentityRoutes.Users + "{ueid}/password")]
     [UpdateUserResultFilter]
     public async Task<IActionResult> UpdateUserPassword([FromRoute] string ueid, [FromBody] UpdateUserPasswordRequest request)
     {
-        var userId = ueid.Decode();
+        var userId = ueid.DecodeInt();
 
         var operation = await _mediator.Send(new UpdateUserPasswordCommand(Request.GetRequestInfo())
         {
@@ -84,12 +92,12 @@ public class UserController : ControllerBase
 
     #region Role
 
-    [HttpPatch(Routes.Users + "{ueid}/roles")]
+    [HttpPatch(IdentityRoutes.Users + "{ueid}/roles")]
     [UpdateUserRolesResultFilter]
     public async Task<IActionResult> UpdateUserRoles([FromRoute] string ueid, [FromBody] UpdateUserRolesRequest request)
     {
-        var userId = ueid.Decode();
-        var roleIds = request.RoleEids?.Select(x => x.Decode());
+        var userId = ueid.DecodeInt();
+        var roleIds = request.RoleEids?.Select(x => x.DecodeInt());
 
         var operation = await _mediator.Send(new UpdateUserRolesCommand(Request.GetRequestInfo())
         {
@@ -104,12 +112,12 @@ public class UserController : ControllerBase
 
     #region Permission
 
-    [HttpPost(Routes.Users + "{ueid}/permissions/{peid}")]
+    [HttpPost(IdentityRoutes.Users + "{ueid}/permissions/{peid}")]
     [CreateUserPermissionResultFilter]
     public async Task<IActionResult> CreateUserPermission([FromRoute] string ueid, [FromRoute] string peid)
     {
-        var userId = ueid.Decode();
-        var permissionId = peid.Decode();
+        var userId = ueid.DecodeInt();
+        var permissionId = peid.DecodeInt();
 
         var operation = await _mediator.Send(new CreateUserPermissionCommand(Request.GetRequestInfo())
         {
@@ -120,11 +128,11 @@ public class UserController : ControllerBase
         return this.ReturnResponse(operation);
     }
 
-    [HttpDelete(Routes.Users + "permission/{ceid}")]
+    [HttpDelete(IdentityRoutes.Users + "permission/{ceid}")]
     [DeleteUserPermissionResultFilter]
     public async Task<IActionResult> DeleteUserPermission([FromRoute] string ceid)
     {
-        var claimId = ceid.Decode();
+        var claimId = ceid.DecodeInt();
 
         var operation = await _mediator.Send(new DeleteUserPermissionCommand(Request.GetRequestInfo())
         {

@@ -1,4 +1,12 @@
-﻿using MediatR;
+﻿using Dayana.Server.Api.ResultFilters.Identity.Roles;
+using Dayana.Server.Api.Routes;
+using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+using Dayana.Shared.Persistence.Models.Identity.Commands.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Filters.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Queries.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Requests.Roles;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dayana.Server.Api.Controllers.Identity;
@@ -13,11 +21,11 @@ public class RoleController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost(Routes.Roles)]
+    [HttpPost(IdentityRoutes.Roles)]
     [CreateRoleResultFilter]
     public async Task<IActionResult> CreateRole([FromBody] CreateRoleRequest request)
     {
-        var permissionIds = request.PermissionEids.Select(x => x.Decode()).ToList();
+        var permissionIds = request.PermissionEids.Select(x => x.DecodeInt()).ToList();
 
         var operation = await _mediator.Send(new CreateRoleCommand(Request.GetRequestInfo())
         {
@@ -28,11 +36,11 @@ public class RoleController : ControllerBase
         return this.ReturnResponse(operation);
     }
 
-    [HttpGet(Routes.Roles)]
+    [HttpGet(IdentityRoutes.Roles)]
     [GetRolesByFilterResultFilter]
     public async Task<IActionResult> GetRolesByFilter([FromQuery] GetRolesByFilterRequest request)
     {
-        var permissionIds = request.PermissionEids != null && request.PermissionEids.Any() ? request.PermissionEids.Select(x => x.Decode()).ToArray() : null;
+        var permissionIds = request.PermissionEids != null && request.PermissionEids.Any() ? request.PermissionEids.Select(x => x.DecodeInt()).ToArray() : null;
 
         var operation = await _mediator.Send(new GetRolesByFilterQuery(Request.GetRequestInfo())
         {
@@ -47,11 +55,11 @@ public class RoleController : ControllerBase
         return this.ReturnResponse(operation);
     }
 
-    [HttpGet(Routes.Roles + "{reid}")]
+    [HttpGet(IdentityRoutes.Roles + "{reid}")]
     [GetRoleByIdResultFilter]
     public async Task<IActionResult> GetRoleById([FromRoute] string reid)
     {
-        var roleId = reid.Decode();
+        var roleId = reid.DecodeInt();
 
         var operation = await _mediator.Send(new GetRoleByIdQuery(Request.GetRequestInfo())
         {
@@ -62,11 +70,11 @@ public class RoleController : ControllerBase
     }
 
 
-    [HttpDelete(Routes.Roles + "{reid}")]
+    [HttpDelete(IdentityRoutes.Roles + "{reid}")]
     [DeleteRoleResultFilter]
     public async Task<IActionResult> DeleteRole([FromRoute] string reid)
     {
-        var roleId = reid.Decode();
+        var roleId = reid.DecodeInt();
 
         var operation = await _mediator.Send(new DeleteRoleCommand(Request.GetRequestInfo())
         {
@@ -76,12 +84,12 @@ public class RoleController : ControllerBase
         return this.ReturnResponse(operation);
     }
 
-    [HttpPut(Routes.Roles + "{reid}")]
+    [HttpPut(IdentityRoutes.Roles + "{reid}")]
     [UpdateRoleResultFilter]
     public async Task<IActionResult> UpdateRole([FromRoute] string reid, [FromBody] UpdateRoleRequest request)
     {
-        var roleId = reid.Decode();
-        var permissionIds = request.PermissionEids?.Select(x => x.Decode()).ToList();
+        var roleId = reid.DecodeInt();
+        var permissionIds = request.PermissionEids?.Select(x => x.DecodeInt()).ToList();
 
         var operation = await _mediator.Send(new UpdateRoleCommand(Request.GetRequestInfo())
         {
