@@ -1,15 +1,24 @@
-﻿namespace Dayana.Shared.Persistence.Models.Blog.Base.BlogPosts;
+﻿using Dayana.Shared.Persistence.Models.Blog.Base.Comments;
+using Dayana.Shared.Persistence.Models.Blog.Base.Issues;
+using Dayana.Shared.Persistence.Models.Identity.Base.Users;
 
-public class PostModel
+namespace Dayana.Shared.Persistence.Models.Blog.Base.BlogPosts;
+
+public class PostModel : BaseModel
 {
-    public int Id { get; set; }
     public string PostTitle { get; set; }
-    public string Summery { get; set; }
+    public string Subject { get; set; }
+    public string Summary { get; set; }
     public string PostBody { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
-    public int CreatorId { get; set; }
-    public int UpdaterId { get; set; }
 
-    public PostCategoryModel WeblogPostCategoryModel { get; set; }
+    #region Navigation
+    public int PostWriterId { get; set; }
+    public UserModel PostWriter { get; set; }
+
+    public int PostCategoryId { get; set; }
+    public PostCategoryModel PostCategory { get; set; }
+
+    public ICollection<PostIssueModel> PostIssues { get; set; }
+    public ICollection<PostCommentModel> PostComments { get; set; }
+    #endregion
 }

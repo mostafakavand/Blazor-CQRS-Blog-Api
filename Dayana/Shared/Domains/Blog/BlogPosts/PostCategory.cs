@@ -13,7 +13,6 @@ public class PostCategory : BaseDomain, IEntity
     public string CategoryIcon { get; set; }
 
     #region Navigation
-
     public ICollection<Post> CategoryPosts { get; set; }
     public ICollection<PostCategoryComment> PostCategoryComments { get; set; }
     public ICollection<PostCategoryIssue> PostCategoryIssues { get; set; }
