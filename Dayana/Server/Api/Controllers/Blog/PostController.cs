@@ -1,97 +1,97 @@
-﻿//using Dayana.Server.Api;
-//using Dayana.Server.Api.Models.Requests.Weblog.WeblogPostRequests;
-//using Illegible_Cms_V2.Server.Api.ResultFilters.Weblog.WeblogPostResults;
-//using Illegible_Cms_V2.Server.Application.Models.Commands.Weblog.WeblogPostCommands;
-//using Illegible_Cms_V2.Server.Application.Models.Filters.Weblog.WeblogPostFilters;
-//using Illegible_Cms_V2.Server.Application.Models.Queries.Weblog.WeblogPostQueries;
-//using Illegible_Cms_V2.Shared.BasicShared.Constants.ConstantMethods;
-//using Illegible_Cms_V2.Shared.BasicShared.Extension;
-//using MediatR;
-//using Microsoft.AspNetCore.Mvc;
+﻿using Dayana.Server.Api.Models.Requests.Blog.PostRequests;
+using Dayana.Server.Api.ResultFilters.Blog.PostResults;
+using Dayana.Server.Api.Routes;
+using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+using Dayana.Shared.Persistence.Models.Blog.Commands.BlogPosts.PostCommands;
+using Dayana.Shared.Persistence.Models.Blog.Filters.BlogPosts.PostFilters;
+using Dayana.Shared.Persistence.Models.Blog.Queries.BlogPosts.PostQueries;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
-//namespace Dayana.Server.Api.Controllers.Weblog;
+namespace Dayana.Server.Api.Controllers.Weblog;
 
-//public class PostController : ControllerBase
-//{
-//    private readonly IMediator _mediator;
+public class PostController : ControllerBase
+{
+    private readonly IMediator _mediator;
 
-//    public PostController(IMediator mediator)
-//    {
-//        _mediator = mediator;
-//    }
+    public PostController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
 
-//    [HttpPost(Routes.WeblogPost + "AddPost")]
-//    [CreateWeblogPostResultFilter]
-//    public async Task<IActionResult> AddWeblogPost([FromBody] CreateWeblogPostRequest request)
-//    {
-//        var operation = await _mediator.Send(new CreateWeblogPostCommand(Request.GetRequestInfo())
-//        {
-//            Title = request.Title,
-//            TextContent = request.TextContent,
-//            Summery = request.Summery,
-//        });
+    [HttpPost(BlogRoutes.Post + "AddPost")]
+    [CreatePostResultFilter]
+    public async Task<IActionResult> AddPost([FromBody] CreatePostRequest request)
+    {
+        var operation = await _mediator.Send(new CreatePostCommand(Request.GetRequestInfo())
+        {
+            Title = request.Title,
+            TextContent = request.TextContent,
+            Summery = request.Summery,
+        });
 
-//        return this.ReturnResponse(operation);
-//    }
+        return this.ReturnResponse(operation);
+    }
 
-//    [HttpPut(Routes.WeblogPost + "update/{wpeid}")]
-//    [UpdateWeblogPostResultFilter]
-//    public async Task<IActionResult> UpdateWeblogPost([FromRoute] string wpeid, [FromBody] UpdateWeblogPostRequest request)
-//    {
-//        var Id = wpeid.Decode();
+    [HttpPut(BlogRoutes.Post + "update/{wpeid}")]
+    [UpdatePostResultFilter]
+    public async Task<IActionResult> UpdatePost([FromRoute] string wpeid, [FromBody] UpdatePostRequest request)
+    {
+        int Id = wpeid.DecodeInt();
 
-//        var operation = await _mediator.Send(new UpdateWeblogPostCommand(Request.GetRequestInfo())
-//        {
-//            Id = Id,
-//            Summery = request.Summery,
-//            Title = request.Title,
-//            TextContent = request.TextContent,
-//        });
+        var operation = await _mediator.Send(new UpdatePostCommand(Request.GetRequestInfo())
+        {
+            Id = Id,
+            Summery = request.Summery,
+            Title = request.Title,
+            TextContent = request.TextContent,
+        });
 
-//        return this.ReturnResponse(operation);
-//    }
+        return this.ReturnResponse(operation);
+    }
 
-//    [HttpGet(Routes.WeblogPost + "get_by_id/{wpeid}")]
-//    [GetWeblogPostByIdResultFilter]
-//    public async Task<IActionResult> GetWeblogPostById([FromRoute] string wpeid)
-//    {
-//        var Id = wpeid.Decode();
+    [HttpGet(BlogRoutes.Post + "get_by_id/{wpeid}")]
+    [GetPostByIdResultFilter]
+    public async Task<IActionResult> GetWeblogPostById([FromRoute] string wpeid)
+    {
+        int Id = wpeid.DecodeInt();
 
-//        var operation = await _mediator.Send(new GetWeblogPostByIdQuery(Request.GetRequestInfo())
-//        {
-//            WeblogPostId = Id,
-//        });
+        var operation = await _mediator.Send(new GetPostByIdQuery(Request.GetRequestInfo())
+        {
+            WeblogPostId = Id,
+        });
 
-//        return this.ReturnResponse(operation);
-//    }
+        return this.ReturnResponse(operation);
+    }
 
-//    [HttpGet(Routes.WeblogPost + "get_weblogposts_by_filter")]
-//    [GetWeblogPostByFilterResultFilter]
-//    public async Task<IActionResult> GetWeblogPostsByFilter([FromQuery] GetWeblogPostByFilterRequest request)
-//    {
-//        var operation = await _mediator.Send(new GetWeblogPostByFilterQuery(Request.GetRequestInfo())
-//        {
-//            Filter = new WeblogPostFilter(request.Page, request.PageSize)
-//            {
-//                KeyWord = request?.Keyword ?? "",
-//                SortBy = request?.SortBy,
-//            },
-//        });
+    [HttpGet(BlogRoutes.Post + "get_posts_by_filter")]
+    [GetPostByFilterResultFilter]
+    public async Task<IActionResult> GetPostsByFilter([FromQuery] GetPostByFilterRequest request)
+    {
+        var operation = await _mediator.Send(new GetPostByFilterQuery(Request.GetRequestInfo())
+        {
+            Filter = new PostFilter(request.Page, request.PageSize)
+            {
+                KeyWord = request?.Keyword ?? "",
+                SortBy = request?.SortBy,
+            },
+        });
 
-//        return this.ReturnResponse(operation);
-//    }
+        return this.ReturnResponse(operation);
+    }
 
-//    [HttpDelete(Routes.WeblogPost + "{wpeid}")]
-//    [DeleteWeblogPostResultFilter]
-//    public async Task<IActionResult> DeleteWeblogPost([FromRoute] string wpeid)
-//    {
-//        var Id = wpeid.Decode();
+    [HttpDelete(BlogRoutes.Post + "{wpeid}")]
+    [DeletePostResultFilter]
+    public async Task<IActionResult> DeletePost([FromRoute] string wpeid)
+    {
+        int Id = wpeid.DecodeInt();
 
-//        var operation = await _mediator.Send(new DeleteWeblogPostCommand(Request.GetRequestInfo())
-//        {
-//            Id = Id,
-//        });
+        var operation = await _mediator.Send(new DeletePostCommand(Request.GetRequestInfo())
+        {
+            Id = Id,
+        });
 
-//        return this.ReturnResponse(operation);
-//    }
-//}
+        return this.ReturnResponse(operation);
+    }
+}

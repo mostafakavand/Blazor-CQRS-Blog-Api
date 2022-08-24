@@ -1,6 +1,6 @@
 ﻿namespace Dayana.Server.Api.Routes;
 
-public static class Routes
+public static class BlogRoutes
 {
     public const string Api = "api/";
 
