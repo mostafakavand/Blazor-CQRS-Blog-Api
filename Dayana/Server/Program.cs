@@ -47,7 +47,7 @@ try
     // Add services to the container.
     builder.Services.AddConfigurations(configuration);
     builder.Services.AddConfiguredDatabase(configuration);
-    builder.Services.AddServices();
+    //builder.Services.AddServices();
     builder.Services.AddConfiguredMediatR();
 
     builder.Services.AddConfiguredMassTransit(configuration);
@@ -70,6 +70,7 @@ try
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
     }
+
 
     // Configure the HTTP request pipeline.
     app.UseHttpsRedirection();

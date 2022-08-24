@@ -1,5 +1,6 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Domains.Blog.Issues;
@@ -10,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Dayana.Shared.Domains.Identity.Users;
 
-public class User : BaseDomain
+public class User : BaseDomain, IEntity
 {
     #region Identity
 

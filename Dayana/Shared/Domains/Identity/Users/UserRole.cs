@@ -1,10 +1,11 @@
-﻿using Dayana.Shared.Domains.Identity.Roles;
+﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
+using Dayana.Shared.Domains.Identity.Roles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Identity.Users;
 
-public class UserRole : BaseDomain
+public class UserRole : BaseDomain, IEntity
 {
     #region Navigations
 

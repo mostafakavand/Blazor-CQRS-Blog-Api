@@ -1,4 +1,5 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Domains.Identity.Users;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Blog.Comments;
 
-public class PostComment : BaseDomain
+public class PostComment : BaseDomain, IEntity
 {
     public string CommentText { get; set; }
     public bool IsReply { get; set; }
@@ -20,7 +21,6 @@ public class PostComment : BaseDomain
     public User CommentOwner { get; set; }
 
     public int? ReplyToCommentId { get; set; }
-    public PostComment ReplyToComment { get; set; }
     #endregion
 }
 
@@ -40,8 +40,8 @@ public class PostCommentEntityConfiguration : IEntityTypeConfiguration<PostComme
         #region Navigations
 
         builder.HasOne(e => e.Post).WithMany(e => e.PostComments).HasForeignKey(e => e.PostId);
-        builder.HasOne(e => e.CommentOwner).WithMany(e => e.PostComments).HasForeignKey(e => e.CommentOwnerId);
-        builder.HasOne(e => e.ReplyToComment).WithOne(e => e.ReplyToComment).HasForeignKey<PostComment>(x => x.ReplyToCommentId);
+        builder.HasOne(e => e.CommentOwner).WithMany(e => e.PostComments)
+            .HasForeignKey(e => e.CommentOwnerId).OnDelete(DeleteBehavior.NoAction); ;
         #endregion
     }
 }

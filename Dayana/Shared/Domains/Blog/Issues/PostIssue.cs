@@ -1,4 +1,5 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Domains.Identity.Users;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Blog.Issues;
-public class PostIssue : BaseDomain
+public class PostIssue : BaseDomain, IEntity
 {
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }
@@ -38,7 +39,8 @@ public class PostIssueEntityConfiguration : IEntityTypeConfiguration<PostIssue>
 
         #region Navigations
         builder.HasOne(e => e.Post).WithMany(e => e.PostIssues).HasForeignKey(e => e.PostId);
-        builder.HasOne(e => e.IssueWriter).WithMany(e => e.PostIssues).HasForeignKey(e => e.IssueWriterId);
+        builder.HasOne(e => e.IssueWriter).WithMany(e => e.PostIssues)
+            .HasForeignKey(e => e.IssueWriterId).OnDelete(DeleteBehavior.NoAction); ;
         #endregion
     }
 }

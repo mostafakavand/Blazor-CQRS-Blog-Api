@@ -1,6 +1,4 @@
-﻿using Dayana.Shared.Infrastructure.Operations;
-using MediatR;
-namespace Dayana.Server.Api.Extensions.DependencyInjection;
+﻿namespace Dayana.Server.Api.Extensions.DependencyInjection;
 
 public static class MediatRInjection
 {

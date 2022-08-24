@@ -36,6 +36,9 @@ dotnet_diagnostic.CS8600.severity = silent
 # IDE0058: Expression value is never used
 dotnet_diagnostic.IDE0058.severity = none
 
+# CS8602: Dereference of a possibly null reference.
+dotnet_diagnostic.CS8602.severity = silent
+
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 tab_width = 4

@@ -1,6 +1,8 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors.Identity;
 using Dayana.Shared.Infrastructure.Operations;
+using FluentValidation;
 using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Commands.Users;
@@ -22,4 +24,15 @@ public class UpdateUserCommand : IRequestInfo, IRequest<OperationResult>
     public DateTime UpdatedAt { get; set; }
 
     public RequestInfo RequestInfo { get; private set; }
+}
+
+
+public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
+{
+    public UpdateUserCommandValidator()
+    {
+        RuleFor(x => x.UserId)
+            .GreaterThan(0)
+            .WithState(_ => CommonErrors.InvalidInputValidationError);
+    }
 }

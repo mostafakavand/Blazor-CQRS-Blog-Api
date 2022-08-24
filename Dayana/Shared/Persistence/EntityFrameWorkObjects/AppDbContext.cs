@@ -7,6 +7,7 @@ using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.Seeding.IdentitySeeds;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects;
 
@@ -42,7 +43,9 @@ public sealed class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Apply Configurations
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+
         modelBuilder.Entity<UserRole>().HasData(UserRoleSeed.All);
         modelBuilder.Entity<Role>().HasData(RoleSeed.All);
         modelBuilder.Entity<User>().HasData(UserSeed.All);

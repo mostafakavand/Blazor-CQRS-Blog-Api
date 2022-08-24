@@ -1,11 +1,12 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Domains.Blog.Issues;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dayana.Shared.Domains.Blog.BlogPosts;
-public class PostCategory : BaseDomain
+public class PostCategory : BaseDomain, IEntity
 {
     public string CategoryTitle { get; set; }
     public string CategorySubject { get; set; }
@@ -14,7 +15,6 @@ public class PostCategory : BaseDomain
     #region Navigation
 
     public ICollection<Post> CategoryPosts { get; set; }
-    public ICollection<PostCategoryIssue> BlogPostCategoryIssues { get; set; }
     public ICollection<PostCategoryComment> PostCategoryComments { get; set; }
     public ICollection<PostCategoryIssue> PostCategoryIssues { get; set; }
     #endregion

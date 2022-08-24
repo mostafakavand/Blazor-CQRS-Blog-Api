@@ -1,8 +1,6 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
+﻿namespace Dayana.Shared.Domains;
 
-namespace Dayana.Shared.Domains;
-
-public class BaseDomain : IEntity
+public class BaseDomain
 {
     public int Id { get; set; }
     public DateTime CreatedAt { get; set; }
