@@ -2,7 +2,7 @@
 using Dayana.Shared.Infrastructure.Operations;
 using MediatR;
 
-namespace Dayana.Shared.Persistence.Models.Blog.Commands.BlogPosts.PostCategoryCommands;
+namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.PostCategoryCommands;
 
 public class DeletePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
 {

@@ -2,14 +2,15 @@
 using Dayana.Shared.Infrastructure.Operations;
 using MediatR;
 
-namespace Dayana.Shared.Persistence.Models.Blog.Commands.BlogPosts.PostCategoryCommands;
+namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.PostCategoryCommands;
 
-public class CreatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
+public class UpdatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
 {
-    public CreatePostCategoryCommand(RequestInfo requestInfo)
+    public UpdatePostCategoryCommand(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }
+    public int Id { get; set; }
     public string CategoryTitle { get; set; }
     public string CategoryIcon { get; set; }
 
