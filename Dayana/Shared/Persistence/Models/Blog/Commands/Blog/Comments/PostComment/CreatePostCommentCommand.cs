@@ -30,20 +30,20 @@ public class CreatePostCommentCommand : IRequestInfo, IRequest<OperationResult>
 
 }
 
-public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
+public class CreatePostCommentCommandValidator : AbstractValidator<CreatePostCommentCommand>
 {
-    public CreateRoleCommandValidator()
+    public CreatePostCommentCommandValidator()
     {
-        RuleFor(x => x.PermissionIds)
-            .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+        //RuleFor(x => x.PermissionIds)
+        //    .NotEmpty()
+        //    .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
 
-        RuleFor(x => x.Title)
-            .MaximumLength(Defaults.NameLength)
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .MaximumLength(Defaults.NameLength)
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
 
-        RuleFor(x => x.Title)
-            .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .NotEmpty()
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
     }
 }

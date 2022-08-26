@@ -29,20 +29,20 @@ public class UpdatePostIssueCommentCommand : IRequestInfo, IRequest<OperationRes
 }
 
 
-public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
+public class UpdatePostIssueCommentCommandValidator : AbstractValidator<UpdatePostIssueCommentCommand>
 {
-    public CreateRoleCommandValidator()
+    public UpdatePostIssueCommentCommandValidator()
     {
-        RuleFor(x => x.PermissionIds)
-            .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+        //RuleFor(x => x.PermissionIds)
+        //    .NotEmpty()
+        //    .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
 
-        RuleFor(x => x.Title)
-            .MaximumLength(Defaults.NameLength)
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .MaximumLength(Defaults.NameLength)
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
 
-        RuleFor(x => x.Title)
-            .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .NotEmpty()
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
     }
 }

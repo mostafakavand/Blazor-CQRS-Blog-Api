@@ -17,20 +17,20 @@ public class DeletePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; set; }
 }
 
-public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
+public class DeletePostCategoryCommandValidator : AbstractValidator<DeletePostCategoryCommand>
 {
-    public CreateRoleCommandValidator()
+    public DeletePostCategoryCommandValidator()
     {
-        RuleFor(x => x.PermissionIds)
-            .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+        //RuleFor(x => x.PermissionIds)
+        //    .NotEmpty()
+        //    .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
 
-        RuleFor(x => x.Title)
-            .MaximumLength(Defaults.NameLength)
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .MaximumLength(Defaults.NameLength)
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
 
-        RuleFor(x => x.Title)
-            .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .NotEmpty()
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
     }
 }

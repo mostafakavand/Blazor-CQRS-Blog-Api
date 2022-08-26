@@ -26,20 +26,20 @@ public class CreatePostCategoryCommentCommand : IRequestInfo, IRequest<Operation
 }
 
 
-public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
+public class CreatePostCategoryCommentCommandValidator : AbstractValidator<CreatePostCategoryCommentCommand>
 {
-    public CreateRoleCommandValidator()
+    public CreatePostCategoryCommentCommandValidator()
     {
-        RuleFor(x => x.PermissionIds)
-            .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+        //RuleFor(x => x.CommentText)
+        //    .NotEmpty()
+        //    .WithState(_ => co.InvalidPermissionIdValidationError);
 
-        RuleFor(x => x.Title)
-            .MaximumLength(Defaults.NameLength)
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .MaximumLength(Defaults.NameLength)
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
 
-        RuleFor(x => x.Title)
-            .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .NotEmpty()
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
     }
 }

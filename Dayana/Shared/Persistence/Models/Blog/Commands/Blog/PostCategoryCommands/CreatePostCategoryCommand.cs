@@ -19,20 +19,20 @@ public class CreatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; set; }
 }
 
-public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
+public class CreatePostCategoryCommandValidator : AbstractValidator<CreatePostCategoryCommand>
 {
-    public CreateRoleCommandValidator()
+    public CreatePostCategoryCommandValidator()
     {
-        RuleFor(x => x.PermissionIds)
-            .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+        //RuleFor(x => x.PermissionIds)
+        //    .NotEmpty()
+        //    .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
 
-        RuleFor(x => x.Title)
-            .MaximumLength(Defaults.NameLength)
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .MaximumLength(Defaults.NameLength)
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
 
-        RuleFor(x => x.Title)
-            .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .NotEmpty()
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
     }
 }

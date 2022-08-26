@@ -18,20 +18,20 @@ public class DeletePostCommand : IRequestInfo, IRequest<OperationResult>
     public int Id { get; set; }
 }
 
-public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
+public class DeletePostCommandValidator : AbstractValidator<DeletePostCommand>
 {
-    public CreateRoleCommandValidator()
+    public DeletePostCommandValidator()
     {
-        RuleFor(x => x.PermissionIds)
-            .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+        //RuleFor(x => x.PermissionIds)
+        //    .NotEmpty()
+        //    .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
 
-        RuleFor(x => x.Title)
-            .MaximumLength(Defaults.NameLength)
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .MaximumLength(Defaults.NameLength)
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
 
-        RuleFor(x => x.Title)
-            .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .NotEmpty()
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
     }
 }

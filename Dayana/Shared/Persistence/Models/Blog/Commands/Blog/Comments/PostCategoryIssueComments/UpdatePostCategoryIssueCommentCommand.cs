@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.Comments.PostCategoryIssueComments;
-internal class UpdatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+public class UpdatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdatePostCategoryIssueCommentCommand(RequestInfo requestInfo)
     {
@@ -28,20 +28,20 @@ internal class UpdatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<Op
     public int? ReplyToCommentId { get; set; }
 }
 
-public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
+public class UpdatePostCategoryIssueCommentCommandValidator : AbstractValidator<UpdatePostCategoryIssueCommentCommand>
 {
-    public CreateRoleCommandValidator()
+    public UpdatePostCategoryIssueCommentCommandValidator()
     {
-        RuleFor(x => x.PermissionIds)
-            .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+        //RuleFor(x => x.PermissionIds)
+        //    .NotEmpty()
+        //    .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
 
-        RuleFor(x => x.Title)
-            .MaximumLength(Defaults.NameLength)
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .MaximumLength(Defaults.NameLength)
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
 
-        RuleFor(x => x.Title)
-            .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .NotEmpty()
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
     }
 }

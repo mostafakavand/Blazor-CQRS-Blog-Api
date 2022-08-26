@@ -1,6 +1,7 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.Models.Blog.Commands.Blog.Comments.PostCategoryComments;
 using Dayana.Shared.Persistence.Models.Identity.Commands.Roles;
 using FluentValidation;
 using MediatR;
@@ -26,20 +27,20 @@ public class CreatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<Oper
     public int? ReplyToCommentId { get; set; }
 }
 
-public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
+public class UpdatePostCategoryCommentCommandValidatorValidator : AbstractValidator<UpdatePostCategoryCommentCommandValidator>
 {
-    public CreateRoleCommandValidator()
+    public UpdatePostCategoryCommentCommandValidatorValidator()
     {
-        RuleFor(x => x.PermissionIds)
-            .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+        //RuleFor(x => x.PermissionIds)
+        //    .NotEmpty()
+        //    .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
 
-        RuleFor(x => x.Title)
-            .MaximumLength(Defaults.NameLength)
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .MaximumLength(Defaults.NameLength)
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
 
-        RuleFor(x => x.Title)
-            .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
+        //RuleFor(x => x.Title)
+        //    .NotEmpty()
+        //    .WithState(_ => CommonErrors.InvalidTitleValidationError);
     }
 }
