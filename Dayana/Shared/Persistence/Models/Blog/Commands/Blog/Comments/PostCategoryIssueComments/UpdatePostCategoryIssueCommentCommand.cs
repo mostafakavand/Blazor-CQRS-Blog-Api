@@ -1,21 +1,31 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Models;
+using Dayana.Shared.Domains.Blog.Issues;
+using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Persistence.Models.Identity.Commands.Roles;
 using FluentValidation;
 using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.PostCommands;
-
-public class DeletePostCommand : IRequestInfo, IRequest<OperationResult>
+namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.Comments.PostCategoryIssueComments;
+internal class UpdatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
-    public RequestInfo RequestInfo { get; set; }
-
-    public DeletePostCommand(RequestInfo requestInfo)
+    public UpdatePostCategoryIssueCommentCommand(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }
+    public RequestInfo RequestInfo { get; set; }
     public int Id { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public int PostCategoryIssueId { get; set; }
+    public int CommentOwnerId { get; set; }
+    public int? ReplyToCommentId { get; set; }
 }
 
 public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>

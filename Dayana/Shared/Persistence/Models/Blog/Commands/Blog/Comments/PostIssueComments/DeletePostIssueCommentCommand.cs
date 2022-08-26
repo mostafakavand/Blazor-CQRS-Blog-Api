@@ -4,19 +4,23 @@ using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Persistence.Models.Identity.Commands.Roles;
 using FluentValidation;
 using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.PostCommands;
-
-public class DeletePostCommand : IRequestInfo, IRequest<OperationResult>
+namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.Comments.PostIssueComments;
+public class DeletePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
-    public RequestInfo RequestInfo { get; set; }
-
-    public DeletePostCommand(RequestInfo requestInfo)
+    public DeletePostIssueCommentCommand(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }
+    public RequestInfo RequestInfo { get; set; }
     public int Id { get; set; }
 }
+
 
 public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
 {
