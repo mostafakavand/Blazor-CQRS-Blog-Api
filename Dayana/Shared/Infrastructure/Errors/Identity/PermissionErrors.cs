@@ -1,11 +1,11 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 
 namespace Dayana.Shared.Infrastructure.Errors.Identity;
-
+// 300 - 399
 public static class PermissionErrors
 {
     public static ErrorModel InvalidPermissionIdValidationError = new ErrorModel(
-        code: 14001,
+        code: 300,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -13,7 +13,7 @@ public static class PermissionErrors
         ));
 
     public static ErrorModel InvalidClaimIdValidationError = new ErrorModel(
-        code: 14001,
+        code: 301,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -21,7 +21,7 @@ public static class PermissionErrors
         ));
 
     public static ErrorModel DuplicateClaimError = new ErrorModel(
-        code: 14002,
+        code: 302,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -29,7 +29,7 @@ public static class PermissionErrors
         ));
 
     public static ErrorModel ClaimNotFoundError = new ErrorModel(
-        code: 14003,
+        code: 303,
         title: "Identity Error",
         (
             Language: Language.English,

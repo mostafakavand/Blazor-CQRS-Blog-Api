@@ -2,10 +2,11 @@
 
 namespace Dayana.Shared.Infrastructure.Errors.Identity;
 
+// 100 - 199
 public static class AuthErrors
 {
     public static ErrorModel InvalidLoginError = new ErrorModel(
-        code: 11001,
+        code: 100,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -13,7 +14,7 @@ public static class AuthErrors
         ));
 
     public static ErrorModel InvalidCredentialsError = new ErrorModel(
-        code: 11002,
+        code: 101,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -21,7 +22,7 @@ public static class AuthErrors
         ));
 
     public static ErrorModel UnauthorizedRequestError = new ErrorModel(
-        code: 11003,
+        code: 102,
         title: "Identity Error",
         (
             Language: Language.English,

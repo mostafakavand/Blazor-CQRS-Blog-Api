@@ -1,12 +1,12 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 
 namespace Dayana.Shared.Infrastructure.Errors.Identity;
-
+// 500 -599
 public static class UserErrors
 {
     // Code ranges for UserManagement is between 10001 and 19999
     public static ErrorModel UserNotFoundError = new ErrorModel(
-        code: 12001,
+        code: 500,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -14,7 +14,7 @@ public static class UserErrors
         ));
 
     public static ErrorModel DuplicateUsernameError = new ErrorModel(
-        code: 12002,
+        code: 501,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -22,7 +22,7 @@ public static class UserErrors
         ));
 
     public static ErrorModel InvalidUserIdValidationError = new ErrorModel(
-        code: 12003,
+        code: 502,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -30,7 +30,7 @@ public static class UserErrors
         ));
 
     public static ErrorModel InvalidUsernameValidationError = new ErrorModel(
-        code: 12010,
+        code: 503,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -38,7 +38,7 @@ public static class UserErrors
         ));
 
     public static ErrorModel InvalidEmailValidationError = new ErrorModel(
-        code: 12011,
+        code: 504,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -46,7 +46,7 @@ public static class UserErrors
         ));
 
     public static ErrorModel InvalidMobileValidationError = new ErrorModel(
-        code: 12013,
+        code: 505,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -54,7 +54,7 @@ public static class UserErrors
         ));
 
     public static ErrorModel InvalidPasswordValidationError = new ErrorModel(
-        code: 12014,
+        code: 506,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -62,7 +62,7 @@ public static class UserErrors
         ));
 
     public static ErrorModel InvalidFirstNameValidationError = new ErrorModel(
-        code: 12015,
+        code: 507,
         title: "Identity Error",
         (
             Language: Language.English,
@@ -70,14 +70,14 @@ public static class UserErrors
         ));
 
     public static ErrorModel InvalidLastNameValidationError = new ErrorModel(
-        code: 12016,
+        code: 508,
         title: "Identity Error",
         (
             Language: Language.English,
             Message: "Invalid last name"
         ));
     public static ErrorModel InvalidPhoneNumberValidationError = new ErrorModel(
-        code: 12016,
+        code: 509,
         title: "Identity Error",
         (
             Language: Language.English,
