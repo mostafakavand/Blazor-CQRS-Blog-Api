@@ -8,7 +8,7 @@ public class PostModel : BaseModel
 {
     public string PostTitle { get; set; }
     public string Subject { get; set; }
-    public string Summary { get; set; }
+    public string Summery { get; set; }
     public string PostBody { get; set; }
 
     #region Navigation

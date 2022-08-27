@@ -17,7 +17,7 @@ public class GetPostByIdResultFilter : ResultFilterAttribute
                 Eid = value.Id.EncodeInt(),
                 value.PostTitle,
                 value.PostBody,
-               // value.Summery
+                value.Summery
             };
 
         await next();

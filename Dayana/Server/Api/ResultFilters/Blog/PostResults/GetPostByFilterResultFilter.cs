@@ -22,7 +22,7 @@ public class GetPostByFilterResultFilter : ResultFilterAttribute
                 {
                     Eid = x.Id.EncodeInt(),
                     x.PostTitle,
-                    //x.Summery,
+                    x.Summery,
                     x.PostBody,
 
                 })
