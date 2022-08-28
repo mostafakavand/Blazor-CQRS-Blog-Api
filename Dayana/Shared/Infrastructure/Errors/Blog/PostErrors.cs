@@ -3,7 +3,7 @@
 namespace Dayana.Shared.Infrastructure.Errors.Blog;
 public static class PostErrors
 {
-    public static ErrorModel InvalidLoginError = new ErrorModel(
+    public static ErrorModel InvalidPostIdError = new ErrorModel(
         code: 11001,
         title: "Identity Error",
         (

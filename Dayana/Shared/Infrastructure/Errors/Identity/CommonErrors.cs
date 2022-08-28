@@ -2,6 +2,8 @@ using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 
 namespace Dayana.Shared.Infrastructure.Errors.Identity;
 
+#region MyRegion
+
 // 200 - 299
 public static class CommonErrors
 {
@@ -54,3 +56,5 @@ public static class CommonErrors
         ));
 
 }
+
+#endregion

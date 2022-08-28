@@ -4,7 +4,6 @@ namespace Dayana.Shared.Infrastructure.Errors.Identity;
 // 500 -599
 public static class UserErrors
 {
-    // Code ranges for UserManagement is between 10001 and 19999
     public static ErrorModel UserNotFoundError = new ErrorModel(
         code: 500,
         title: "Identity Error",
