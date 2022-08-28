@@ -30,28 +30,10 @@ try
     string address = configuration.GetValue<string>("urls");
 
     #region builder
-
     // Add services to the container.
-    builder.Services.AddControllersWithViews();
-    builder.Services.AddRazorPages();
-    // register an HttpClient that points to itself
-    builder.Services.AddSingleton(sp =>
-    {
-        // Get the address that the app is currently running at
-        var server = sp.GetRequiredService<IServer>();
-        var addressFeature = server.Features.Get<IServerAddressesFeature>();
-        var baseAddress = addressFeature.Addresses.First();
-        return new HttpClient { BaseAddress = new Uri(baseAddress) };
-    });
-
-    // Add services to the container.
-    builder.Services.AddConfigurations(configuration);
-    builder.Services.AddConfiguredDatabase(configuration);
-    //builder.Services.AddServices();
+    builder.Services.AddServices(configuration);
     builder.Services.AddConfiguredMediatR();
 
-    builder.Services.AddConfiguredMassTransit(configuration);
-    builder.Services.AddConfiguredHealthChecks();
     builder.Services.AddMvc();
     #endregion
 
