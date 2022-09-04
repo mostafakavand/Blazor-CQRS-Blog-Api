@@ -5,7 +5,7 @@ using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
 using Dayana.Shared.Persistence.Models.Identity.Queries.Users;
-using Dayana.Shared.Persistence.Models.Identity.Requests.Users;
+using Dayana.Shared.Persistence.Models.Identity.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
