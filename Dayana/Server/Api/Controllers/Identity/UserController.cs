@@ -102,7 +102,7 @@ public class UserController : ControllerBase
         var operation = await _mediator.Send(new UpdateUserRolesCommand(Request.GetRequestInfo())
         {
             UserId = userId,
-            RoleIds = roleIds
+            RoleIds = roleIds?? Array.Empty<int>()
         });
 
         return this.ReturnResponse(operation);

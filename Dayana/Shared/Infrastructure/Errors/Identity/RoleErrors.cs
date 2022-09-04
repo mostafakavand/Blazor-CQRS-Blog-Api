@@ -19,4 +19,20 @@ public static class RoleErrors
             Language: Language.English,
             Message: "Title is registered before"
         ));
+
+    public static ErrorModel InvalidRoleIdError = new ErrorModel(
+       code: 400,
+       title: "Identity Error",
+       (
+           Language: Language.English,
+           Message: "invalid role id"
+       ));
+
+    public static ErrorModel InvalidRoleTitleError = new ErrorModel(
+       code: 400,
+       title: "Identity Error",
+       (
+           Language: Language.English,
+           Message: "invalid role title"
+       ));
 }

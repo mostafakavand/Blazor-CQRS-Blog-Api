@@ -16,13 +16,3 @@ public class DeleteRoleCommand : IRequestInfo, IRequest<OperationResult>
 
     public RequestInfo RequestInfo { get; private set; }
 }
-
-public class DeleteRoleCommandValidator : AbstractValidator<DeleteRoleCommand>
-{
-    public DeleteRoleCommandValidator()
-    {
-        RuleFor(x => x.RoleId)
-            .GreaterThan(0)
-            .WithState(_ => CommonErrors.InvalidInputValidationError);
-    }
-}

@@ -82,4 +82,20 @@ public static class UserErrors
             Language: Language.English,
             Message: "Invalid phone number"
         ));
+
+    public static ErrorModel InvalidFullNameValidationError = new ErrorModel(
+       code: 510,
+       title: "Identity Error",
+       (
+           Language: Language.English,
+           Message: "Invalid full name"
+       ));
+
+    public static ErrorModel InvalidAccessTokenValidationError = new ErrorModel(
+      code: 510,
+      title: "Identity Error",
+      (
+          Language: Language.English,
+          Message: "Invalid access token"
+      ));
 }

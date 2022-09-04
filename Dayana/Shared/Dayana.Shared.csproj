@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <Folder Include="Persistence\EntityFrameWorkObjects\RepositoryObjects\Interfaces\BlogRepository\" />
-    <Folder Include="Persistence\Models\Blog\Results\" />
+    <Folder Include="Persistence\Models\Blog\Validators\BaseValidators\" />
+    <Folder Include="Persistence\Models\Blog\Validators\CommandValidators\" />
   </ItemGroup>
 </Project>

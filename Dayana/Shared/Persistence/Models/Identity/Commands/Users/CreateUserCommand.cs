@@ -25,31 +25,3 @@ public class CreateUserCommand : IRequestInfo, IRequest<OperationResult>
 
     public RequestInfo RequestInfo { get; private set; }
 }
-
-
-public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
-{
-    public CreateUserCommandValidator()
-    {
-        RuleFor(x => x.Username)
-            .NotEmpty()
-            .WithState(_ => UserErrors.InvalidUsernameValidationError);
-
-        RuleFor(x => x.Username)
-            .Length(2, Defaults.UsernameLength)
-            .WithState(_ => UserErrors.InvalidUsernameValidationError);
-
-        RuleFor(x => x.Password)
-            .NotEmpty()
-            .MinimumLength(Defaults.MinPasswordLength)
-            .WithState(_ => UserErrors.InvalidPasswordValidationError);
-
-        RuleFor(x => x.Mobile)
-            .MaximumLength(Defaults.MobileNumberLength)
-            .WithState(_ => UserErrors.InvalidPhoneNumberValidationError);
-
-        RuleFor(x => x.Email)
-            .NotEmpty()
-            .WithState(_ => UserErrors.InvalidEmailValidationError);
-    }
-}

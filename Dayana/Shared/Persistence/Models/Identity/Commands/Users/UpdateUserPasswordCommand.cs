@@ -13,6 +13,7 @@ public class UpdateUserPasswordCommand : IRequestInfo, IRequest<OperationResult>
 
     public int UserId { get; set; }
     public string NewPassword { get; set; }
+    public string LastPassword { get; set; }
 
     public RequestInfo RequestInfo { get; private set; }
 }

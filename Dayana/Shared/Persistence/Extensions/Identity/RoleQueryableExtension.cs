@@ -1,5 +1,5 @@
 ﻿using Dayana.Shared.Domains.Identity.Roles;
-using Dayana.Shared.Persistence.Models.Identity.Filters.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Filters;
 
 namespace Dayana.Shared.Persistence.Extensions.Identity;
 

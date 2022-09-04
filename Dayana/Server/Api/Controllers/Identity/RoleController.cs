@@ -3,7 +3,7 @@ using Dayana.Server.Api.Routes;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Persistence.Models.Identity.Commands.Roles;
-using Dayana.Shared.Persistence.Models.Identity.Filters.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Filters;
 using Dayana.Shared.Persistence.Models.Identity.Queries.Roles;
 using Dayana.Shared.Persistence.Models.Identity.Requests.Roles;
 using MediatR;
@@ -46,9 +46,9 @@ public class RoleController : ControllerBase
         {
             Filter = new RoleFilter(request.Page, request.PageSize)
             {
-                PermissionIds = permissionIds,
+                PermissionIds = permissionIds?? Array.Empty<int>(),
                 SortBy = request.SortBy,
-                Title = request.Title
+                Title = request.Title ?? "undefind-role"
             },
         });
 
@@ -96,6 +96,7 @@ public class RoleController : ControllerBase
             RoleId = roleId,
             Title = request.Title,
             PermissionIds = permissionIds
+            ?? new List<int> { }
         });
 
         return this.ReturnResponse(operation);

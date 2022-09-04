@@ -18,13 +18,3 @@ public class UpdateUserRolesCommand : IRequestInfo, IRequest<OperationResult>
 
     public RequestInfo RequestInfo { get; private set; }
 }
-
-public class UpdateUserRolesCommandValidator : AbstractValidator<UpdateUserRolesCommand>
-{
-    public UpdateUserRolesCommandValidator()
-    {
-        RuleFor(x => x.UserId)
-            .GreaterThan(0)
-            .WithState(_ => CommonErrors.InvalidInputValidationError);
-    }
-}

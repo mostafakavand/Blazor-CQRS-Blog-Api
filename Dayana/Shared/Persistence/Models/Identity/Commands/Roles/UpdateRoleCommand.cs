@@ -20,26 +20,3 @@ public class UpdateRoleCommand : IRequestInfo, IRequest<OperationResult>
 
     public RequestInfo RequestInfo { get; private set; }
 }
-
-public class UpdateRoleCommandValidator : AbstractValidator<UpdateRoleCommand>
-{
-    public UpdateRoleCommandValidator()
-    {
-        RuleFor(x => x.RoleId)
-            .GreaterThan(0)
-            .WithState(_ => CommonErrors.InvalidInputValidationError);
-
-        RuleFor(x => x.PermissionIds)
-            .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
-
-        RuleFor(x => x.Title)
-            .MaximumLength(Defaults.NameLength)
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
-
-        RuleFor(x => x.Title)
-            .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidTitleValidationError);
-
-    }
-}

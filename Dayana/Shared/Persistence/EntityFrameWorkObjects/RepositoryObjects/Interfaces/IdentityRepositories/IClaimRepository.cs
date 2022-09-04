@@ -1,5 +1,5 @@
 ﻿using Dayana.Shared.Domains.Identity.Claims;
-using Dayana.Shared.Persistence.Models.Identity.Filters.Claims;
+using Dayana.Shared.Persistence.Models.Identity.Filters;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 

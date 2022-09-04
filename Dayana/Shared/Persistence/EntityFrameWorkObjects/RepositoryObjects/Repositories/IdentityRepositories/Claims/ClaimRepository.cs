@@ -2,7 +2,7 @@
 using Dayana.Shared.Domains.Identity.Claims;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Models.Identity.Filters.Claims;
+using Dayana.Shared.Persistence.Models.Identity.Filters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Claims;

@@ -25,14 +25,3 @@ public class UpdateUserCommand : IRequestInfo, IRequest<OperationResult>
 
     public RequestInfo RequestInfo { get; private set; }
 }
-
-
-public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
-{
-    public UpdateUserCommandValidator()
-    {
-        RuleFor(x => x.UserId)
-            .GreaterThan(0)
-            .WithState(_ => CommonErrors.InvalidInputValidationError);
-    }
-}

@@ -1,6 +1,6 @@
 ﻿using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Pagination;
-using Dayana.Shared.Persistence.Models.Identity.Filters.Users;
+using Dayana.Shared.Persistence.Models.Identity.Filters;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Requests.Users;
 

@@ -35,6 +35,4 @@ public static class PermissionErrors
             Language: Language.English,
             Message: "Claim not found"
         ));
-
-
 }
