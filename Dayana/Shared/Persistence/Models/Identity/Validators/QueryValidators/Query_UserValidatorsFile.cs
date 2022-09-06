@@ -1,5 +1,4 @@
 ﻿using Dayana.Shared.Infrastructure.Errors.Identity;
-using Dayana.Shared.Persistence.Models.Identity.Queries.Users;
 using FluentValidation;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Validators.QueryValidators;
