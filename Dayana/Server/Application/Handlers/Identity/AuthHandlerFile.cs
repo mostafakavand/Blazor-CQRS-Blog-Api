@@ -4,10 +4,9 @@ using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors.Identity;
 using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
-using Dayana.Shared.Persistence.Models.Identity.Base.Users;
-using Dayana.Shared.Persistence.Models.Identity.Commands.Auth;
-using Dayana.Shared.Persistence.Models.Identity.Queries.Auth;
-using Dayana.Shared.Persistence.Models.Identity.Results.Auth;
+using Dayana.Shared.Persistence.Models.Identity.Base;
+using Dayana.Shared.Persistence.Models.Identity.Commands;
+using Dayana.Shared.Persistence.Models.Identity.Queries;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity;

@@ -2,6 +2,7 @@
 using Dayana.Shared.Domains.Identity.Permissions;
 using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Persistence.Models.Identity.Base;
 using System.Security.Claims;
 
 namespace Dayana.Shared.Persistence.AutoMapperProfile;

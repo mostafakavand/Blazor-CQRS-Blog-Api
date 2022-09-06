@@ -1,7 +1,5 @@
 using Dayana.Server.Api.Extensions.DependencyInjection;
 using Dayana.Server.Api.Extensions.Middleware;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Hosting.Server.Features;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
