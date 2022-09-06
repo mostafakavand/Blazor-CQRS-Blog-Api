@@ -1,5 +1,4 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
-using Dayana.Shared.Persistence.Models.Blog.Base.BlogPosts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
