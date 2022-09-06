@@ -2,10 +2,10 @@
 using Dayana.Server.Api.Routes;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
-using Dayana.Shared.Persistence.Models.Identity.Commands.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Commands;
 using Dayana.Shared.Persistence.Models.Identity.Filters;
-using Dayana.Shared.Persistence.Models.Identity.Queries.Roles;
-using Dayana.Shared.Persistence.Models.Identity.Requests.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Queries;
+using Dayana.Shared.Persistence.Models.Identity.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +27,7 @@ public class RoleController : ControllerBase
     {
         var permissionIds = request.PermissionEids.Select(x => x.DecodeInt()).ToList();
 
-        var operation = await _mediator.Send(new CreateRoleCommand(Request.GetRequestInfo())
+        Shared.Infrastructure.Operations.OperationResult operation = await _mediator.Send(new CreateRoleCommand(Request.GetRequestInfo())
         {
             Title = request.Title,
             PermissionIds = permissionIds
@@ -46,7 +46,7 @@ public class RoleController : ControllerBase
         {
             Filter = new RoleFilter(request.Page, request.PageSize)
             {
-                PermissionIds = permissionIds?? Array.Empty<int>(),
+                PermissionIds = permissionIds ?? Array.Empty<int>(),
                 SortBy = request.SortBy,
                 Title = request.Title ?? "undefind-role"
             },

@@ -1,6 +1,4 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Base.Users;
-
-namespace Dayana.Shared.Persistence.Models.Identity.Base.Claims;
+﻿namespace Dayana.Shared.Persistence.Models.Identity.Base;
 
 public class ClaimModel
 {

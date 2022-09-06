@@ -3,9 +3,9 @@ using Dayana.Server.Api.Routes;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Users;
-using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
-using Dayana.Shared.Persistence.Models.Identity.Queries.Users;
-using Dayana.Shared.Persistence.Models.Identity.Requests.Users;
+using Dayana.Shared.Persistence.Models.Identity.Commands;
+using Dayana.Shared.Persistence.Models.Identity.Queries;
+using Dayana.Shared.Persistence.Models.Identity.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -102,7 +102,7 @@ public class UserController : ControllerBase
         var operation = await _mediator.Send(new UpdateUserRolesCommand(Request.GetRequestInfo())
         {
             UserId = userId,
-            RoleIds = roleIds?? Array.Empty<int>()
+            RoleIds = roleIds ?? Array.Empty<int>()
         });
 
         return this.ReturnResponse(operation);

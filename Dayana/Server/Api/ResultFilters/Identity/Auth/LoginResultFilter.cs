@@ -1,4 +1,4 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Results.Auth;
+﻿using Dayana.Shared.Persistence.Models.Identity.Base;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

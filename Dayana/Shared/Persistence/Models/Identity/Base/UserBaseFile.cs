@@ -1,7 +1,6 @@
 ﻿using Dayana.Shared.Domains.Identity.Users;
-using Dayana.Shared.Persistence.Models.Identity.Base.Claims;
 
-namespace Dayana.Shared.Persistence.Models.Identity.Base.Users;
+namespace Dayana.Shared.Persistence.Models.Identity.Base;
 
 public class UserModel
 {
@@ -33,4 +32,16 @@ public class UserModel
 
     public ICollection<ClaimModel> Claims { get; set; }
     public ICollection<UserRoleModel> UserRoles { get; set; }
+}
+
+public class UserRoleModel
+{
+    public int RoleId { get; set; }
+    public int UserId { get; set; }
+
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
+
+    public UserModel User { get; set; }
+    public RoleModel Role { get; set; }
 }

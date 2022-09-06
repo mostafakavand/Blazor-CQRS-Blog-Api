@@ -1,6 +1,6 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Infrastructure.Pagination;
-using Dayana.Shared.Persistence.Models.Identity.Base.Roles;
+using Dayana.Shared.Persistence.Models.Identity.Base;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

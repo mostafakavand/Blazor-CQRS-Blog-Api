@@ -3,8 +3,7 @@ using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Persistence.Models.Identity.Filters;
 using MediatR;
 
-namespace Dayana.Shared.Persistence.Models.Identity.Queries.Permissions;
-
+namespace Dayana.Shared.Persistence.Models.Identity.Queries;
 public class GetPermissionsByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetPermissionsByFilterQuery(RequestInfo requestInfo)

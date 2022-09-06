@@ -1,7 +1,6 @@
 ﻿using Dayana.Shared.Infrastructure.Pagination;
 
-namespace Dayana.Shared.Persistence.Models.Identity.Requests.Permissions;
-
+namespace Dayana.Shared.Persistence.Models.Identity.Requests;
 public class GetPermissionsByFilterRequest : PaginationFilter
 {
     protected GetPermissionsByFilterRequest(int page, int pageSize) : base(page, pageSize)

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Dayana.Server.Application.Specifications.Identity;
 using Dayana.Server.Application.Specifications.Identity.Claims;
 using Dayana.Server.Application.Specifications.Identity.Users;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants;
@@ -9,10 +8,10 @@ using Dayana.Shared.Infrastructure.Errors.Identity;
 using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
-using Dayana.Shared.Persistence.Models.Identity.Base.Users;
-using Dayana.Shared.Persistence.Models.Identity.Commands.Users;
+using Dayana.Shared.Persistence.Models.Identity.Base;
+using Dayana.Shared.Persistence.Models.Identity.Commands;
 using Dayana.Shared.Persistence.Models.Identity.Filters;
-using Dayana.Shared.Persistence.Models.Identity.Queries.Users;
+using Dayana.Shared.Persistence.Models.Identity.Queries;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Identity;

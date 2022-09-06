@@ -1,6 +1,5 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Base.Roles;
+﻿namespace Dayana.Shared.Persistence.Models.Identity.Base;
 
-namespace Dayana.Shared.Persistence.Models.Identity.Base.Permissions;
 
 public class PermissionModel
 {

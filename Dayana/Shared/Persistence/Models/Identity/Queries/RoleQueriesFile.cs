@@ -3,7 +3,20 @@ using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Persistence.Models.Identity.Filters;
 using MediatR;
 
-namespace Dayana.Shared.Persistence.Models.Identity.Queries.Roles;
+namespace Dayana.Shared.Persistence.Models.Identity.Queries;
+
+
+public class GetRoleByIdQuery : IRequestInfo, IRequest<OperationResult>
+{
+    public GetRoleByIdQuery(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+
+    public int RoleId { get; set; }
+    public RequestInfo RequestInfo { get; private set; }
+}
+
 
 public class GetRolesByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {

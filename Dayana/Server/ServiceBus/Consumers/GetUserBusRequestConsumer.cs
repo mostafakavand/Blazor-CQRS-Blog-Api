@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc.Identity;
 using Dayana.Shared.Basic.MethodsAndObjects.BaseServices.ServiceBus.Rpc.Identity.Models;
-using Dayana.Shared.Persistence.Models.Identity.Base.Users;
-using Dayana.Shared.Persistence.Models.Identity.Queries.Users;
+using Dayana.Shared.Persistence.Models.Identity.Base;
+using Dayana.Shared.Persistence.Models.Identity.Queries;
 using MassTransit;
 using MediatR;
 

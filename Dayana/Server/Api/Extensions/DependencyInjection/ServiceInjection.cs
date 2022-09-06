@@ -1,5 +1,4 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Configs;
-using Dayana.Shared.Basic.ConfigAndConstants.DependencyInjection;
 using Dayana.Shared.Basic.MethodsAndObjects.HealthChecks;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;

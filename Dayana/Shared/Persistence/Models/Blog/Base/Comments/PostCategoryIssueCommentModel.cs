@@ -1,5 +1,5 @@
 ﻿using Dayana.Shared.Persistence.Models.Blog.Base.Issues;
-using Dayana.Shared.Persistence.Models.Identity.Base.Users;
+using Dayana.Shared.Persistence.Models.Identity.Base;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Base.Comments;
 public class PostCategoryIssueCommentModel : BaseModel
