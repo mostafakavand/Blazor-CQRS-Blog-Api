@@ -1,12 +1,4 @@
-﻿using Dayana.Shared.Persistence.Models.Blog.Base.BlogPosts;
-using Dayana.Shared.Persistence.Models.Blog.Base.Comments;
-using Dayana.Shared.Persistence.Models.Blog.Base.Issues;
-using Dayana.Shared.Persistence.Models.Identity.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dayana.Shared.Persistence.Models.Identity.Base;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Base;
 public class PostCategoryModel : BaseModel
