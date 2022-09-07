@@ -1,8 +1,5 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
-using Dayana.Shared.Infrastructure.Operations;
-using Dayana.Shared.Persistence.Models.Blog.Commands.Blog.Comments.PostCategoryComments;
+﻿using Dayana.Shared.Persistence.Models.Blog.Commands.Blog.Comments.PostCategoryComments;
 using FluentValidation;
-using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.Comments.PostCategoryIssueComments;
 
