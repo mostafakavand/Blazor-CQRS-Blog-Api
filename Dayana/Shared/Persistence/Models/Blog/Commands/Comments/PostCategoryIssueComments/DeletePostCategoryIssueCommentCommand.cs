@@ -4,15 +4,7 @@ using FluentValidation;
 using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.Comments.PostCategoryIssueComments;
-public class DeletePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
-{
-    public DeletePostCategoryIssueCommentCommand(RequestInfo requestInfo)
-    {
-        RequestInfo = requestInfo;
-    }
-    public RequestInfo RequestInfo { get; set; }
-    public int Id { get; set; }
-}
+
 
 public class DeletePostCategoryIssueCommentCommandValidator : AbstractValidator<DeletePostCategoryIssueCommentCommand>
 {
