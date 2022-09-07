@@ -1,11 +1,6 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Infrastructure.Operations;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Commands;
 public class CreatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
