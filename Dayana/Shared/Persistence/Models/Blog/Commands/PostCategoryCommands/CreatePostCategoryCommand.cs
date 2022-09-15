@@ -1,21 +1,8 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
-using Dayana.Shared.Infrastructure.Operations;
-using FluentValidation;
-using MediatR;
+﻿using FluentValidation;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Commands.Blog.PostCategoryCommands;
 
-public class CreatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
-{
-    public CreatePostCategoryCommand(RequestInfo requestInfo)
-    {
-        RequestInfo = requestInfo;
-    }
-    public string CategoryTitle { get; set; }
-    public string CategoryIcon { get; set; }
 
-    public RequestInfo RequestInfo { get; set; }
-}
 
 public class CreatePostCategoryCommandValidator : AbstractValidator<CreatePostCategoryCommand>
 {

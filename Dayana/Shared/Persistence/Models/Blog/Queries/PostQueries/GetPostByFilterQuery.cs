@@ -1,6 +1,5 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Infrastructure.Operations;
-using Dayana.Shared.Persistence.Models.Blog.Filters.BlogPosts.PostFilters;
 using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Queries.BlogPosts.PostQueries;

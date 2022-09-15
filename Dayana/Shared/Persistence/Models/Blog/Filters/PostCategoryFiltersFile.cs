@@ -1,6 +1,6 @@
 ﻿using Dayana.Shared.Infrastructure.Pagination;
 
-namespace Dayana.Shared.Persistence.Models.Blog.Filters.BlogPosts.PostCategoryFilters;
+namespace Dayana.Shared.Persistence.Models.Blog.Filters;
 
 public class PostCategoryFilter : PaginationFilter
 {
@@ -9,4 +9,11 @@ public class PostCategoryFilter : PaginationFilter
     }
     public string KeyWord { get; set; }
     public PostCategorySortBy SortBy { get; set; }
+}
+
+
+public enum PostCategorySortBy
+{
+    CreationDate = 12,
+    CreationDateDescending = 13,
 }
