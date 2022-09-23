@@ -1,8 +1,9 @@
 ﻿using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Persistence.Models.Enums;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Filters;
 
-public class PostFilter : PaginationFilter
+public record PostFilter : PaginationFilter
 {
     public PostFilter(int page, int pageSize) : base(page, pageSize)
     {
@@ -11,11 +12,14 @@ public class PostFilter : PaginationFilter
 
     public string KeyWord { get; set; }
 
-    public PostSortBy? SortBy { get; set; }
+    public SortByEnum? SortBy { get; set; }
 }
 
-public enum PostSortBy
+public record PostCategoryFilter : PaginationFilter
 {
-    CreationDate = 12,
-    CreationDateDescending = 13,
+    public PostCategoryFilter(int page, int pageSize) : base(page, pageSize)
+    {
+    }
+    public string KeyWord { get; set; }
+    public SortByEnum SortBy { get; set; }
 }
