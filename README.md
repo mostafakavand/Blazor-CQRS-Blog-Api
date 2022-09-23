@@ -26,6 +26,6 @@
 
 ~/> if you have anything helpfull. just add it in issues. or directly send a mail for me
 
-~/> mohammadJavadtabari1024@outlook.com
+~/> Dayana_Organization@outlook.com
 
 ~/> see you soon
