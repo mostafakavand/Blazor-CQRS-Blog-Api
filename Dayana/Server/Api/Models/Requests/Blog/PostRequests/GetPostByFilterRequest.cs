@@ -1,5 +1,4 @@
 ﻿using Dayana.Shared.Infrastructure.Pagination;
-using Dayana.Shared.Persistence.Models.Blog.Filters;
 
 namespace Dayana.Server.Api.Models.Requests.Blog.PostRequests;
 
