@@ -1,4 +1,5 @@
 ﻿using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Persistence.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,5 @@ public record PostIssueFilter: PaginationFilter
 
     public string KeyWord { get; set; }
 
-    public PostCommentSortBy? SortBy { get; set; }
+    public SortByEnum? SortBy { get; set; }
 }

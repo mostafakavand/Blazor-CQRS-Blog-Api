@@ -2,7 +2,7 @@
 using Dayana.Shared.Infrastructure.Pagination;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Filters;
-public class UserFilter : PaginationFilter
+public record UserFilter : PaginationFilter
 {
     protected UserFilter(int page, int pageSize) : base(page, pageSize)
     {
@@ -26,8 +26,8 @@ public class UserIncludes
 
 public enum UserSortBy
 {
-    CreationDate = 10,
-    CreationDateDescending = 11,
+    CreationDate = 1,
+    CreationDateDescending = 2,
 
     LastLoginDate = 28,
     LastLoginDateDescending = 29,
