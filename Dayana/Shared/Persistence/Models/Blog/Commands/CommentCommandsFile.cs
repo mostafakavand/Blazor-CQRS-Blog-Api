@@ -7,7 +7,7 @@ namespace Dayana.Shared.Persistence.Models.Blog.Commands;
 
 #region PostCategoryComments
 
-public class CreatePostCategoryCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record CreatePostCategoryCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public CreatePostCategoryCommentCommand(RequestInfo requestInfo)
     {
@@ -21,7 +21,7 @@ public class CreatePostCategoryCommentCommand : IRequestInfo, IRequest<Operation
     public int? ReplyToCommentId { get; set; }
 }
 
-public class DeletePostCategoryCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record DeletePostCategoryCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public DeletePostCategoryCommentCommand(RequestInfo requestInfo)
     {
@@ -31,7 +31,7 @@ public class DeletePostCategoryCommentCommand : IRequestInfo, IRequest<Operation
     public int Id { get; set; }
 }
 
-public class UpdatePostCategoryCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdatePostCategoryCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdatePostCategoryCommentCommand(RequestInfo requestInfo)
     {
@@ -50,7 +50,7 @@ public class UpdatePostCategoryCommentCommand : IRequestInfo, IRequest<Operation
 
 #region PostCategoryIssueComments
 
-public class CreatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record CreatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public CreatePostCategoryIssueCommentCommand(RequestInfo requestInfo)
     {
@@ -65,7 +65,7 @@ public class CreatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<Oper
     public int? ReplyToCommentId { get; set; }
 }
 
-public class DeletePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record DeletePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public DeletePostCategoryIssueCommentCommand(RequestInfo requestInfo)
     {
@@ -75,7 +75,7 @@ public class DeletePostCategoryIssueCommentCommand : IRequestInfo, IRequest<Oper
     public int Id { get; set; }
 }
 
-public class UpdatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdatePostCategoryIssueCommentCommand(RequestInfo requestInfo)
     {
@@ -95,7 +95,7 @@ public class UpdatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<Oper
 
 #region PostComment
 
-public class CreatePostCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record CreatePostCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public CreatePostCommentCommand(RequestInfo requestInfo)
     {
@@ -111,7 +111,7 @@ public class CreatePostCommentCommand : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; set; }
 }
 
-public class DeletePostCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record DeletePostCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public DeletePostCommentCommand(RequestInfo requestInfo)
     {
@@ -122,7 +122,7 @@ public class DeletePostCommentCommand : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; set; }
 }
 
-public class UpdatePostCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdatePostCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdatePostCommentCommand(RequestInfo requestInfo)
     {
@@ -143,7 +143,7 @@ public class UpdatePostCommentCommand : IRequestInfo, IRequest<OperationResult>
 
 #region PostIssueComments
 
-public class CreatePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record CreatePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public CreatePostIssueCommentCommand(RequestInfo requestInfo)
     {
@@ -157,7 +157,7 @@ public class CreatePostIssueCommentCommand : IRequestInfo, IRequest<OperationRes
     public int? ReplyToCommentId { get; set; }
 }
 
-public class DeletePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record DeletePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public DeletePostIssueCommentCommand(RequestInfo requestInfo)
     {
@@ -167,7 +167,7 @@ public class DeletePostIssueCommentCommand : IRequestInfo, IRequest<OperationRes
     public int Id { get; set; }
 }
 
-public class UpdatePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdatePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdatePostIssueCommentCommand(RequestInfo requestInfo)
     {

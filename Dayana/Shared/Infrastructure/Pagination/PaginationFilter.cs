@@ -1,5 +1,5 @@
 ﻿namespace Dayana.Shared.Infrastructure.Pagination;
-public class PaginationFilter
+public record PaginationFilter
 {
     private const int MinPageNumber = 1;
     private const int MaxPageSize = 200;
