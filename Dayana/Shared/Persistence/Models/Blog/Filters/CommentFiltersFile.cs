@@ -2,7 +2,7 @@
 
 namespace Dayana.Shared.Persistence.Models.Blog.Filters;
 
-public class PostCommentFilter : PaginationFilter
+public record PostCommentFilter : PaginationFilter
 {
     public PostCommentFilter(int page, int pageSize) : base(page, pageSize)
     {
@@ -21,7 +21,7 @@ public enum PostCommentSortBy
 }
 
 
-public class PostCategoryCommentFilter : PaginationFilter
+public record PostCategoryCommentFilter : PaginationFilter
 {
     public PostCategoryCommentFilter(int page, int pageSize) : base(page, pageSize)
     {
@@ -40,7 +40,7 @@ public enum PostCategoryCommentSortBy
 }
 
 
-public class PostCategoryIssueCommentFilter : PaginationFilter
+public record PostCategoryIssueCommentFilter : PaginationFilter
 {
     public PostCategoryIssueCommentFilter(int page, int pageSize) : base(page, pageSize)
     {
@@ -59,7 +59,7 @@ public enum PostCategoryIssueCommentSortBy
 }
 
 
-public class PostIssueCommentFilter : PaginationFilter
+public record PostIssueCommentFilter : PaginationFilter
 {
     public PostIssueCommentFilter(int page, int pageSize) : base(page, pageSize)
     {

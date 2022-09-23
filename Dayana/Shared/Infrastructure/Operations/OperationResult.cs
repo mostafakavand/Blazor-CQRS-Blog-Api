@@ -2,7 +2,7 @@
 namespace Dayana.Shared.Infrastructure.Operations;
 
 
-public class OperationResult
+public record OperationResult
 {
     public readonly OperationResultStatus Status;
     public readonly bool IsPersistAble;
