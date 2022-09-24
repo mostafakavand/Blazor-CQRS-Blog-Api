@@ -2,7 +2,7 @@
 
 namespace Dayana.Server.Api.Models.Requests.Blog.PostCategoryRequests;
 
-public class GetPostCategoryByFilterRequst : PaginationFilter
+public record GetPostCategoryByFilterRequst : DefaultPaginationFilter
 {
     protected GetPostCategoryByFilterRequst(int page, int pageSize) : base(page, pageSize)
     {
@@ -11,7 +11,4 @@ public class GetPostCategoryByFilterRequst : PaginationFilter
     public GetPostCategoryByFilterRequst()
     {
     }
-
-    public string? Keyword { get; set; }
-    public PostCategorySortBy SortBy { get; set; }
 }

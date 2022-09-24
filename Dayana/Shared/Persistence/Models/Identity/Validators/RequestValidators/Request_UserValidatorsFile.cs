@@ -47,14 +47,14 @@ public class GetUserByFilterRequestValidator : AbstractValidator<GetUserByFilter
 {
     public GetUserByFilterRequestValidator()
     {
-        RuleFor(x => x.Keyword)
+        RuleFor(x => x.KeyWord)
            .NotEmpty()
            .When(x => string.IsNullOrEmpty(x.Email))
            .WithState(_ => CommonErrors.InvalidInputValidationError);
 
         RuleFor(x => x.Email)
           .NotEmpty()
-          .When(x => string.IsNullOrEmpty(x.Keyword))
+          .When(x => string.IsNullOrEmpty(x.KeyWord))
           .WithState(_ => CommonErrors.InvalidInputValidationError);
     }
 }

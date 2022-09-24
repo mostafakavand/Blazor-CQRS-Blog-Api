@@ -2,8 +2,8 @@
 using Dayana.Server.Api.Routes;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
 using Dayana.Shared.Persistence.Models.Identity.Queries;
 using Dayana.Shared.Persistence.Models.Identity.Requests;
 using MediatR;
@@ -44,9 +44,9 @@ public class RoleController : ControllerBase
 
         var operation = await _mediator.Send(new GetRolesByFilterQuery(Request.GetRequestInfo())
         {
-            Filter = new RoleFilter(request.Page, request.PageSize)
+            Filter = new DefaultPaginationFilter(request.Page, request.PageSize)
             {
-                PermissionIds = permissionIds ?? Array.Empty<int>(),
+                IntValueList = permissionIds ?? Array.Empty<int>(),
                 SortBy = request.SortBy,
                 Title = request.Title ?? "undefind-role"
             },

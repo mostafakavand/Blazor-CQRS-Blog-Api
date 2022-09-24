@@ -1,8 +1,9 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
+using Dayana.Shared.Persistence.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Users;
@@ -41,7 +42,7 @@ public class UserRepository : Repository<User>, IUserRepository
         return user;
     }
 
-    public async Task<int> CountUsersByFilterAsync(UserFilter filter)
+    public async Task<int> CountUsersByFilterAsync(CustomaizedPaginationFilter<List<UserState>?, UserSortBy?, string, string> filter)
     {
         var query = _queryable;
 
@@ -65,17 +66,17 @@ public class UserRepository : Repository<User>, IUserRepository
         return await query.ToListAsync();
     }
 
-    public async Task<List<User>> GetUsersByFilterAsync(UserFilter filter)
+    public async Task<List<User>> GetUsersByFilterAsync(CustomaizedPaginationFilter<List<UserState>?, UserSortBy?, string, string> filter)
     {
         var query = _queryable;
 
         query = query.AsNoTracking();
 
         // Includes
-        if (filter.Include is { Role: true }) query = query.Include(x => x.UserRoles);
+        //if (filter.Include is { Role: true }) query = query.Include(x => x.UserRoles);
 
         query = query.ApplyFilter(filter);
-        query = query.ApplySort(filter.SortBy);
+        query = query.ApplySort((filter.Value2));
 
         return await query.Paginate(filter.Page, filter.PageSize).ToListAsync();
     }

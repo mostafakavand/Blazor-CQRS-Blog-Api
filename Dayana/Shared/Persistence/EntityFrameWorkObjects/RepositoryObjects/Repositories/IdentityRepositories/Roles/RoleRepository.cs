@@ -1,8 +1,9 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Roles;
+using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
+using Dayana.Shared.Persistence.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Roles;
@@ -36,26 +37,16 @@ public class RoleRepository : Repository<Role>, IRoleRepository
         if (ids?.Any() == true)
             query = query.Where(x => ids.Contains(x.Id));
 
-        query = query.ApplySort(RoleSortBy.CreationDate);
+        query = query.ApplySort(SortByEnum.CreationDate);
 
         return await query.ToListAsync();
     }
 
-    public async Task<List<Role>> GetRolesByFilterAsync(RoleFilter filter)
+    public async Task<List<Role>> GetRolesByFilterAsync(DefaultPaginationFilter filter)
     {
         var query = _queryable;
 
         query = query.AsNoTracking();
-
-        if (filter.Include != null)
-        {
-            if (filter.Include.Permission)
-                query = query.Include(x => x.RolePermission)
-                    .ThenInclude(x => x.Permission);
-
-            if (filter.Include.UserRole)
-                query = query.Include(x => x.UserRoles);
-        }
 
         query = query.ApplyFilter(filter);
         query = query.ApplySort(filter.SortBy);
@@ -63,7 +54,7 @@ public class RoleRepository : Repository<Role>, IRoleRepository
         return await query.Paginate(filter.Page, filter.PageSize).ToListAsync();
     }
 
-    public async Task<int> CountRolesByFilterAsync(RoleFilter filter)
+    public async Task<int> CountRolesByFilterAsync(DefaultPaginationFilter filter)
     {
         var query = _queryable;
 

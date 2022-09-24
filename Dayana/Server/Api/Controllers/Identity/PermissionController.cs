@@ -2,7 +2,7 @@
 using Dayana.Server.Api.Routes;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
+using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.Models.Identity.Queries;
 using Dayana.Shared.Persistence.Models.Identity.Requests;
 using MediatR;
@@ -28,10 +28,10 @@ public class PermissionController : ControllerBase
 
         var operation = await _mediator.Send(new GetPermissionsByFilterQuery(Request.GetRequestInfo())
         {
-            Filter = new PermissionFilter(request.Page, request.PageSize)
+            Filter = new DefaultPaginationFilter(request.Page, request.PageSize)
             {
-                RoleId = roleId,
-                Value = request.Value,
+                Id = roleId,
+                StringValue = request.StringValue,
                 Name = request.Name,
                 Title = request.Title
             },

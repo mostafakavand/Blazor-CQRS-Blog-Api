@@ -7,7 +7,6 @@ using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
 using Dayana.Shared.Persistence.Models.Identity.Base;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
 using Dayana.Shared.Persistence.Models.Identity.Queries;
 using MediatR;
 
@@ -102,7 +101,7 @@ public class GetRolesByFilterHandler : IRequestHandler<GetRolesByFilterQuery, Op
 
     public async Task<OperationResult> Handle(GetRolesByFilterQuery request, CancellationToken cancellationToken)
     {
-        request.Filter.Include = new RoleIncludes { Permission = true };
+        //request.Filter.Include = new RoleIncludes { Permission = true };
 
         var entities = await _unitOfWork.Roles.GetRolesByFilterAsync(request.Filter);
 
