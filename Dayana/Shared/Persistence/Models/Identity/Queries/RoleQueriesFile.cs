@@ -1,6 +1,6 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Infrastructure.Operations;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
+using Dayana.Shared.Infrastructure.Pagination;
 using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Queries;
@@ -25,6 +25,6 @@ public class GetRolesByFilterQuery : IRequestInfo, IRequest<OperationResult>
         RequestInfo = requestInfo;
     }
 
-    public RoleFilter Filter { get; set; }
+    public DefaultPaginationFilter Filter { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }

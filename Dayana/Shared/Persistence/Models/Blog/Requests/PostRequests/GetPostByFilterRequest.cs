@@ -1,9 +1,9 @@
 ﻿using Dayana.Shared.Infrastructure.Pagination;
-using Dayana.Shared.Persistence.Models.Blog.Filters;
+using Dayana.Shared.Persistence.Models.Enums;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Requests.PostRequests;
 
-public class GetPostByFilterRequest : PaginationFilter
+public record GetPostByFilterRequest : DefaultPaginationFilter
 {
     protected GetPostByFilterRequest(int page, int pageSize) : base(page, pageSize)
     {
@@ -12,7 +12,4 @@ public class GetPostByFilterRequest : PaginationFilter
     public GetPostByFilterRequest()
     {
     }
-
-    public string? Keyword { get; set; }
-    public PostSortBy SortBy { get; set; }
 }

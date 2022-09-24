@@ -10,7 +10,6 @@ using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
 using Dayana.Shared.Persistence.Models.Identity.Base;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
 using Dayana.Shared.Persistence.Models.Identity.Queries;
 using MediatR;
 
@@ -144,7 +143,7 @@ public class GetUsersByFilterHandler : IRequestHandler<GetUsersByFilterQuery, Op
 
     public async Task<OperationResult> Handle(GetUsersByFilterQuery request, CancellationToken cancellationToken)
     {
-        request.Filter.Include = new UserIncludes { Role = true };
+        //request.Filter.Include = new UserIncludes { Role = true };
 
         var entities = await _unitOfWork.Users.GetUsersByFilterAsync(request.Filter);
 

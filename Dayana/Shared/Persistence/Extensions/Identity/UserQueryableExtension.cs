@@ -1,24 +1,25 @@
 ﻿using Dayana.Shared.Domains.Identity.Users;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
+using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Persistence.Models.Enums;
 
 namespace Dayana.Shared.Persistence.Extensions.Identity;
 
 public static class UserQueryableExtension
 {
-    public static IQueryable<User> ApplyFilter(this IQueryable<User> query, UserFilter filter)
+    public static IQueryable<User> ApplyFilter(this IQueryable<User> query, CustomaizedPaginationFilter<List<UserState>?,UserSortBy?,string,string> filter)
     {
         // Filter by keyword
-        if (!string.IsNullOrEmpty(filter.Keyword))
+        if (!string.IsNullOrEmpty(filter.KeyWord))
             query = query.Where(x =>
-                x.Username.ToLower().Contains(filter.Keyword.ToLower().Trim()));
+                x.Username.ToLower().Contains(filter.KeyWord.ToLower().Trim()));
 
         // Filter by email
-        if (!string.IsNullOrEmpty(filter.Email))
-            query = query.Where(x => x.Email.ToLower().Contains(filter.Email.ToLower().Trim()));
+        if (!string.IsNullOrEmpty(filter.StringValue))
+            query = query.Where(x => x.Email.ToLower().Contains(filter.StringValue.ToLower().Trim()));
 
         // Filter by statuses
-        if (filter.States?.Any() == true)
-            query = query.Where(x => filter.States.Contains(x.State));
+        if (filter.Value1?.Any() == true)
+            query = query.Where(x => filter.Value1.Contains(x.State));
 
         return query;
     }

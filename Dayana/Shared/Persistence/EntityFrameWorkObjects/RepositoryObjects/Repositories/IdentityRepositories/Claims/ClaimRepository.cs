@@ -1,8 +1,8 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Claims;
+using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Claims;
@@ -35,7 +35,7 @@ public class ClaimRepository : Repository<Claim>, IClaimRepository
         return await query.ToListAsync();
     }
 
-    public async Task<List<Claim>> GetClaimsByFilterAsync(ClaimFilter filter)
+    public async Task<List<Claim>> GetClaimsByFilterAsync(DefaultPaginationFilter filter)
     {
         var query = _queryable;
 
@@ -47,7 +47,7 @@ public class ClaimRepository : Repository<Claim>, IClaimRepository
         return await query.Paginate(filter.Page, filter.PageSize).ToListAsync();
     }
 
-    public async Task<int> CountClaimsByFilterAsync(ClaimFilter filter)
+    public async Task<int> CountClaimsByFilterAsync(DefaultPaginationFilter filter)
     {
         var query = _queryable;
 

@@ -1,16 +1,16 @@
 ﻿
 using Dayana.Shared.Domains.Identity.Permissions;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
+using Dayana.Shared.Infrastructure.Pagination;
 
 namespace Dayana.Shared.Persistence.Extensions.Identity;
 
 public static class PermissionQueryableExtension
 {
-    public static IQueryable<Permission> ApplyFilter(this IQueryable<Permission> query, PermissionFilter filter)
+    public static IQueryable<Permission> ApplyFilter(this IQueryable<Permission> query, DefaultPaginationFilter filter)
     {
         // Filter by Value
-        if (!string.IsNullOrEmpty(filter.Value))
-            query = query.Where(x => x.Value.ToLower().Contains(filter.Value.ToLower().Trim()));
+        if (!string.IsNullOrEmpty(filter.StringValue))
+            query = query.Where(x => x.Value.ToLower().Contains(filter.StringValue.ToLower().Trim()));
 
         // Filter by Name
         if (!string.IsNullOrEmpty(filter.Name))
@@ -21,8 +21,8 @@ public static class PermissionQueryableExtension
             query = query.Where(x => x.Title.ToLower().Contains(filter.Title.ToLower().Trim()));
 
         // Filter By RoleId
-        if (filter.RoleId.HasValue)
-            query = query.Where(x => x.Roles.Any(x => x.RoleId == filter.RoleId.Value));
+        if (filter.Id.HasValue)
+            query = query.Where(x => x.Roles.Any(x => x.RoleId == filter.Id.Value));
 
 
         return query;

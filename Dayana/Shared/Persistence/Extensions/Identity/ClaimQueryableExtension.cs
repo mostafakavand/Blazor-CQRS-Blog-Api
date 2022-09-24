@@ -1,29 +1,30 @@
 ﻿using Dayana.Shared.Domains.Identity.Claims;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
+using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Persistence.Models.Enums;
 
 namespace Dayana.Shared.Persistence.Extensions.Identity;
 
 public static class ClaimQueryableExtension
 {
-    public static IQueryable<Claim> ApplyFilter(this IQueryable<Claim> query, ClaimFilter filter)
+    public static IQueryable<Claim> ApplyFilter(this IQueryable<Claim> query, DefaultPaginationFilter filter)
     {
         // Filter By RoleId
-        if (filter.UserId.HasValue)
-            query = query.Where(x => x.UserId == filter.UserId.Value);
+        if (filter.Id.HasValue)
+            query = query.Where(x => x.UserId == filter.Id.Value);
 
         // Filter By Value
-        if (!string.IsNullOrEmpty(filter.Value))
-            query = query.Where(x => x.Value.ToLower().Contains(filter.Value.ToLower().Trim()));
+        if (!string.IsNullOrEmpty(filter.StringValue))
+            query = query.Where(x => x.Value.ToLower().Contains(filter.StringValue.ToLower().Trim()));
 
         return query;
     }
 
-    public static IQueryable<Claim> ApplySort(this IQueryable<Claim> query, ClaimSortBy? sortBy)
+    public static IQueryable<Claim> ApplySort(this IQueryable<Claim> query, SortByEnum? sortBy)
     {
         return sortBy switch
         {
-            ClaimSortBy.CreationDate => query.OrderBy(x => x.CreatedAt),
-            ClaimSortBy.CreationDateDescending => query.OrderByDescending(x => x.CreatedAt),
+            SortByEnum.CreationDate => query.OrderBy(x => x.CreatedAt),
+            SortByEnum.CreationDateDescending => query.OrderByDescending(x => x.CreatedAt),
             _ => query.OrderByDescending(x => x.Id)
         };
     }

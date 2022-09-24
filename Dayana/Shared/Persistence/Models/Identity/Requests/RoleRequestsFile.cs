@@ -1,5 +1,5 @@
 ﻿using Dayana.Shared.Infrastructure.Pagination;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
+using Dayana.Shared.Persistence.Models.Enums;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Requests;
 public class CreateRoleRequest
@@ -8,7 +8,7 @@ public class CreateRoleRequest
     public IList<string> PermissionEids { get; set; }
 }
 
-public class GetRolesByFilterRequest : PaginationFilter
+public record GetRolesByFilterRequest : DefaultPaginationFilter
 {
     protected GetRolesByFilterRequest(int page, int pageSize) : base(page, pageSize)
     {
@@ -16,10 +16,7 @@ public class GetRolesByFilterRequest : PaginationFilter
     public GetRolesByFilterRequest()
     {
     }
-
-    public string? Title { get; set; }
     public List<string>? PermissionEids { get; set; }
-    public RoleSortBy? SortBy { get; set; }
 }
 
 public class UpdateRoleRequest

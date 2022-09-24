@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Infrastructure.Pagination;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Requests;
-public class GetPermissionsByFilterRequest : PaginationFilter
+public record GetPermissionsByFilterRequest : DefaultPaginationFilter
 {
     protected GetPermissionsByFilterRequest(int page, int pageSize) : base(page, pageSize)
     {
@@ -10,8 +10,5 @@ public class GetPermissionsByFilterRequest : PaginationFilter
     {
     }
 
-    public string? RoleEid { get; set; }
-    public string? Value { get; set; }
-    public string? Title { get; set; }
-    public string? Name { get; set; }
+    public string? RoleEid { get; init; }
 }

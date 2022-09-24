@@ -1,8 +1,8 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Permissions;
+using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Models.Identity.Filters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Permissions;
@@ -37,7 +37,7 @@ public class PermissionRepository : Repository<Permission>, IPermissionRepositor
         return await query.ToListAsync();
     }
 
-    public async Task<List<Permission>> GetPermissionsByFilterAsync(PermissionFilter filter)
+    public async Task<List<Permission>> GetPermissionsByFilterAsync(DefaultPaginationFilter filter)
     {
         try
         {
@@ -58,7 +58,7 @@ public class PermissionRepository : Repository<Permission>, IPermissionRepositor
         }
     }
 
-    public async Task<int> CountPermissionsByFilterAsync(PermissionFilter filter)
+    public async Task<int> CountPermissionsByFilterAsync(DefaultPaginationFilter filter)
     {
         var query = _queryable;
 
