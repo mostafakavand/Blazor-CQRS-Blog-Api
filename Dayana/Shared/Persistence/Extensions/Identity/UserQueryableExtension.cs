@@ -9,9 +9,9 @@ public static class UserQueryableExtension
     public static IQueryable<User> ApplyFilter(this IQueryable<User> query, CustomaizedPaginationFilter<List<UserState>?, UserSortBy?, string, string> filter)
     {
         // Filter by keyword
-        if (!string.IsNullOrEmpty(filter.KeyWord))
+        if (!string.IsNullOrEmpty(filter.keyword))
             query = query.Where(x =>
-                x.Username.ToLower().Contains(filter.KeyWord.ToLower().Trim()));
+                x.Username.ToLower().Contains(filter.keyword.ToLower().Trim()));
 
         // Filter by email
         if (!string.IsNullOrEmpty(filter.StringValue))

@@ -25,7 +25,7 @@ public record DefaultPaginationFilter : PaginationFilter
     public DefaultPaginationFilter(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
     public DefaultPaginationFilter() { }
 
-    public string? KeyWord { get; init; }
+    public string? keyword { get; init; }
     public int? IntValue { get; init; }
     public string? StringValue { get; init; }
     public IEnumerable<int>? IntValueList { get; init; }
@@ -43,7 +43,7 @@ public record CustomaizedPaginationFilter<T1, T2, T3, T4> : PaginationFilter
     public CustomaizedPaginationFilter(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
     public CustomaizedPaginationFilter() { }
 
-    public string? KeyWord { get; init; }
+    public string? keyword { get; init; }
     public int? IntValue { get; init; }
     public string? StringValue { get; init; }
     public IEnumerable<int>? IntValueList { get; init; }
