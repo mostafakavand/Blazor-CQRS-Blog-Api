@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace Dayana.Shared.Persistence.Models.Blog.Requests;
 
 
-public class CreatePostRequest
+#region Post
+public record CreatePostRequest
 {
     public string Title { get; set; }
     public string Summery { get; set; }
@@ -26,12 +27,15 @@ public record GetPostByFilterRequest : DefaultPaginationFilter
     public string? keyword { get; set; }
 }
 
-public class UpdatePostRequest
+public record UpdatePostRequest
 {
     public string Title { get; set; }
     public string Summery { get; set; }
     public string TextContent { get; set; }
 }
+#endregion
+
+#region Post Category
 public record CreatePostCategoryRequest
 {
     public string CategoryTitle { get; set; }
@@ -49,8 +53,10 @@ public record GetPostCategoryByFilterRequst : DefaultPaginationFilter
     public string? keyword { get; set; }
 }
 
-public class UpdatePostCategoryRequest
+public record UpdatePostCategoryRequest
 {
     public string CategoryTitle { get; set; }
     public string CategoryIcon { get; set; }
 }
+
+#endregion

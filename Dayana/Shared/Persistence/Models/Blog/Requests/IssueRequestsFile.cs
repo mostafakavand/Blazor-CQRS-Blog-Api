@@ -1,10 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dayana.Shared.Infrastructure.Pagination;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Requests;
-internal class IssueRequestsFile
+
+#region post
+
+public record CreatePostIssueRequest
 {
+    public string IssueTitle { get; set; }
+    public string IssueDescription { get; set; }
 }
+
+public record GetPostIssueByFilterRequest : DefaultPaginationFilter
+{
+    protected GetPostIssueByFilterRequest(int page, int pageSize) : base(page, pageSize)
+    {
+    }
+    public GetPostIssueByFilterRequest()
+    {
+    }
+    public string? keyword { get; set; }
+}
+
+public record UpdatePostIssueRequest
+{
+    public string IssueTitle { get; set; }
+    public string IssueDescription { get; set; }
+}
+
+#endregion
+
+#region post category
+
+public record CreatePostCategoryIssueRequest
+{
+    public string CategoryTitle { get; set; }
+    public string CategoryIcon { get; set; }
+}
+public record GetPostCategoryIssueByFilterRequst : DefaultPaginationFilter
+{
+    protected GetPostCategoryIssueByFilterRequst(int page, int pageSize) : base(page, pageSize)
+    {
+    }
+
+    public GetPostCategoryIssueByFilterRequst()
+    {
+    }
+    public string? keyword { get; set; }
+}
+
+public record UpdatPostCategoryeIssueRequest
+{
+    public string IssueTitle { get; set; }
+    public string IssueDescription { get; set; }
+}
+
+#endregion
