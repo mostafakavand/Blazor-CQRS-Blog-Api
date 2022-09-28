@@ -23,15 +23,15 @@ public record PaginationFilter
 public record DefaultPaginationFilter : PaginationFilter
 {
     public DefaultPaginationFilter(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
-    public DefaultPaginationFilter(){}
+    public DefaultPaginationFilter() { }
 
     public string? KeyWord { get; init; }
     public int? IntValue { get; init; }
     public string? StringValue { get; init; }
-    public IEnumerable<int>? IntValueList{ get; init; }
+    public IEnumerable<int>? IntValueList { get; init; }
     public IEnumerable<int>? StringValueList { get; init; }
     public int? CategoryId { get; init; }
-    public int? Id{ get; init; }
+    public int? Id { get; init; }
     public string? Name { get; init; }
     public string? Title { get; init; }
     public SortByEnum? SortBy { get; init; }
@@ -41,7 +41,7 @@ public record DefaultPaginationFilter : PaginationFilter
 public record CustomaizedPaginationFilter<T1, T2, T3, T4> : PaginationFilter
 {
     public CustomaizedPaginationFilter(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
-    public CustomaizedPaginationFilter(){}
+    public CustomaizedPaginationFilter() { }
 
     public string? KeyWord { get; init; }
     public int? IntValue { get; init; }

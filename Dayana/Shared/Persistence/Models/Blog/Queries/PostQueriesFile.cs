@@ -15,20 +15,20 @@ public record GetPostByFilterQuery : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; private set; }
 }
 
-public class GetPostByIdQuery : IRequestInfo, IRequest<OperationResult>
+public record GetPostByIdQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetPostByIdQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }
 
-    public int WeblogPostId { get; set; }
+    public int PostId { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }
 
-public class GetWeblogPostCategoryByFilterQuery : IRequestInfo, IRequest<OperationResult>
+public record GetPostCategoryByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
-    public GetWeblogPostCategoryByFilterQuery(RequestInfo requestInfo)
+    public GetPostCategoryByFilterQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }
@@ -37,7 +37,7 @@ public class GetWeblogPostCategoryByFilterQuery : IRequestInfo, IRequest<Operati
     public RequestInfo RequestInfo { get; private set; }
 }
 
-public class GetPostCategoryByIdQuery : IRequestInfo, IRequest<OperationResult>
+public record GetPostCategoryByIdQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetPostCategoryByIdQuery(RequestInfo requestInfo)
     {

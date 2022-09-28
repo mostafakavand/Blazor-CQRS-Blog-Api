@@ -5,7 +5,6 @@ using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.Models.Blog.Commands;
-using Dayana.Shared.Persistence.Models.Blog.Queries.BlogPosts.PostQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
