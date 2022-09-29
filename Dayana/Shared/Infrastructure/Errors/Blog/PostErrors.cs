@@ -5,7 +5,7 @@ public static class PostErrors
 {
     public static ErrorModel InvalidPostIdError = new ErrorModel(
         code: 11001,
-        title: "Identity Error",
+        title: "Blog Error",
         (
             Language: Language.English,
             Message: "Invalid login information"
