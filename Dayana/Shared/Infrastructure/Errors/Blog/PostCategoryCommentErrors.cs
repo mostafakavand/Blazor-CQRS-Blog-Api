@@ -13,7 +13,7 @@ public static class PostCategoryCommentErrors
             Message: "Invalid Post Category Comment Id"
         ));
 
-    public static ErrorModel DuplicatePostCategoryContextError = new ErrorModel(
+    public static ErrorModel DuplicatePostCategoryCommentContextError = new ErrorModel(
         code: 601,
         title: "Blog Error",
         (
@@ -21,4 +21,11 @@ public static class PostCategoryCommentErrors
             Message: "Post Category Comment With This Context Exists"
         ));
 
+    public static ErrorModel DuplicatePostCategoryCommentContextError = new ErrorModel(
+       code: 601,
+       title: "Blog Error",
+       (
+           Language: Language.English,
+           Message: "Post Category Comment With This Context Exists"
+       ));
 }
