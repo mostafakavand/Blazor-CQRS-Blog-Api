@@ -1,5 +1,5 @@
 ﻿namespace Dayana.Shared.Persistence.Models.Identity.Base;
-public class RoleModel
+public record RoleModel
 {
     public int Id { get; set; }
     public string Title { get; set; }
@@ -13,7 +13,7 @@ public class RoleModel
 }
 
 
-public class RolePermissionModel
+public record RolePermissionModel
 {
     public int RoleId { get; set; }
     public int PermissionId { get; set; }

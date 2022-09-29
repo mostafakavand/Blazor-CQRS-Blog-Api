@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Infrastructure.Pagination;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Requests;
-public class CreateRoleRequest
+public record CreateRoleRequest
 {
     public string Title { get; set; }
     public IList<string> PermissionEids { get; set; }
@@ -18,7 +18,7 @@ public record GetRolesByFilterRequest : DefaultPaginationFilter
     public List<string>? PermissionEids { get; set; }
 }
 
-public class UpdateRoleRequest
+public record UpdateRoleRequest
 {
     public string Title { get; set; }
     public IList<string> PermissionEids { get; set; }

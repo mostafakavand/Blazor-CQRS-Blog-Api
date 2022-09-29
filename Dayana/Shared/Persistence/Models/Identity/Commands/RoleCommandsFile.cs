@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Commands;
 
-public class CreateRoleCommand : IRequestInfo, IRequest<OperationResult>
+public record CreateRoleCommand : IRequestInfo, IRequest<OperationResult>
 {
     public CreateRoleCommand(RequestInfo requestInfo)
     {
@@ -18,7 +18,7 @@ public class CreateRoleCommand : IRequestInfo, IRequest<OperationResult>
 }
 
 
-public class DeleteRoleCommand : IRequestInfo, IRequest<OperationResult>
+public record DeleteRoleCommand : IRequestInfo, IRequest<OperationResult>
 {
     public DeleteRoleCommand(RequestInfo requestInfo)
     {
@@ -29,7 +29,7 @@ public class DeleteRoleCommand : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; private set; }
 }
 
-public class UpdateRoleCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdateRoleCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdateRoleCommand(RequestInfo requestInfo)
     {

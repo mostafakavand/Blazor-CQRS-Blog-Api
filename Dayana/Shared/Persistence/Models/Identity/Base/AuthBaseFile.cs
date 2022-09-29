@@ -1,6 +1,6 @@
 ﻿namespace Dayana.Shared.Persistence.Models.Identity.Base;
 
-public class LoginResult
+public record LoginResult
 {
     public string UserName { get; set; }
     public string FullName { get; set; }
@@ -8,7 +8,7 @@ public class LoginResult
     public string RefreshToken { get; set; }
 }
 
-public class TokenResult
+public record TokenResult
 {
     public string AccessToken { get; set; }
 }

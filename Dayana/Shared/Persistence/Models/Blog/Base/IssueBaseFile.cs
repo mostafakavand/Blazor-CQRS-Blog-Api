@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Persistence.Models.Identity.Base;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Base;
-public class PostCategoryIssueModel : BaseModel
+public record PostCategoryIssueModel : BaseModel
 {
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }
@@ -16,7 +16,7 @@ public class PostCategoryIssueModel : BaseModel
     #endregion
 }
 
-public class PostIssueModel : BaseModel
+public record PostIssueModel : BaseModel
 {
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }

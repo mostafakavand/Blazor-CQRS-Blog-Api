@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Commands;
 
-public class CreatePostCommand : IRequestInfo, IRequest<OperationResult>
+public record CreatePostCommand : IRequestInfo, IRequest<OperationResult>
 {
     public CreatePostCommand(RequestInfo requestInfo)
     {
@@ -17,7 +17,7 @@ public class CreatePostCommand : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; private set; }
 }
 
-public class DeletePostCommand : IRequestInfo, IRequest<OperationResult>
+public record DeletePostCommand : IRequestInfo, IRequest<OperationResult>
 {
     public RequestInfo RequestInfo { get; set; }
 
@@ -28,7 +28,7 @@ public class DeletePostCommand : IRequestInfo, IRequest<OperationResult>
     public int Id { get; set; }
 }
 
-public class UpdatePostCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdatePostCommand : IRequestInfo, IRequest<OperationResult>
 {
     public RequestInfo RequestInfo { get; set; }
 
@@ -42,7 +42,7 @@ public class UpdatePostCommand : IRequestInfo, IRequest<OperationResult>
     public string Summery { get; set; }
     public string TextContent { get; set; }
 }
-public class CreatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
+public record CreatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
 {
     public CreatePostCategoryCommand(RequestInfo requestInfo)
     {
@@ -54,7 +54,7 @@ public class CreatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; set; }
 }
 
-public class DeletePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
+public record DeletePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
 {
     public DeletePostCategoryCommand(RequestInfo requestInfo)
     {
@@ -64,7 +64,7 @@ public class DeletePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; set; }
 }
 
-public class UpdatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdatePostCategoryCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdatePostCategoryCommand(RequestInfo requestInfo)
     {

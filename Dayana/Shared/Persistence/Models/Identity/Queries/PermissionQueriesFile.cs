@@ -4,7 +4,7 @@ using Dayana.Shared.Infrastructure.Pagination;
 using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Queries;
-public class GetPermissionsByFilterQuery : IRequestInfo, IRequest<OperationResult>
+public record GetPermissionsByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetPermissionsByFilterQuery(RequestInfo requestInfo)
     {

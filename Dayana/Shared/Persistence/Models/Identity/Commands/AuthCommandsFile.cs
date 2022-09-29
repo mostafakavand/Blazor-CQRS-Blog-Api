@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Commands;
 
-public class LoginCommand : IRequestInfo, IRequest<OperationResult>
+public record LoginCommand : IRequestInfo, IRequest<OperationResult>
 {
     public string UserName { get; set; }
     public string Email { get; set; }
