@@ -2,7 +2,7 @@
 
 namespace Dayana.Shared.Persistence.Models.Identity.Base;
 
-public class UserModel
+public record UserModel
 {
 
     public int Id { get; set; }
@@ -34,7 +34,7 @@ public class UserModel
     public ICollection<UserRoleModel> UserRoles { get; set; }
 }
 
-public class UserRoleModel
+public record UserRoleModel
 {
     public int RoleId { get; set; }
     public int UserId { get; set; }

@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Persistence.Models.Identity.Base;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Base;
-public class PostCategoryModel : BaseModel
+public record PostCategoryModel : BaseModel
 {
     public string CategoryTitle { get; set; }
     public string CategorySubject { get; set; }
@@ -15,7 +15,7 @@ public class PostCategoryModel : BaseModel
 }
 
 
-public class PostModel : BaseModel
+public record PostModel : BaseModel
 {
     public string PostTitle { get; set; }
     public string Subject { get; set; }

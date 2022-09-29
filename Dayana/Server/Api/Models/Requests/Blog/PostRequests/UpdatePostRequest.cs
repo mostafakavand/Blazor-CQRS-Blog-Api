@@ -1,6 +1,6 @@
 ﻿namespace Dayana.Server.Api.Models.Requests.Blog.PostRequests;
 
-public class UpdatePostRequest
+public record UpdatePostRequest
 {
     public string Title { get; set; }
     public string Summery { get; set; }

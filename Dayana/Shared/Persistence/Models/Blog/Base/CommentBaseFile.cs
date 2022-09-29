@@ -1,7 +1,7 @@
 ﻿using Dayana.Shared.Persistence.Models.Identity.Base;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Base;
-public class PostCategoryCommentModel : BaseModel
+public record PostCategoryCommentModel : BaseModel
 {
     public string CommentText { get; set; }
     public bool IsReply { get; set; }
@@ -19,7 +19,7 @@ public class PostCategoryCommentModel : BaseModel
 }
 
 
-public class PostCategoryIssueCommentModel : BaseModel
+public record PostCategoryIssueCommentModel : BaseModel
 {
     public string CommentText { get; set; }
     public bool IsReply { get; set; }
@@ -36,7 +36,7 @@ public class PostCategoryIssueCommentModel : BaseModel
     #endregion
 }
 
-public class PostCommentModel : BaseModel
+public record PostCommentModel : BaseModel
 {
     public string CommentText { get; set; }
     public bool IsReply { get; set; }
@@ -53,7 +53,7 @@ public class PostCommentModel : BaseModel
     #endregion
 }
 
-public class PostIssueCommentModel : BaseModel
+public record PostIssueCommentModel : BaseModel
 {
     public string CommentText { get; set; }
     public bool IsReply { get; set; }
