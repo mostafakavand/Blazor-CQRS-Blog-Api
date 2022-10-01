@@ -1,7 +1,7 @@
 ﻿namespace Dayana.Shared.Persistence.Models.Identity.Base;
 
 
-public class PermissionModel
+public record PermissionModel
 {
     public int Id { get; set; }
     public string Name { get; set; }

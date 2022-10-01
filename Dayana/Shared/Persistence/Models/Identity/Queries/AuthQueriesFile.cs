@@ -3,7 +3,7 @@ using Dayana.Shared.Infrastructure.Operations;
 using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Queries;
-public class GetUserProfileQuery : IRequestInfo, IRequest<OperationResult>
+public record GetUserProfileQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetUserProfileQuery(RequestInfo requestInfo)
     {
@@ -13,7 +13,7 @@ public class GetUserProfileQuery : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; private set; }
 }
 
-public class RefreshTokenQuery : IRequestInfo, IRequest<OperationResult>
+public record RefreshTokenQuery : IRequestInfo, IRequest<OperationResult>
 {
     public RequestInfo RequestInfo { get; private set; }
     public RefreshTokenQuery(RequestInfo requestInfo)

@@ -8,7 +8,7 @@ using MediatR;
 namespace Dayana.Shared.Persistence.Models.Identity.Queries;
 
 
-public class GetUserByIdQuery : IRequestInfo, IRequest<OperationResult>
+public record GetUserByIdQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetUserByIdQuery(RequestInfo requestInfo)
     {
@@ -24,13 +24,13 @@ public class GetUserByIdQuery : IRequestInfo, IRequest<OperationResult>
 }
 
 
-public class GetUsersByFilterQuery : IRequestInfo, IRequest<OperationResult>
+public record GetUsersByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetUsersByFilterQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }
 
-    public CustomaizedPaginationFilter<List<UserState>?,UserSortBy?,string,string> Filter { get; set; }
+    public CustomaizedPaginationFilter<List<UserState>?, UserSortBy?, string, string> Filter { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }

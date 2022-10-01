@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Commands;
 
-public class CreateUserCommand : IRequestInfo, IRequest<OperationResult>
+public record CreateUserCommand : IRequestInfo, IRequest<OperationResult>
 {
     public CreateUserCommand(RequestInfo requestInfo)
     {
@@ -24,7 +24,7 @@ public class CreateUserCommand : IRequestInfo, IRequest<OperationResult>
 }
 
 
-public class CreateUserPermissionCommand : IRequestInfo, IRequest<OperationResult>
+public record CreateUserPermissionCommand : IRequestInfo, IRequest<OperationResult>
 {
     public CreateUserPermissionCommand(RequestInfo requestInfo)
     {
@@ -38,7 +38,7 @@ public class CreateUserPermissionCommand : IRequestInfo, IRequest<OperationResul
 }
 
 
-public class DeleteUserCommand : IRequestInfo, IRequest<OperationResult>
+public record DeleteUserCommand : IRequestInfo, IRequest<OperationResult>
 {
     public DeleteUserCommand(RequestInfo requestInfo)
     {
@@ -49,7 +49,7 @@ public class DeleteUserCommand : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; private set; }
 }
 
-public class DeleteUserPermissionCommand : IRequestInfo, IRequest<OperationResult>
+public record DeleteUserPermissionCommand : IRequestInfo, IRequest<OperationResult>
 {
     public DeleteUserPermissionCommand(RequestInfo requestInfo)
     {
@@ -62,7 +62,7 @@ public class DeleteUserPermissionCommand : IRequestInfo, IRequest<OperationResul
 }
 
 
-public class UpdateUserCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdateUserCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdateUserCommand(RequestInfo requestInfo)
     {
@@ -82,7 +82,7 @@ public class UpdateUserCommand : IRequestInfo, IRequest<OperationResult>
 }
 
 
-public class UpdateUserPasswordCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdateUserPasswordCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdateUserPasswordCommand(RequestInfo requestInfo)
     {
@@ -97,7 +97,7 @@ public class UpdateUserPasswordCommand : IRequestInfo, IRequest<OperationResult>
 }
 
 
-public class UpdateUserRolesCommand : IRequestInfo, IRequest<OperationResult>
+public record UpdateUserRolesCommand : IRequestInfo, IRequest<OperationResult>
 {
     public UpdateUserRolesCommand(RequestInfo requestInfo)
     {

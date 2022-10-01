@@ -5,7 +5,7 @@ using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.Models.Blog.Commands;
-using Dayana.Shared.Persistence.Models.Blog.Queries.BlogPosts.PostQueries;
+using Dayana.Shared.Persistence.Models.Blog.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -59,7 +59,7 @@ public class PostController : ControllerBase
 
         var operation = await _mediator.Send(new GetPostByIdQuery(Request.GetRequestInfo())
         {
-            WeblogPostId = Id,
+            PostId = Id,
         });
 
         return this.ReturnResponse(operation);
@@ -73,7 +73,7 @@ public class PostController : ControllerBase
         {
             Filter = new DefaultPaginationFilter(request.Page, request.PageSize)
             {
-                KeyWord = request?.KeyWord ?? "",
+                keyword = request?.keyword ?? "",
                 SortBy = request?.SortBy,
             },
         });

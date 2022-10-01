@@ -2,7 +2,7 @@
 using Dayana.Shared.Infrastructure.Pagination;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Requests;
-public class CreateUserRequest
+public record CreateUserRequest
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -26,13 +26,13 @@ public record GetUserByFilterRequest : DefaultPaginationFilter
     public List<UserState>? States { get; set; }
 }
 
-public class UpdateUserPasswordRequest
+public record UpdateUserPasswordRequest
 {
     public string NewPassword { get; set; }
     public string LastPassword { get; set; }
 }
 
-public class UpdateUserRequest
+public record UpdateUserRequest
 {
     public string Username { get; set; }
     public string Mobile { get; set; }
@@ -40,7 +40,7 @@ public class UpdateUserRequest
     public string Email { get; set; }
 }
 
-public class UpdateUserRolesRequest
+public record UpdateUserRolesRequest
 {
     public IEnumerable<string> RoleEids { get; set; }
 }

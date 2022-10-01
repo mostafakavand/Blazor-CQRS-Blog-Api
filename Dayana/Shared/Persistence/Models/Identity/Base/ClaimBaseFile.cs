@@ -1,6 +1,6 @@
 ﻿namespace Dayana.Shared.Persistence.Models.Identity.Base;
 
-public class ClaimModel
+public record ClaimModel
 {
     public int Id { get; set; }
     public int UserId { get; set; }
