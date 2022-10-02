@@ -4,7 +4,6 @@ using Dayana.Server.Application.Specifications.Identity.Users;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
 using Dayana.Shared.Domains.Identity.Users;
-using Dayana.Shared.Infrastructure.Errors.Identity;
 using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;

@@ -1,4 +1,4 @@
-﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+﻿using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Base;
 using FluentValidation;
 
@@ -10,18 +10,17 @@ public class LoginResultValidator : AbstractValidator<LoginResult>
     {
         RuleFor(x => x.UserName)
             .NotEmpty()
-            .WithState(_ => UserErrors.InvalidUsernameValidationError);
+            .WithState(_ => GenericErrors<LoginResult>.InvalidVariableError("user name"));
 
         RuleFor(x => x.FullName)
             .EmailAddress()
-            .WithState(_ => UserErrors.InvalidFullNameValidationError);
+            .WithState(_ => GenericErrors<LoginResult>.InvalidVariableError("full name"));
 
         RuleFor(x => x.AccessToken)
             .NotEmpty()
-            .WithState(_ => UserErrors.InvalidAccessTokenValidationError);
+            .WithState(_ => GenericErrors<LoginResult>.InvalidVariableError("access token"));
     }
 }
-
 
 public class TokenResultValidator : AbstractValidator<TokenResult>
 {
@@ -29,6 +28,6 @@ public class TokenResultValidator : AbstractValidator<TokenResult>
     {
         RuleFor(x => x.AccessToken)
             .NotEmpty()
-            .WithState(_ => UserErrors.InvalidAccessTokenValidationError);
+            .WithState(_ => GenericErrors<TokenResult>.InvalidVariableError("access token"));
     }
 }

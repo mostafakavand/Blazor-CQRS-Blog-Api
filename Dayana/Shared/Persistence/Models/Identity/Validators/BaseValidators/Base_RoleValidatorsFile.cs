@@ -1,4 +1,4 @@
-﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+﻿using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Base;
 using FluentValidation;
 
@@ -10,11 +10,11 @@ public class RoleModelValidator : AbstractValidator<RoleModel>
     {
         RuleFor(x => x.Id)
             .NotEqual(0)
-            .WithState(_ => RoleErrors.InvalidRoleIdError);
+            .WithState(_ => GenericErrors<RoleModel>.InvalidVariableError("id"));
 
         RuleFor(x => x.Title)
            .NotEmpty()
-           .WithState(_ => RoleErrors.InvalidRoleTitleError);
+           .WithState(_ => GenericErrors<RoleModel>.InvalidVariableError("title"));
     }
 }
 
@@ -24,10 +24,10 @@ public class RolePermissionModelValidator : AbstractValidator<RolePermissionMode
     {
         RuleFor(x => x.RoleId)
             .NotEqual(0)
-            .WithState(_ => RoleErrors.InvalidRoleIdError);
+            .WithState(_ => GenericErrors<RolePermissionModel>.InvalidVariableError("role id"));
 
         RuleFor(x => x.PermissionId)
              .NotEqual(0)
-             .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+             .WithState(_ => GenericErrors<RolePermissionModel>.InvalidVariableError("premission id"));
     }
 }

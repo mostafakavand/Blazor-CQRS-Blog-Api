@@ -1,4 +1,4 @@
-﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+﻿using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Base;
 using FluentValidation;
 
@@ -9,19 +9,19 @@ public class UserModelValidator : AbstractValidator<UserModel>
     {
         RuleFor(x => x.Id)
             .NotEqual(0)
-            .WithState(_ => UserErrors.InvalidUserIdValidationError);
+            .WithState(_ => GenericErrors<UserModel>.InvalidVariableError("id"));
 
         RuleFor(x => x.Username)
            .NotEmpty()
-           .WithState(_ => UserErrors.InvalidLastNameValidationError);
+           .WithState(_ => GenericErrors<UserModel>.InvalidVariableError("user name"));
 
         RuleFor(x => x.Email)
            .NotEmpty()
-           .WithState(_ => UserErrors.InvalidEmailValidationError);
+           .WithState(_ => GenericErrors<UserModel>.InvalidVariableError("email"));
 
         RuleFor(x => x.PasswordHash)
          .NotEmpty()
-         .WithState(_ => UserErrors.InvalidPasswordValidationError);
+         .WithState(_ => GenericErrors<UserModel>.InvalidVariableError("password hash"));
     }
 }
 

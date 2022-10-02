@@ -1,4 +1,4 @@
-﻿using Dayana.Shared.Infrastructure.Errors.Identity;
+﻿using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Base;
 using FluentValidation;
 
@@ -11,15 +11,15 @@ public class ClaimModelValidator : AbstractValidator<ClaimModel>
     {
         RuleFor(x => x.Id)
             .NotEqual(0)
-            .WithState(_ => PermissionErrors.InvalidClaimIdValidationError);
+            .WithState(_ => GenericErrors<ClaimModel>.InvalidVariableError("id"));
 
         RuleFor(x => x.UserId)
           .NotEqual(0)
-          .WithState(_ => UserErrors.UserNotFoundError);
+          .WithState(_ => GenericErrors<ClaimModel>.InvalidVariableError("user id"));
 
         RuleFor(x => x.Value)
            .NotEmpty()
-           .WithState(_ => PermissionErrors.ClaimNotFoundError);
+           .WithState(_ => GenericErrors<ClaimModel>.InvalidVariableError("access token"));
     }
 }
 
@@ -30,10 +30,10 @@ public class PermissionModelValidator : AbstractValidator<PermissionModel>
     {
         RuleFor(x => x.Id)
             .NotEqual(0)
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+            .WithState(_ => GenericErrors<PermissionModel>.InvalidVariableError("id"));
 
         RuleFor(x => x.Value)
            .NotEmpty()
-           .WithState(_ => PermissionErrors.ClaimNotFoundError);
+           .WithState(_ => GenericErrors<PermissionModel>.InvalidVariableError("value"));
     }
 }
