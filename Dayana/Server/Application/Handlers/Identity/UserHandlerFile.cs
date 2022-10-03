@@ -4,6 +4,7 @@ using Dayana.Server.Application.Specifications.Identity.Users;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
 using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
@@ -237,10 +238,10 @@ public class UpdateUserRolesHandler : IRequestHandler<UpdateUserRolesCommand, Op
         var user = await _unitOfWork.Users.GetUserByIdAsync(request.UserId);
 
         if (user == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: UserErrors.UserNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.NotFoundError("id"));
 
         if (user.UserRoles.Count == 0)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: AuthErrors.UnauthorizedRequestError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.CustomError("user role", "user hasn't enough role"));
 
         // Update
         if (request.RoleIds != null)
