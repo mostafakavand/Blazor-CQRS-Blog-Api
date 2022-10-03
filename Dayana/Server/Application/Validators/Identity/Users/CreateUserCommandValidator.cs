@@ -1,4 +1,6 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
 using FluentValidation;
 
@@ -10,7 +12,7 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
     {
         RuleFor(x => x.Username)
             .NotEmpty()
-            .WithState(_ => UserErrors.InvalidUsernameValidationError);
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("user name"));
 
         RuleFor(x => x.Username)
             .Length(Defaults.UsernameLength)
@@ -19,11 +21,16 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
         RuleFor(x => x.Password)
             .NotEmpty()
             .MinimumLength(Defaults.MinPasswordLength)
-            .WithState(_ => UserErrors.InvalidPasswordValidationError);
+            .WithState(_ => GenericErrors<User>
+            .CustomError(causeOfError:$"password can not be empty. password minimum lenth is" +
+            $" {Defaults.MinPasswordLength}", variableName: "password"));
 
         RuleFor(x => x.Mobile)
+            .NotEmpty()
             .MaximumLength(Defaults.MobileNumberLength)
-            .WithState(_ => UserErrors.InvalidPhoneNumberValidationError);
+            .WithState(_ => GenericErrors<User>
+            .CustomError(causeOfError: $"mobile can not be empty. password minimum lenth is" +
+            $" {Defaults.MinPasswordLength}", variableName: "password"));
 
         RuleFor(x => x.Email)
             .NotEmpty()
