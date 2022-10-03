@@ -54,7 +54,7 @@ public class LoginHandler : IRequestHandler<LoginCommand, OperationResult>
         // ban check
         if (!user.CanLogin())
             return new OperationResult(OperationResultStatus.UnProcessable,
-                value: GenericErrors<User>.CustomError("Canlogin","for some reason, your account locked, call support team"));
+                value: GenericErrors<User>.CustomError(causeOfError: "for some reason, your account locked, call support team", variableName:"Canlogin"));
 
         // Login check via password
         var isLogin = PasswordHasher.Check(user.PasswordHash, request.Password);
@@ -66,7 +66,7 @@ public class LoginHandler : IRequestHandler<LoginCommand, OperationResult>
             _unitOfWork.Users.Update(user);
             await _unitOfWork.CommitAsync();
             return new OperationResult(OperationResultStatus.UnProcessable,
-                value: GenericErrors<User>.CustomError("user name", "too many login fail. are you a robot ?"));
+                value: GenericErrors<User>.CustomError(causeOfError: "too many login fail. are you a robot ?" , variableName: "user name"));
         }
 
         /* Here user is authenticated */
@@ -110,7 +110,7 @@ public class RefreshTokenHandler : IRequestHandler<RefreshTokenQuery, OperationR
 
         // Lockout check
         if (!user.CanLogin())
-            return new OperationResult(OperationResultStatus.Unauthorized, value: GenericErrors<User>.CustomError("Canlogin", "for some reason, your account locked, call support team"));
+            return new OperationResult(OperationResultStatus.Unauthorized, value: GenericErrors<User>.CustomError(causeOfError: "for some reason, your account locked, call support team", variableName: "Canlogin"));
 
         var result = new TokenResult
         {
