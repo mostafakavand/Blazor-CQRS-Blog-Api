@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
 using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
 using Dayana.Shared.Persistence.Models.Identity.Base;
@@ -25,7 +26,7 @@ public class GetUserProfileHandler : IRequestHandler<GetUserProfileQuery, Operat
     {
         var user = await _unitOfWork.Users.GetUserByIdAsync(request.UserId);
         if (user == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: UserErrors.UserNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.NotFoundError("user name"));
 
         var model = _mapper.Map<UserModel>(user);
 
@@ -48,11 +49,12 @@ public class LoginHandler : IRequestHandler<LoginCommand, OperationResult>
         var user = await _unitOfWork.Users.GetUserByUsernameAsync(request.UserName);
 
         if (user == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: UserErrors.UserNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.NotFoundError("user name"));
 
-        // Lockout check
+        // ban check
         if (!user.CanLogin())
-            return new OperationResult(OperationResultStatus.UnProcessable, value: AuthErrors.InvalidLoginError);
+            return new OperationResult(OperationResultStatus.UnProcessable,
+                value: GenericErrors<User>.CustomError("Canlogin","for some reason, your account locked, call support team"));
 
         // Login check via password
         var isLogin = PasswordHasher.Check(user.PasswordHash, request.Password);
@@ -63,7 +65,8 @@ public class LoginHandler : IRequestHandler<LoginCommand, OperationResult>
             user.TryToLockout();
             _unitOfWork.Users.Update(user);
             await _unitOfWork.CommitAsync();
-            return new OperationResult(OperationResultStatus.UnProcessable, value: AuthErrors.InvalidLoginError);
+            return new OperationResult(OperationResultStatus.UnProcessable,
+                value: GenericErrors<User>.CustomError("user name", "too many login fail. are you a robot ?"));
         }
 
         /* Here user is authenticated */
@@ -103,11 +106,11 @@ public class RefreshTokenHandler : IRequestHandler<RefreshTokenQuery, OperationR
 
         var user = await _unitOfWork.Users.GetUserByUsernameAsync(username);
         if (user == null)
-            return new OperationResult(OperationResultStatus.Unauthorized, value: UserErrors.UserNotFoundError);
+            return new OperationResult(OperationResultStatus.Unauthorized, value: GenericErrors<User>.NotFoundError("user name"));
 
         // Lockout check
         if (!user.CanLogin())
-            return new OperationResult(OperationResultStatus.Unauthorized, value: AuthErrors.InvalidLoginError);
+            return new OperationResult(OperationResultStatus.Unauthorized, value: GenericErrors<User>.CustomError("Canlogin", "for some reason, your account locked, call support team"));
 
         var result = new TokenResult
         {
