@@ -8,7 +8,7 @@ public static class GenericErrors<T>
       title: $"{nameof(T)} Error",
          (
         Language: Language.English,
-        Message: $"Invalid property : '{variableName}' in -> object: '{nameof(T)}' error"
+        Message: $"Invalid property : '{variableName.ToLower()}' in -> object: '{nameof(T)}' error"
       ));
 
     public static ErrorModel NotFoundError(string variableName) => new ErrorModel(
@@ -16,14 +16,14 @@ public static class GenericErrors<T>
      title: $"{nameof(T)} Error",
         (
        Language: Language.English,
-       Message: $"object: '{nameof(T)}' -> with this '{variableName}' -> not found"
+       Message: $"object: '{nameof(T)}' -> with this '{variableName.ToLower()}' -> not found"
      ));
 
-    public static ErrorModel CustomError(string? variableName = "unknown", string causeOfError) => new ErrorModel(
+    public static ErrorModel CustomError(string causeOfError, string? variableName = "unknown") => new ErrorModel(
     code: 85,
     title: $"{nameof(T)} Error",
        (
       Language: Language.English,
-      Message: $"object: '{nameof(T)}' | '{variableName}' property error | \n {causeOfError}"
+      Message: $"object: '{nameof(T)}' | '{variableName.ToLower()}' property error | \n {causeOfError.ToLower()}"
     ));
 }

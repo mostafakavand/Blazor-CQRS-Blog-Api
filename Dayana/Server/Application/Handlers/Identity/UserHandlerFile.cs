@@ -241,7 +241,7 @@ public class UpdateUserRolesHandler : IRequestHandler<UpdateUserRolesCommand, Op
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.NotFoundError("id"));
 
         if (user.UserRoles.Count == 0)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.CustomError("user role", "user hasn't enough role"));
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.CustomError(causeOfError: "user hasn't enough role", variableName: "user role"));
 
         // Update
         if (request.RoleIds != null)
