@@ -63,6 +63,7 @@ public static class Defaults
     public const int IpAddressLength = 15;
     public const int YearLength = 4;
     public const int MinPasswordLength = 7;
+    public const int MaxPasswordLength = 69;
 
     public const double MinScore = 1.0;
     public const double MaxScore = 5.0;
@@ -72,6 +73,7 @@ public static class Defaults
     #region Business
 
     public const int UsernameLength = 30;
+    public const int UsernameMinLength = 3;
 
     public const int TitleLength = 140;
     public const int SubtitleLength = 255;

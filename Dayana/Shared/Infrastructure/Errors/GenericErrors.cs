@@ -32,6 +32,6 @@ public static class GenericErrors<T>
    title: $"{nameof(T)} Error",
       (
      Language: Language.English,
-     Message: $"object: '{nameof(T)}' | '{variableName.ToLower()}' property error | \n "
+     Message: $"object: '{nameof(T)}' | '{variableName.ToLower()}' property error | \n the '{variableName}' length is between Min: {min} | Max: {max}"
    ));
 }
