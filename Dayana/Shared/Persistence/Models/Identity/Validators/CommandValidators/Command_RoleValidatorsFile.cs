@@ -17,7 +17,7 @@ public class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
         RuleFor(x => x.Title)
             .NotEmpty()
             .MaximumLength(Defaults.NameLength)
-            .WithState(_ => GenericErrors<Role>.CustomError(causeOfError:$"the title can not be empty and its the maximum length is {Defaults.NameLength} character", variableName:"title"));
+            .WithState(_ => GenericErrors<Role>.CustomError(causeOfError: $"the title can not be empty and its the maximum length is {Defaults.NameLength} character", variableName: "title"));
     }
 }
 

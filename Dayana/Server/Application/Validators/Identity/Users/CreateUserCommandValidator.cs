@@ -22,7 +22,7 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
             .NotEmpty()
             .MinimumLength(Defaults.MinPasswordLength)
             .WithState(_ => GenericErrors<User>
-            .CustomError(causeOfError:$"password can not be empty. password minimum lenth is" +
+            .CustomError(causeOfError: $"password can not be empty. password minimum lenth is" +
             $" {Defaults.MinPasswordLength}", variableName: "password"));
 
         RuleFor(x => x.Mobile)

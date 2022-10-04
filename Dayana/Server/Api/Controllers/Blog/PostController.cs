@@ -9,7 +9,7 @@ using Dayana.Shared.Persistence.Models.Blog.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dayana.Server.Api.Controllers.Weblog;
+namespace Dayana.Server.Api.Controllers.Blog;
 
 public class PostController : ControllerBase
 {
