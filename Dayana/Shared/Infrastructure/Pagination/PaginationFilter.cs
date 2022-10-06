@@ -38,10 +38,29 @@ public record DefaultPaginationFilter : PaginationFilter
 }
 
 
-public record CustomaizedPaginationFilter<T1, T2, T3, T4> : PaginationFilter
+public record CustomaizedPaginationFilterOne<T1> : PaginationFilter
 {
-    public CustomaizedPaginationFilter(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
-    public CustomaizedPaginationFilter() { }
+    public CustomaizedPaginationFilterOne(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
+    public CustomaizedPaginationFilterOne() { }
+
+    public string? keyword { get; init; }
+    public int? IntValue { get; init; }
+    public string? StringValue { get; init; }
+    public IEnumerable<int>? IntValueList { get; init; }
+    public IEnumerable<int>? StringValueList { get; init; }
+    public int? CategoryId { get; init; }
+    public int? Id { get; init; }
+    public string? Name { get; init; }
+    public string? Title { get; init; }
+    public SortByEnum? SortBy { get; init; }
+    public T1 Value1 { get; init; }
+}
+
+
+public record CustomaizedPaginationFilterTwo<T1, T2> : PaginationFilter
+{
+    public CustomaizedPaginationFilterTwo(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
+    public CustomaizedPaginationFilterTwo() { }
 
     public string? keyword { get; init; }
     public int? IntValue { get; init; }
@@ -55,6 +74,46 @@ public record CustomaizedPaginationFilter<T1, T2, T3, T4> : PaginationFilter
     public SortByEnum? SortBy { get; init; }
     public T1 Value1 { get; init; }
     public T2 Value2 { get; init; }
-    public T3 Value3 { get; init; }
+}
+
+public record CustomaizedPaginationFilterThree<T1, T2, T3> : PaginationFilter
+{
+    public CustomaizedPaginationFilterThree(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
+    public CustomaizedPaginationFilterThree() { }
+
+    public string? keyword { get; init; }
+    public int? IntValue { get; init; }
+    public string? StringValue { get; init; }
+    public IEnumerable<int>? IntValueList { get; init; }
+    public IEnumerable<int>? StringValueList { get; init; }
+    public int? CategoryId { get; init; }
+    public int? Id { get; init; }
+    public string? Name { get; init; }
+    public string? Title { get; init; }
+    public SortByEnum? SortBy { get; init; }
+    public T1 Value1 { get; init; }
+    public T2 Value2 { get; init; }
+    public T3 Valu32 { get; init; }
+}
+
+
+public record CustomaizedPaginationFilterfOur<T1, T2, T3, T4> : PaginationFilter
+{
+    public CustomaizedPaginationFilterfOur(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
+    public CustomaizedPaginationFilterfOur() { }
+
+    public string? keyword { get; init; }
+    public int? IntValue { get; init; }
+    public string? StringValue { get; init; }
+    public IEnumerable<int>? IntValueList { get; init; }
+    public IEnumerable<int>? StringValueList { get; init; }
+    public int? CategoryId { get; init; }
+    public int? Id { get; init; }
+    public string? Name { get; init; }
+    public string? Title { get; init; }
+    public SortByEnum? SortBy { get; init; }
+    public T1 Value1 { get; init; }
+    public T2 Value2 { get; init; }
+    public T3 Valu3 { get; init; }
     public T4 Value4 { get; init; }
 }

@@ -1,4 +1,8 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Requests;
+﻿using Dayana.Shared.Domains.Identity.Roles;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Persistence.Models.Identity.Base;
+using Dayana.Shared.Persistence.Models.Identity.Requests;
 using FluentValidation;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Validators.RequestValidators;
@@ -9,36 +13,38 @@ public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>
     {
         RuleFor(x => x.Username)
               .NotEmpty()
-              .WithState(_ => UserErrors.InvalidUsernameValidationError);
+              .WithState(_ => GenericErrors<User>.InvalidVariableError("user name"));
 
         RuleFor(x => x.FirstName)
          .NotEmpty()
-         .WithState(_ => UserErrors.InvalidFirstNameValidationError);
+         .WithState(_ => GenericErrors<User>.InvalidVariableError("first name"));
 
 
         RuleFor(x => x.LastName)
          .NotEmpty()
-         .WithState(_ => UserErrors.InvalidLastNameValidationError);
+         .WithState(_ => GenericErrors<User>.InvalidVariableError("last name"));
 
 
         RuleFor(x => x.FullName)
          .NotEmpty()
-         .WithState(_ => UserErrors.InvalidFullNameValidationError);
+         .WithState(_ => GenericErrors<User>.InvalidVariableError("full name"));
 
 
         RuleFor(x => x.Email)
          .NotEmpty()
-         .WithState(_ => UserErrors.InvalidEmailValidationError);
+         .When(x => string.IsNullOrEmpty(x.Mobile))
+         .WithState(_ => GenericErrors<User>.CustomError(variableName:"email", causeOfError:"fill at least one of email and mobile fields"));
 
 
         RuleFor(x => x.Mobile)
          .NotEmpty()
-         .WithState(_ => UserErrors.InvalidMobileValidationError);
+         .When(x => string.IsNullOrEmpty(x.Email))
+         .WithState(_ => GenericErrors<User>.CustomError(variableName: "email", causeOfError: "fill at least one of email and mobile fields"));
 
 
         RuleFor(x => x.Password)
          .NotEmpty()
-         .WithState(_ => UserErrors.InvalidPasswordValidationError);
+         .WithState(_ => GenericErrors<User>.InvalidVariableError("password"));
     }
 }
 
@@ -49,12 +55,12 @@ public class GetUserByFilterRequestValidator : AbstractValidator<GetUserByFilter
         RuleFor(x => x.keyword)
            .NotEmpty()
            .When(x => string.IsNullOrEmpty(x.Email))
-           .WithState(_ => CommonErrors.InvalidInputValidationError);
+           .WithState(_ => GenericErrors<User>.InvalidVariableError("search keword"));
 
         RuleFor(x => x.Email)
           .NotEmpty()
           .When(x => string.IsNullOrEmpty(x.keyword))
-          .WithState(_ => CommonErrors.InvalidInputValidationError);
+          .WithState(_ => GenericErrors<User>.InvalidVariableError("email"));
     }
 }
 
@@ -64,11 +70,11 @@ public class UpdateUserPasswordRequestValidator : AbstractValidator<UpdateUserPa
     {
         RuleFor(x => x.NewPassword)
            .NotEmpty()
-           .WithState(_ => UserErrors.InvalidPasswordValidationError);
+           .WithState(_ => GenericErrors<User>.InvalidVariableError("new password"));
 
         RuleFor(x => x.LastPassword)
           .NotEmpty()
-          .WithState(_ => UserErrors.InvalidPasswordValidationError);
+          .WithState(_ => GenericErrors<User>.InvalidVariableError("last password"));
     }
 }
 
@@ -78,21 +84,21 @@ public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest>
     {
         RuleFor(x => x.Username)
             .NotEmpty()
-            .WithState(_ => UserErrors.InvalidUsernameValidationError);
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("user name"));
 
         RuleFor(x => x.Password)
          .NotEmpty()
-         .WithState(_ => UserErrors.InvalidPasswordValidationError);
+         .WithState(_ => GenericErrors<User>.InvalidVariableError("password"));
 
         RuleFor(x => x.Mobile)
         .NotEmpty()
         .When(x => string.IsNullOrEmpty(x.Email))
-        .WithState(_ => CommonErrors.InvalidInputValidationError);
+        .WithState(_ => GenericErrors<User>.InvalidVariableError("mobile"));
 
         RuleFor(x => x.Email)
          .NotEmpty()
          .When(x => string.IsNullOrEmpty(x.Mobile))
-         .WithState(_ => CommonErrors.InvalidInputValidationError);
+         .WithState(_ => GenericErrors<User>.InvalidVariableError("email"));
     }
 }
 
@@ -104,6 +110,6 @@ public class UpdateUserRolesRequestValidator : AbstractValidator<UpdateUserRoles
         RuleFor(x => x.RoleEids)
             .NotEmpty()
             .NotNull()
-            .WithState(_ => RoleErrors.InvalidRoleTitleError);
+            .WithState(_ => GenericErrors<Role>.InvalidVariableError("user id"));
     }
 }

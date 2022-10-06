@@ -32,7 +32,7 @@ public class PermissionEntityConfiguration : IEntityTypeConfiguration<Permission
             .IsRequired();
 
         builder.Property(b => b.Name)
-            .HasMaxLength(Defaults.TitleLength);
+            .HasMaxLength(Defaults.MaxTitleLength);
 
         #endregion
     }

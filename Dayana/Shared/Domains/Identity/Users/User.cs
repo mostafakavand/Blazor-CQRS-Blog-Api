@@ -74,11 +74,11 @@ public class UserEntityConfiguration : IEntityTypeConfiguration<User>
         #region Mappings
 
         builder.Property(b => b.Username)
-            .HasMaxLength(Defaults.UsernameLength)
+            .HasMaxLength(Defaults.MaxUsernameLength)
             .IsRequired();
 
         builder.Property(b => b.Mobile)
-            .HasMaxLength(Defaults.MobileNumberLength);
+            .HasMaxLength(Defaults.MobileNumberMaxLength);
 
         builder.Property(b => b.Email)
             .HasMaxLength(Defaults.EmailLength);

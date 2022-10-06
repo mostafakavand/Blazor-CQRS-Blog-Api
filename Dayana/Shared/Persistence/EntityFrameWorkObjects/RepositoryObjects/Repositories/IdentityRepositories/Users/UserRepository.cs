@@ -42,7 +42,7 @@ public class UserRepository : Repository<User>, IUserRepository
         return user;
     }
 
-    public async Task<int> CountUsersByFilterAsync(CustomaizedPaginationFilter<List<UserState>?, UserSortBy?, string, string> filter)
+    public async Task<int> CountUsersByFilterAsync(CustomaizedPaginationFilterTwo<List<UserState>?, UserSortBy?> filter)
     {
         var query = _queryable;
 
@@ -66,7 +66,7 @@ public class UserRepository : Repository<User>, IUserRepository
         return await query.ToListAsync();
     }
 
-    public async Task<List<User>> GetUsersByFilterAsync(CustomaizedPaginationFilter<List<UserState>?, UserSortBy?, string, string> filter)
+    public async Task<List<User>> GetUsersByFilterAsync(CustomaizedPaginationFilterTwo<List<UserState>?, UserSortBy?> filter)
     {
         var query = _queryable;
 

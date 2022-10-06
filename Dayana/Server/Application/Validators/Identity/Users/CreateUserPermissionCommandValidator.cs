@@ -1,4 +1,8 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Commands;
+﻿using Dayana.Shared.Domains.Identity.Permissions;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.Seeding.IdentitySeeds;
+using Dayana.Shared.Persistence.Models.Identity.Commands;
 using FluentValidation;
 
 namespace Dayana.Server.Application.Validators.Identity.Users;
@@ -10,19 +14,13 @@ public class CreateUserPermissionCommandValidator : AbstractValidator<CreateUser
 
         RuleFor(x => x.PermissionId)
             .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
-
-        RuleFor(x => x.PermissionId)
             .GreaterThan(0)
-            .WithState(_ => PermissionErrors.InvalidPermissionIdValidationError);
+            .WithState(_ => GenericErrors<Permission>.InvalidVariableError("permission id"));
 
         RuleFor(x => x.UserId)
             .NotEmpty()
-            .WithState(_ => UserErrors.InvalidUserIdValidationError);
-
-        RuleFor(x => x.UserId)
             .GreaterThan(0)
-            .WithState(_ => UserErrors.InvalidUserIdValidationError);
+            .WithState(_ => GenericErrors<Permission>.InvalidVariableError("user Id"));
 
     }
 }

@@ -1,4 +1,7 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Commands;
+﻿using Dayana.Shared.Domains.Identity.Permissions;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Persistence.Models.Identity.Commands;
 using FluentValidation;
 
 namespace Dayana.Server.Application.Validators.Identity.Users;
@@ -9,10 +12,7 @@ public class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
     {
         RuleFor(x => x.UserId)
             .NotEmpty()
-            .WithState(_ => PermissionErrors.InvalidClaimIdValidationError);
-
-        RuleFor(x => x.UserId)
             .GreaterThan(0)
-            .WithState(_ => PermissionErrors.InvalidClaimIdValidationError);
+            .WithState(_ => GenericErrors<Permission>.InvalidVariableError("user id"));
     }
 }

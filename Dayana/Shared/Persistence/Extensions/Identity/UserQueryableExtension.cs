@@ -6,7 +6,7 @@ namespace Dayana.Shared.Persistence.Extensions.Identity;
 
 public static class UserQueryableExtension
 {
-    public static IQueryable<User> ApplyFilter(this IQueryable<User> query, CustomaizedPaginationFilter<List<UserState>?, UserSortBy?, string, string> filter)
+    public static IQueryable<User> ApplyFilter(this IQueryable<User> query, CustomaizedPaginationFilterTwo<List<UserState>?, UserSortBy?> filter)
     {
         // Filter by keyword
         if (!string.IsNullOrEmpty(filter.keyword))
