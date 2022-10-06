@@ -73,9 +73,11 @@ public static class Defaults
 
     #region Business
 
-    public const int UsernameLength = 30;
+    public const int MinUsernameLength = 5;
+    public const int MaxUsernameLength = 30;
 
-    public const int TitleLength = 140;
+    public const int MaxTitleLength = 140;
+    public const int MinTitleLength = 3;
     public const int SubtitleLength = 255;
     public const int ShortDescriptionLength = 800;
 

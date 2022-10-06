@@ -1,4 +1,8 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Commands;
+﻿using Dayana.Shared.Domains.Identity.Permissions;
+using Dayana.Shared.Domains.Identity.Roles;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Persistence.Models.Identity.Commands;
 using FluentValidation;
 
 namespace Dayana.Server.Application.Validators.Identity.Users;
@@ -9,6 +13,6 @@ public class UpdateUserRolesCommandValidator : AbstractValidator<UpdateUserRoles
     {
         RuleFor(x => x.UserId)
             .GreaterThan(0)
-            .WithState(_ => CommonErrors.InvalidInputValidationError);
+            .WithState(_ => GenericErrors<Role>.InvalidVariableError("user id"));
     }
 }
