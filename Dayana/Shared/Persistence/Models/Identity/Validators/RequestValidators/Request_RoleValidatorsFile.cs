@@ -1,4 +1,7 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Requests;
+﻿using Dayana.Shared.Domains.Identity.Roles;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Persistence.Models.Identity.Requests;
 using FluentValidation;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Validators.RequestValidators;
@@ -9,11 +12,11 @@ public class CreateRoleRequestValidator : AbstractValidator<CreateRoleRequest>
     {
         RuleFor(x => x.Title)
             .NotEmpty()
-            .WithState(_ => RoleErrors.InvalidRoleTitleError);
+            .WithState(_ => GenericErrors<Role>.InvalidVariableError("title"));
 
         RuleFor(x => x.PermissionEids)
          .NotEmpty()
-         .WithState(_ => CommonErrors.InvalidInputValidationError);
+         .WithState(_ => GenericErrors<Role>.InvalidVariableError("permission eids"));
     }
 }
 
@@ -23,11 +26,11 @@ public class GetRolesByFilterRequestValidator : AbstractValidator<GetRolesByFilt
     {
         RuleFor(x => x.Title)
             .NotEmpty()
-            .WithState(_ => RoleErrors.InvalidRoleTitleError);
+            .WithState(_ => GenericErrors<Role>.InvalidVariableError("title"));
 
         RuleFor(x => x.PermissionEids)
          .NotEmpty()
-         .WithState(_ => CommonErrors.InvalidInputValidationError);
+         .WithState(_ => GenericErrors<Role>.InvalidVariableError("title"));
     }
 }
 
@@ -37,10 +40,10 @@ public class UpdateRoleRequestValidator : AbstractValidator<UpdateRoleRequest>
     {
         RuleFor(x => x.Title)
             .NotEmpty()
-            .WithState(_ => RoleErrors.InvalidRoleTitleError);
+            .WithState(_ => GenericErrors<Role>.InvalidVariableError("title"));
 
         RuleFor(x => x.PermissionEids)
          .NotEmpty()
-         .WithState(_ => CommonErrors.InvalidInputValidationError);
+         .WithState(_ => GenericErrors<Role>.InvalidVariableError("permission eids"));
     }
 }

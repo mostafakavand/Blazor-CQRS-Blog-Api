@@ -31,6 +31,6 @@ public record GetUsersByFilterQuery : IRequestInfo, IRequest<OperationResult>
         RequestInfo = requestInfo;
     }
 
-    public CustomaizedPaginationFilter<List<UserState>?, UserSortBy?, string, string> Filter { get; set; }
+    public CustomaizedPaginationFilterTwo<List<UserState>?, UserSortBy?> Filter { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }

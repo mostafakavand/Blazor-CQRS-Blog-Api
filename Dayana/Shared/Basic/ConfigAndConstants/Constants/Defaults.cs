@@ -57,12 +57,14 @@ public static class Defaults
     #region Constant
 
     public const int PostalCodeLength = 10;
-    public const int MobileNumberLength = 11;
+    public const int MobileNumberMinLength = 6;
+    public const int MobileNumberMaxLength = 14;
     public const int TelephoneLength = 11;
     public const int NationalCodeLength = 10;
     public const int IpAddressLength = 15;
     public const int YearLength = 4;
     public const int MinPasswordLength = 7;
+    public const int MaxPasswordLength = 28;
 
     public const double MinScore = 1.0;
     public const double MaxScore = 5.0;

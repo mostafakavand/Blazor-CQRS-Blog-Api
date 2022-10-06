@@ -78,7 +78,7 @@ public class UserEntityConfiguration : IEntityTypeConfiguration<User>
             .IsRequired();
 
         builder.Property(b => b.Mobile)
-            .HasMaxLength(Defaults.MobileNumberLength);
+            .HasMaxLength(Defaults.MobileNumberMaxLength);
 
         builder.Property(b => b.Email)
             .HasMaxLength(Defaults.EmailLength);

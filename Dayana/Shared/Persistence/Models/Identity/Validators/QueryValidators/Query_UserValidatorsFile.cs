@@ -1,4 +1,6 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Queries;
+﻿using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Persistence.Models.Identity.Queries;
 using FluentValidation;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Validators.QueryValidators;
@@ -9,7 +11,7 @@ public class GetUserByIdQueryValidator : AbstractValidator<GetUserByIdQuery>
     {
         RuleFor(x => x.UserId)
             .NotEqual(0)
-            .WithState(_ => UserErrors.InvalidUserIdValidationError);
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("user id"));
     }
 }
 
@@ -20,6 +22,6 @@ public class GetUsersByFilterQueryValidator : AbstractValidator<GetUsersByFilter
     {
         RuleFor(x => x.Filter)
             .NotNull()
-            .WithState(_ => CommonErrors.InvalidInputValidationError);
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("Filter"));
     }
 }

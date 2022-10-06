@@ -34,4 +34,12 @@ public static class GenericErrors<T>
      Language: Language.English,
      Message: $"object: '{nameof(T)}' | '{variableName.ToLower()}' property error | \n "
    ));
+
+    public static ErrorModel DuplicateError(string variableName) => new ErrorModel(
+ code: 2022,
+ title: $"{nameof(T)} Error",
+    (
+   Language: Language.English,
+   Message: $"object: '{nameof(T)}' | with this '{variableName.ToLower()}' already exists | \n "
+ ));
 }

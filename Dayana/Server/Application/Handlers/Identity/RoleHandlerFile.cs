@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Dayana.Server.Application.Specifications.Identity.Roles;
 using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
+using Dayana.Shared.Domains.Identity.Roles;
+using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
@@ -27,7 +29,7 @@ public class CreateRoleHandler : IRequestHandler<CreateRoleCommand, OperationRes
             .ExistsAsync(new DuplicateRoleSpecification(request.Title).ToExpression());
 
         if (isExist)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: RoleErrors.DuplicateTitleError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.NotFoundError("title"));
 
         var entity = RoleHelper.CreateRole(request);
 
@@ -52,7 +54,7 @@ public class DeleteRoleHandler : IRequestHandler<DeleteRoleCommand, OperationRes
         var entity = await _unitOfWork.Roles.GetRoleByIdAsync(request.RoleId);
 
         if (entity == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: RoleErrors.RoleNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.NotFoundError("role id"));
 
         entity.UpdatedAt = DateTime.Now;
         _unitOfWork.Roles.Update(entity); ;
@@ -78,7 +80,7 @@ public class GetRoleByIdHandler : IRequestHandler<GetRoleByIdQuery, OperationRes
         var entity = await _unitOfWork.Roles.GetRoleByIdAsync(request.RoleId);
 
         if (entity == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: RoleErrors.RoleNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.NotFoundError("role id"));
         var model = new RoleModel();
         model = _mapper.Map<RoleModel>(entity);
 
@@ -133,13 +135,13 @@ public class UpdateRoleHandler : IRequestHandler<UpdateRoleCommand, OperationRes
         var role = await _unitOfWork.Roles.GetRoleByIdAsync(request.RoleId);
 
         if (role == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: RoleErrors.RoleNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.NotFoundError("role id"));
 
         var isExist = await _unitOfWork.Roles
             .ExistsAsync(new DuplicateRoleSpecification(request.Title).ToExpression());
 
         if (isExist && role.Title != request.Title)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: RoleErrors.DuplicateTitleError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.NotFoundError(""));
 
         // Update
         role.Title = request.Title;
