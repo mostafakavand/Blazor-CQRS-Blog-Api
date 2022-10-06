@@ -141,7 +141,7 @@ public class UpdateRoleHandler : IRequestHandler<UpdateRoleCommand, OperationRes
             .ExistsAsync(new DuplicateRoleSpecification(request.Title).ToExpression());
 
         if (isExist && role.Title != request.Title)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.NotFoundError(""));
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.DuplicateError("title"));
 
         // Update
         role.Title = request.Title;
