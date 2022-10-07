@@ -1,17 +1,20 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
+﻿using AutoMapper;
+using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories;
 
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
+public class Repository<TEntity,TDto> : IRepository<TEntity,TDto> where TEntity : class, IEntity
 {
     protected readonly DbContext DbContext;
+    protected readonly IMapper _mapper;
 
-    protected Repository(AppDbContext dbContext)
+    protected Repository(AppDbContext dbContext, IMapper mapper)
     {
         DbContext = dbContext;
+        _mapper = mapper;
     }
 
     #region Queries
@@ -30,34 +33,34 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, I
 
     #region Commands
 
-    public void Add(TEntity entity)
+    public void Add(TDto dto)
     {
-        DbContext.Set<TEntity>().Add(entity);
+        DbContext.Set<TEntity>().Add(_mapper.Map<TEntity>(dto));
     }
 
-    public void AddRange(IEnumerable<TEntity> entities)
+    public void AddRange(IEnumerable<TDto> dtos)
     {
-        DbContext.Set<TEntity>().AddRange(entities);
+        DbContext.Set<TEntity>().AddRange(_mapper.Map<IEnumerable<TEntity>>(dtos));
     }
 
-    public void Remove(TEntity entity)
+    public void Remove(TDto dto)
     {
-        DbContext.Set<TEntity>().Remove(entity);
+        DbContext.Set<TEntity>().Remove(_mapper.Map<TEntity>(dto));
     }
 
-    public void RemoveRange(IEnumerable<TEntity> entities)
+    public void RemoveRange(IEnumerable<TDto> dtos)
     {
-        DbContext.Set<TEntity>().RemoveRange(entities);
+        DbContext.Set<TEntity>().RemoveRange(_mapper.Map<IEnumerable<TEntity>>(dtos));
     }
 
-    public void Update(TEntity entity)
+    public void Update(TDto dto)
     {
-        DbContext.Set<TEntity>().Update(entity);
+        DbContext.Set<TEntity>().Update(_mapper.Map<TEntity>(dto));
     }
 
-    public void UpdateRange(IEnumerable<TEntity> entities)
+    public void UpdateRange(IEnumerable<TDto> dtos)
     {
-        DbContext.Set<TEntity>().UpdateRange(entities);
+        DbContext.Set<TEntity>().UpdateRange(_mapper.Map<IEnumerable<TEntity>>(dtos));
     }
 
     #endregion

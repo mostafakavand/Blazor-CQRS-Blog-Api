@@ -19,7 +19,6 @@ public record GetPostByFilterRequest : DefaultPaginationFilter
     public GetPostByFilterRequest()
     {
     }
-    public string? keyword { get; set; }
 }
 
 public record UpdatePostRequest

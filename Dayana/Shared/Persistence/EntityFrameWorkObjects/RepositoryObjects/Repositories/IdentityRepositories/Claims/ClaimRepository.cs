@@ -1,17 +1,19 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+﻿using AutoMapper;
+using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Claims;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Extensions.Identity;
+using Dayana.Shared.Persistence.Models.Identity.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Claims;
 
-public class ClaimRepository : Repository<Claim>, IClaimRepository
+public class ClaimRepository : Repository<Claim, ClaimModel>, IClaimRepository
 {
     private readonly IQueryable<Claim> _queryable;
 
-    public ClaimRepository(AppDbContext context) : base(context)
+    public ClaimRepository(AppDbContext context, IMapper mapper) : base(context, mapper)
     {
         _queryable = DbContext.Set<Claim>();
     }
