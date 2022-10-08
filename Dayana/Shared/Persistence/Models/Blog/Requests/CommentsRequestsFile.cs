@@ -18,7 +18,6 @@ public record GetPostCommentByFilterRequest : DefaultPaginationFilter
     public GetPostCommentByFilterRequest()
     {
     }
-    public string? keyword { get; set; }
 }
 
 public record UpdatePostCommentRequest
@@ -45,7 +44,6 @@ public record GetPostCategoryCommentByFilterRequst : DefaultPaginationFilter
     public GetPostCategoryCommentByFilterRequst()
     {
     }
-    public string? keyword { get; set; }
 }
 
 public record UpdatPostCategoryeCommentRequest
