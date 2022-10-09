@@ -18,18 +18,17 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
             .WithState(_ => GenericErrors<User>.InvalidVariableError("user name"));
 
         RuleFor(x => x.Username)
-            .Length(2, Defaults.MaxUsernameLength)
-            .WithState(_ => GenericErrors<User>.CustomError(variableName:"user name", 
-            causeOfError:$"user name length should be greater than 2 and less than {Defaults.MaxUsernameLength}"));
+            .Length(Defaults.UsernameMinLength, Defaults.UsernameLength)
+            .WithState(_ => GenericErrors<User>.IntervalError(min: Defaults.UsernameLength, max: Defaults.UsernameLength, "user name"));
 
         RuleFor(x => x.Password)
             .NotEmpty()
             .MinimumLength(Defaults.MinPasswordLength)
-            .WithState(_ => GenericErrors<User>.IntervalError(min: Defaults.MinPasswordLength, max:Defaults.MaxPasswordLength, "password" ));
+            .WithState(_ => GenericErrors<User>.);
 
         RuleFor(x => x.Mobile)
-            .Length(Defaults.MobileNumberMinLength, Defaults.MobileNumberMaxLength)
-            .WithState(_ => GenericErrors<User>.IntervalError(min: Defaults.MobileNumberMinLength, max: Defaults.MobileNumberMaxLength, "mobile number"));
+            .MaximumLength(Defaults.MobileNumberLength)
+            .WithState(_ => UserErrors.InvalidPhoneNumberValidationError);
 
         RuleFor(x => x.Email)
             .NotEmpty()
@@ -45,14 +44,15 @@ public class CreateUserPermissionCommandValidator : AbstractValidator<CreateUser
 
         RuleFor(x => x.PermissionId)
             .NotEmpty()
+            .NotNull()
             .GreaterThan(0)
-            .WithState(_ => GenericErrors<User>.InvalidVariableError("permission id"));
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("premission id"));
 
         RuleFor(x => x.UserId)
             .NotEmpty()
             .GreaterThan(0)
+            .NotNull()
             .WithState(_ => GenericErrors<User>.InvalidVariableError("user id"));
-
     }
 }
 
@@ -62,9 +62,9 @@ public class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
     public DeleteUserCommandValidator()
     {
         RuleFor(x => x.UserId)
-      .NotEmpty()
-      .GreaterThan(0)
-      .WithState(_ => GenericErrors<User>.InvalidVariableError("user id"));
+            .NotEmpty()
+            .GreaterThan(0)
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("user id"));
     }
 }
 
@@ -76,7 +76,7 @@ public class DeleteUserPermissionCommandValidator : AbstractValidator<DeleteUser
         RuleFor(x => x.ClaimId)
             .NotEmpty()
             .GreaterThan(0)
-            .WithState(_ => GenericErrors<Permission>.InvalidVariableError("claim id"));
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("claim id"));
     }
 }
 
