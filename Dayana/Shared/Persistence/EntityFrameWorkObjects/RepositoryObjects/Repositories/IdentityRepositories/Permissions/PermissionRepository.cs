@@ -1,4 +1,5 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+﻿using AutoMapper;
+using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Permissions;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
@@ -12,7 +13,7 @@ public class PermissionRepository : Repository<Permission, PermissionModel>, IPe
 {
     private readonly IQueryable<Permission> _queryable;
 
-    public PermissionRepository(AppDbContext context) : base(context)
+    public PermissionRepository(AppDbContext context, IMapper mapper) : base(context, mapper)
     {
         _queryable = DbContext.Set<Permission>();
     }

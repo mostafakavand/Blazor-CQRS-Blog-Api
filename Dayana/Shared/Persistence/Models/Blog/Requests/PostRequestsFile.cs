@@ -44,7 +44,6 @@ public record GetPostCategoryByFilterRequst : DefaultPaginationFilter
     public GetPostCategoryByFilterRequst()
     {
     }
-    public string? keyword { get; set; }
 }
 
 public record UpdatePostCategoryRequest

@@ -1,4 +1,5 @@
-﻿using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
+﻿using AutoMapper;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Claims;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Permissions;
@@ -16,14 +17,14 @@ public class UnitOfWorkIdentity : IUnitOfWorkIdentity
     public IClaimRepository Claims { get; }
     public IPermissionRepository Permissions { get; }
 
-    public UnitOfWorkIdentity(AppDbContext context)
+    public UnitOfWorkIdentity(AppDbContext context, IMapper mapper)
     {
         _context = context;
 
-        Users = new UserRepository(_context);
-        Roles = new RoleRepository(_context);
-        Claims = new ClaimRepository(_context);
-        Permissions = new PermissionRepository(_context);
+        Users = new UserRepository(_context, mapper);
+        Roles = new RoleRepository(_context, mapper);
+        Claims = new ClaimRepository(_context, mapper);
+        Permissions = new PermissionRepository(_context, mapper);
     }
 
     public async Task<bool> CommitAsync()
