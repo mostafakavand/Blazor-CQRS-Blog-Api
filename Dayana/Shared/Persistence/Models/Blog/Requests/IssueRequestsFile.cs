@@ -18,7 +18,6 @@ public record GetPostIssueByFilterRequest : DefaultPaginationFilter
     public GetPostIssueByFilterRequest()
     {
     }
-    public string? keyword { get; set; }
 }
 
 public record UpdatePostIssueRequest
@@ -45,7 +44,6 @@ public record GetPostCategoryIssueByFilterRequst : DefaultPaginationFilter
     public GetPostCategoryIssueByFilterRequst()
     {
     }
-    public string? keyword { get; set; }
 }
 
 public record UpdatPostCategoryeIssueRequest

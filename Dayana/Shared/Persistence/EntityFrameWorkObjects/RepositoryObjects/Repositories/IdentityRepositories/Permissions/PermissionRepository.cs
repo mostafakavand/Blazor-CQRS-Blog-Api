@@ -3,11 +3,12 @@ using Dayana.Shared.Domains.Identity.Permissions;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Extensions.Identity;
+using Dayana.Shared.Persistence.Models.Identity.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Permissions;
 
-public class PermissionRepository : Repository<Permission>, IPermissionRepository
+public class PermissionRepository : Repository<Permission, PermissionModel>, IPermissionRepository
 {
     private readonly IQueryable<Permission> _queryable;
 

@@ -1,4 +1,7 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Queries;
+﻿using Dayana.Shared.Domains.Identity.Permissions;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.Seeding.IdentitySeeds;
+using Dayana.Shared.Persistence.Models.Identity.Queries;
 using FluentValidation;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Validators.QueryValidators;
@@ -9,6 +12,6 @@ public class GetPermissionsByFilterQueryValidator : AbstractValidator<GetPermiss
     {
         RuleFor(x => x.Filter)
             .NotNull()
-            .WithState(_ => CommonErrors.InvalidInputValidationError);
+            .WithState(_ => GenericErrors<Permission>.InvalidVariableError("filter"));
     }
 }

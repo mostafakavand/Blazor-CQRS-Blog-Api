@@ -1,4 +1,7 @@
-﻿using Dayana.Shared.Persistence.Models.Identity.Queries;
+﻿using Dayana.Shared.Domains.Identity.Claims;
+using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Persistence.Models.Identity.Queries;
 using FluentValidation;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Validators.QueryValidators;
@@ -8,7 +11,7 @@ public class GetUserProfileQueryValidator : AbstractValidator<GetUserProfileQuer
     {
         RuleFor(x => x.UserId)
             .NotEmpty()
-            .WithState(_ => UserErrors.InvalidUserIdValidationError);
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("user id"));
     }
 }
 
@@ -18,6 +21,6 @@ public class RefreshTokenQueryValidator : AbstractValidator<RefreshTokenQuery>
     {
         RuleFor(x => x.RefreshToken)
             .NotEmpty()
-            .WithState(_ => CommonErrors.InvalidInputValidationError);
+            .WithState(_ => GenericErrors<Claim>.InvalidVariableError("refresh token"));
     }
 }

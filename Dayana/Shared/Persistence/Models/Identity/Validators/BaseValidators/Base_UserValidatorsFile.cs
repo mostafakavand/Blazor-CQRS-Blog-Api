@@ -1,4 +1,5 @@
-﻿using Dayana.Shared.Infrastructure.Errors;
+﻿using Dayana.Shared.Domains.Identity.Roles;
+using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Base;
 using FluentValidation;
 
@@ -31,10 +32,10 @@ public class UserRoleModelValidator : AbstractValidator<UserRoleModel>
     {
         RuleFor(x => x.UserId)
             .NotEqual(0)
-            .WithState(_ => UserErrors.InvalidUserIdValidationError);
+            .WithState(_ => GenericErrors<Role>.InvalidVariableError("user id"));
 
         RuleFor(x => x.RoleId)
            .NotEmpty()
-           .WithState(_ => RoleErrors.InvalidRoleIdError);
+           .WithState(_ => GenericErrors<Role>.InvalidVariableError("role id"));
     }
 }

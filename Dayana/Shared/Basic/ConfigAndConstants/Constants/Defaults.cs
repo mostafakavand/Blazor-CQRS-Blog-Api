@@ -57,7 +57,8 @@ public static class Defaults
     #region Constant
 
     public const int PostalCodeLength = 10;
-    public const int MobileNumberLength = 11;
+    public const int MobileNumberMinLength = 6;
+    public const int MobileNumberMaxLength = 14;
     public const int TelephoneLength = 11;
     public const int NationalCodeLength = 10;
     public const int IpAddressLength = 15;
@@ -73,9 +74,9 @@ public static class Defaults
     #region Business
 
     public const int UsernameLength = 30;
-    public const int UsernameMinLength = 3;
 
-    public const int TitleLength = 140;
+    public const int MaxTitleLength = 140;
+    public const int MinTitleLength = 3;
     public const int SubtitleLength = 255;
     public const int ShortDescriptionLength = 800;
 

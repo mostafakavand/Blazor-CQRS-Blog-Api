@@ -3,6 +3,7 @@ using Dayana.Server.Application.Specifications.Identity.Claims;
 using Dayana.Server.Application.Specifications.Identity.Users;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
+using Dayana.Shared.Domains.Identity.Permissions;
 using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Infrastructure.Operations;
@@ -31,7 +32,7 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, OperationRes
             .ExistsAsync(new DuplicateUserSpecification(request.Username).ToExpression());
 
         if (isExist)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: UserErrors.DuplicateUsernameError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.DuplicateError("user name"));
 
         var entity = new User()
         {
@@ -68,7 +69,7 @@ public class CreateUserPermissionHandler : IRequestHandler<CreateUserPermissionC
             .ExistsAsync(new DuplicateClaimSpecification(request.PermissionId, request.UserId).ToExpression());
 
         if (isExist)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: PermissionErrors.DuplicateClaimError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Permission>.NotFoundError("user Id and permission id"));
 
         var entity = ClaimHelper.CreateClaim(request);
 
@@ -94,7 +95,7 @@ public class DeleteUserPermissionHandler : IRequestHandler<DeleteUserPermissionC
         var entity = await _unitOfWork.Claims.GetClaimByIdAsync(request.ClaimId);
 
         if (entity == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: PermissionErrors.ClaimNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Permission>.NotFoundError("claim Id"));
 
         entity.UpdatedAt = DateTime.UtcNow;
         _unitOfWork.Claims.Update(entity);
@@ -120,7 +121,7 @@ public class GetUserByIdHandler : IRequestHandler<GetUserByIdQuery, OperationRes
 
         var entity = await _unitOfWork.Users.GetUserByIdAsync(request.UserId);
         if (entity == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: UserErrors.UserNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.NotFoundError("user Id"));
 
 
         var model = _mapper.Map<List<UserModel>>(entity);
@@ -176,10 +177,10 @@ public class UpdateUserHandler : IRequestHandler<UpdateUserCommand, OperationRes
         var user = await _unitOfWork.Users.GetUserByIdAsync(request.UserId);
 
         if (user == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: UserErrors.UserNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.NotFoundError("user id"));
 
         if (user.PasswordHash != PasswordHasher.Hash(request.Password))
-            return new OperationResult(OperationResultStatus.UnProcessable, value: UserErrors.InvalidPasswordValidationError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.InvalidVariableError("password"));
 
         // Update
         user.Mobile = request.Mobile;
@@ -208,10 +209,10 @@ public class UpdateUserPasswordHandler : IRequestHandler<UpdateUserPasswordComma
     {
         var user = await _unitOfWork.Users.GetUserByIdAsync(request.UserId);
         if (user == null)
-            return new OperationResult(OperationResultStatus.UnProcessable, value: UserErrors.UserNotFoundError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.NotFoundError("user id"));
 
         if (user.PasswordHash != PasswordHasher.Hash(request.LastPassword))
-            return new OperationResult(OperationResultStatus.UnProcessable, value: UserErrors.InvalidPasswordValidationError);
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.InvalidVariableError("last password"));
 
         user.PasswordHash = PasswordHasher.Hash(request.NewPassword);
 

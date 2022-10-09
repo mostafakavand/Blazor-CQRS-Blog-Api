@@ -1,4 +1,6 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
+using Dayana.Shared.Domains.Identity.Permissions;
+using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
@@ -21,12 +23,12 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 
         RuleFor(x => x.Password)
             .NotEmpty()
-            .Length(Defaults.MinPasswordLength, Defaults.MaxPasswordLength)
-            .WithState(_ => GenericErrors<User>.IntervalError(min: Defaults.MinPasswordLength, max: Defaults.MaxPasswordLength, "password"));
+            .MinimumLength(Defaults.MinPasswordLength)
+            .WithState(_ => GenericErrors<User>.);
 
         RuleFor(x => x.Mobile)
-            .Length(Defaults.MobileNumberLength, Defaults.MobileNumberLength)
-            .WithState(_ => GenericErrors<User>.IntervalError(min: Defaults.MobileNumberLength, max: Defaults.MobileNumberLength, "mobile"));
+            .MaximumLength(Defaults.MobileNumberLength)
+            .WithState(_ => UserErrors.InvalidPhoneNumberValidationError);
 
         RuleFor(x => x.Email)
             .NotEmpty()
@@ -84,6 +86,7 @@ public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
     public UpdateUserCommandValidator()
     {
         RuleFor(x => x.UserId)
+            .NotNull()
             .GreaterThan(0)
             .WithState(_ => GenericErrors<User>.InvalidVariableError("user id"));
     }
@@ -109,6 +112,6 @@ public class UpdateUserRolesCommandValidator : AbstractValidator<UpdateUserRoles
     {
         RuleFor(x => x.UserId)
             .GreaterThan(0)
-            .WithState(_ => GenericErrors<User>.InvalidVariableError("user id"));
+            .WithState(_ => GenericErrors<Role>.InvalidVariableError("user id"));
     }
 }

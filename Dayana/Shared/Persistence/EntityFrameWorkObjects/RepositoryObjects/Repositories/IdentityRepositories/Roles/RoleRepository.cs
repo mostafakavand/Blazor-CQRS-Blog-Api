@@ -1,18 +1,20 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+﻿using AutoMapper;
+using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.Extensions.Identity;
 using Dayana.Shared.Persistence.Models.Enums;
+using Dayana.Shared.Persistence.Models.Identity.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Roles;
 
-public class RoleRepository : Repository<Role>, IRoleRepository
+public class RoleRepository : Repository<Role, RoleModel>, IRoleRepository
 {
     private readonly IQueryable<Role> _queryable;
 
-    public RoleRepository(AppDbContext context) : base(context)
+    public RoleRepository(AppDbContext context, IMapper mapper) : base(context, mapper)
     {
         _queryable = DbContext.Set<Role>();
     }
