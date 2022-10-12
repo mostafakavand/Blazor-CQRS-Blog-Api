@@ -11,32 +11,32 @@ public class PostModelValidator : AbstractValidator<PostModel>
         RuleFor(x => x.PostTitle)
             .NotNull()
             .NotEmpty()
-            .WithState(_ => GenericErrors<Post>.InvalidVariableError("post title"));
+            .WithState(_ => GenericErrors<Post>.InvalidVariableError("title"));
 
         RuleFor(x => x.PostBody)
             .NotNull()
             .NotEmpty()
-            .WithState(_ => GenericErrors<Post>.InvalidVariableError("post body"));
+            .WithState(_ => GenericErrors<Post>.InvalidVariableError("body"));
 
         RuleFor(x => x.PostWriterId)
             .NotNull()
             .GreaterThan(0)
-            .WithState(_ => GenericErrors<Post>.InvalidVariableError("post writer id"));
+            .WithState(_ => GenericErrors<Post>.InvalidVariableError("writer id"));
 
         RuleFor(x => x.Subject)
             .NotNull()
             .NotEmpty()
-            .WithState(_ => GenericErrors<Post>.InvalidVariableError("post subject"));
+            .WithState(_ => GenericErrors<Post>.InvalidVariableError("subject"));
 
         RuleFor(x => x.PostCategoryId)
             .NotNull()
             .GreaterThan(0)
-            .WithState(_ => GenericErrors<Post>.InvalidVariableError("post Category id"));
+            .WithState(_ => GenericErrors<Post>.InvalidVariableError("Category id"));
 
         RuleFor(x => x.Summery)
             .NotNull()
             .NotEmpty()
-            .WithState(_ => GenericErrors<Post>.InvalidVariableError("post Summery"));
+            .WithState(_ => GenericErrors<Post>.InvalidVariableError("Summery"));
 
         RuleFor(x => x.CreatedAt)
             .NotNull()

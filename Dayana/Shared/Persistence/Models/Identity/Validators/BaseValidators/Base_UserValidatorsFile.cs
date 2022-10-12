@@ -1,4 +1,5 @@
 ﻿using Dayana.Shared.Domains.Identity.Roles;
+using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Base;
 using FluentValidation;
@@ -10,19 +11,19 @@ public class UserModelValidator : AbstractValidator<UserModel>
     {
         RuleFor(x => x.Id)
             .NotEqual(0)
-            .WithState(_ => GenericErrors<UserModel>.InvalidVariableError("id"));
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("id"));
 
         RuleFor(x => x.Username)
            .NotEmpty()
-           .WithState(_ => GenericErrors<UserModel>.InvalidVariableError("user name"));
+           .WithState(_ => GenericErrors<User>.InvalidVariableError("user name"));
 
         RuleFor(x => x.Email)
            .NotEmpty()
-           .WithState(_ => GenericErrors<UserModel>.InvalidVariableError("email"));
+           .WithState(_ => GenericErrors<User>.InvalidVariableError("email"));
 
         RuleFor(x => x.PasswordHash)
          .NotEmpty()
-         .WithState(_ => GenericErrors<UserModel>.InvalidVariableError("password hash"));
+         .WithState(_ => GenericErrors<User>.InvalidVariableError("password hash"));
     }
 }
 

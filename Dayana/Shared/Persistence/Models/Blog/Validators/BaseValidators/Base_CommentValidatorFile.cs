@@ -135,12 +135,12 @@ public class PostIssueCommentModelValidator : AbstractValidator<PostIssueComment
         RuleFor(x => x.CommentOwnerId)
             .NotNull()
             .GreaterThan(0)
-            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("comment writer id"));
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("writer id"));
 
         RuleFor(x => x.CommentText)
             .NotNull()
             .NotEmpty()
-            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("comment text"));
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("text"));
 
         RuleFor(x => x.IsReply)
             .NotNull()
