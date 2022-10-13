@@ -1,4 +1,5 @@
-﻿using Dayana.Shared.Infrastructure.Errors;
+﻿using Dayana.Shared.Domains.Identity.Users;
+using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Requests;
 using FluentValidation;
 
@@ -10,10 +11,10 @@ public class LoginRequestValidator : AbstractValidator<LoginRequest>
     {
         RuleFor(x => x.Username)
             .NotEmpty()
-            .WithState(_ => GenericErrors<LoginRequest>.InvalidVariableError("user name"));
+            .WithState(_ => GenericErrors<User>.InvalidVariableError("user name"));
 
         RuleFor(x => x.Password)
          .NotEmpty()
-         .WithState(_ => GenericErrors<LoginRequest>.InvalidVariableError("password"));
+         .WithState(_ => GenericErrors<User>.InvalidVariableError("password"));
     }
 }
