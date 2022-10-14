@@ -65,7 +65,7 @@ public class CreatePostIssueCommandValidator : AbstractValidator<CreatePostIssue
 
         RuleFor(x => x.IssueDescription)
             .NotNull()
-            .NotNull()
+            .NotEmpty()
             .WithState(_ => GenericErrors<PostIssue>.InvalidVariableError("description"));
 
         RuleFor(x => x.PostId)
