@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Validators.CommandValidators;
-internal class Commaand_PostValidatorFile
+internal class Command_PostValidatorFile
 {
 }
