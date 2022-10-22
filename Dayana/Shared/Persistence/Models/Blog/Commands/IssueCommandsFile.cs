@@ -135,8 +135,6 @@ public record UpdatePostIssueCommand : IRequestInfo, IRequest<OperationResult>
 
 #endregion
 
-
-
 #region Post Category Issue
 
 
