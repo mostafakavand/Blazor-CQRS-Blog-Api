@@ -4,6 +4,56 @@ using Dayana.Shared.Infrastructure.Pagination;
 using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Queries;
+
+#region post issue comment
+public record GetPostIssueCommentFilterQuery : IRequestInfo, IRequest<OperationResult>
+{
+    public GetPostIssueCommentFilterQuery(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+
+    public DefaultPaginationFilter Filter { get; set; }
+    public RequestInfo RequestInfo { get; private set; }
+}
+
+public record GetPostIssueCommentByIdQuery : IRequestInfo, IRequest<OperationResult>
+{
+    public GetPostIssueCommentByIdQuery(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+
+    public int PostIssueId { get; set; }
+    public RequestInfo RequestInfo { get; private set; }
+}
+#endregion
+
+#region post category issue comment
+public record GetPostCategoryIssueCommentFilterQuery : IRequestInfo, IRequest<OperationResult>
+{
+    public GetPostCategoryIssueCommentFilterQuery(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+
+    public DefaultPaginationFilter Filter { get; set; }
+    public RequestInfo RequestInfo { get; private set; }
+}
+
+public record GetPostCategoryIssueCommentByIdQuery : IRequestInfo, IRequest<OperationResult>
+{
+    public GetPostCategoryIssueCommentByIdQuery(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+
+    public int PostCategoryIssueId { get; set; }
+    public RequestInfo RequestInfo { get; private set; }
+}
+#endregion
+
+#region post issue
 public record GetPostIssueFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetPostIssueFilterQuery(RequestInfo requestInfo)
@@ -25,6 +75,10 @@ public record GetPostIssueByIdQuery : IRequestInfo, IRequest<OperationResult>
     public int PostIssueId { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }
+#endregion
+
+#region post category issue
+
 
 public record GetPostCategoryIssueByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
@@ -47,3 +101,5 @@ public record GetPostCategoryIssueByIdQuery : IRequestInfo, IRequest<OperationRe
     public int Id { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }
+
+#endregion

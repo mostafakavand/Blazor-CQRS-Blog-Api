@@ -5,6 +5,7 @@ using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Queries;
 
+#region post comment
 public record GetPostCommentFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetPostCommentFilterQuery(RequestInfo requestInfo)
@@ -27,6 +28,11 @@ public record GetPostCommentByIdQuery : IRequestInfo, IRequest<OperationResult>
     public RequestInfo RequestInfo { get; private set; }
 }
 
+
+#endregion
+
+#region post category comment
+
 public record GetPostCategoryCommentByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetPostCategoryCommentByFilterQuery(RequestInfo requestInfo)
@@ -48,3 +54,4 @@ public record GetPostCategoryCommentByIdQuery : IRequestInfo, IRequest<Operation
     public int Id { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }
+#endregion
