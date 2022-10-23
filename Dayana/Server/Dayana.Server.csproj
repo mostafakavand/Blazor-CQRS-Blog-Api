@@ -39,7 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Api\ResultFilters\Identity\" />
     <Folder Include="Application\Handlers\Blog\" />
     <Folder Include="Application\Specifications\Blog\" />
   </ItemGroup>
