@@ -1,18 +1,18 @@
-﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
-using Dayana.Shared.Infrastructure.Pagination;
+﻿using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.Models.Identity.Base;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc;
+using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 
-namespace Dayana.Server.Api.ResultFilters.Identity.Roles;
+namespace Dayana.Server.Api.ResultFilters.Identity;
 
-public class GetRolesByFilterResultFilter : ResultFilterAttribute
+public class GetPermissionsResultFilter : ResultFilterAttribute
 {
     public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is PaginatedList<RoleModel> value)
+        if (result?.Value is PaginatedList<PermissionModel> value)
             result.Value = new
             {
                 value.Page,
@@ -22,6 +22,8 @@ public class GetRolesByFilterResultFilter : ResultFilterAttribute
                 {
                     Eid = x.Id.EncodeInt(),
                     x.Title,
+                    x.Name,
+                    x.Value,
                     x.CreatedAt,
                     x.UpdatedAt
                 })

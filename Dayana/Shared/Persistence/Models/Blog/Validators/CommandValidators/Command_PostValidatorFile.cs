@@ -1,15 +1,11 @@
-﻿using Dayana.Shared.Domains.Blog.BlogPosts;
-using Dayana.Shared.Domains.Blog.Issues;
-using Dayana.Shared.Infrastructure.Errors;
-using Dayana.Shared.Persistence.Models.Blog.Commands;
-using FluentValidation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Validators.CommandValidators;
+
 
 #region post
 public class CreatePostCommandValidator : AbstractValidator<CreatePostCommand>
@@ -21,15 +17,15 @@ public class CreatePostCommandValidator : AbstractValidator<CreatePostCommand>
             .NotEmpty()
             .WithState(_ => GenericErrors<Post>.InvalidVariableError("title"));
 
+        RuleFor(x => x.TextContent)
+            .NotNull()
+            .NotNull()
+            .WithState(_ => GenericErrors<Post>.InvalidVariableError("text content"));
+
         RuleFor(x => x.Summery)
             .NotNull()
             .NotEmpty()
             .WithState(_ => GenericErrors<Post>.InvalidVariableError("summery"));
-
-        RuleFor(x => x.TextContent)
-            .NotNull()
-            .NotEmpty()
-            .WithState(_ => GenericErrors<Post>.InvalidVariableError("text content"));
     }
 }
 
@@ -37,27 +33,25 @@ public class UpdatePostCommandValidator : AbstractValidator<UpdatePostCommand>
 {
     public UpdatePostCommandValidator()
     {
-
         RuleFor(x => x.Id)
          .NotNull()
          .NotEmpty()
-         .GreaterThan(0)
-         .WithState(_ => GenericErrors<Post>.InvalidVariableError("Id"));
+         .WithState(_ => GenericErrors<Post>.InvalidVariableError("id"));
 
         RuleFor(x => x.Title)
             .NotNull()
             .NotEmpty()
             .WithState(_ => GenericErrors<Post>.InvalidVariableError("title"));
 
+        RuleFor(x => x.TextContent)
+            .NotNull()
+            .NotNull()
+            .WithState(_ => GenericErrors<Post>.InvalidVariableError("text content"));
+
         RuleFor(x => x.Summery)
             .NotNull()
             .NotEmpty()
             .WithState(_ => GenericErrors<Post>.InvalidVariableError("summery"));
-
-        RuleFor(x => x.TextContent)
-            .NotNull()
-            .NotEmpty()
-            .WithState(_ => GenericErrors<Post>.InvalidVariableError("text content"));
     }
 }
 
@@ -65,32 +59,31 @@ public class DeletePostCommandValidator : AbstractValidator<DeletePostCommand>
 {
     public DeletePostCommandValidator()
     {
-
         RuleFor(x => x.Id)
-          .NotNull()
-          .NotEmpty()
-          .GreaterThan(0)
-          .WithState(_ => GenericErrors<Post>.InvalidVariableError("Id"));
+         .NotNull()
+         .NotEmpty()
+         .WithState(_ => GenericErrors<Post>.InvalidVariableError("id"));
     }
 }
+
 #endregion
 
 
 
-#region post Category
+#region post category
 public class CreatePostCategoryCommandValidator : AbstractValidator<CreatePostCategoryCommand>
 {
     public CreatePostCategoryCommandValidator()
     {
-        RuleFor(x => x.CategoryTitle)
-            .NotNull()
-            .NotEmpty()
-            .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("title"));
-
         RuleFor(x => x.CategoryIcon)
             .NotNull()
             .NotEmpty()
             .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("icon"));
+
+        RuleFor(x => x.CategoryTitle)
+            .NotNull()
+            .NotNull()
+            .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("title"));
     }
 }
 
@@ -98,22 +91,20 @@ public class UpdatePostCategoryCommandValidator : AbstractValidator<UpdatePostCa
 {
     public UpdatePostCategoryCommandValidator()
     {
-
         RuleFor(x => x.Id)
          .NotNull()
          .NotEmpty()
-         .GreaterThan(0)
-         .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("Id"));
-
-        RuleFor(x => x.CategoryTitle)
-                  .NotNull()
-                  .NotEmpty()
-                  .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("title"));
+         .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("id"));
 
         RuleFor(x => x.CategoryIcon)
             .NotNull()
             .NotEmpty()
             .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("icon"));
+
+        RuleFor(x => x.CategoryTitle)
+            .NotNull()
+            .NotNull()
+            .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("title"));
     }
 }
 
@@ -121,12 +112,11 @@ public class DeletePostCategoryCommandValidator : AbstractValidator<DeletePostCa
 {
     public DeletePostCategoryCommandValidator()
     {
-
         RuleFor(x => x.Id)
-          .NotNull()
-          .NotEmpty()
-          .GreaterThan(0)
-          .WithState(_ => GenericErrors<Post>.InvalidVariableError("Id"));
+         .NotNull()
+         .NotEmpty()
+         .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("id"));
     }
 }
+
 #endregion
