@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Claims;
 
-public class ClaimRepository : Repository<Claim, ClaimModel>, IClaimRepository
+public class ClaimRepository : Repository<Claim>, IClaimRepository
 {
     private readonly IQueryable<Claim> _queryable;
 
-    public ClaimRepository(AppDbContext context, IMapper mapper) : base(context, mapper)
+    public ClaimRepository(AppDbContext context) : base(context)
     {
         _queryable = DbContext.Set<Claim>();
     }

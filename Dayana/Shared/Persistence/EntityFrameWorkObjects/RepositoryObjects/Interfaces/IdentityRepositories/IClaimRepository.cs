@@ -4,7 +4,7 @@ using Dayana.Shared.Persistence.Models.Identity.Base;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 
-public interface IClaimRepository : IRepository<Claim, ClaimModel>
+public interface IClaimRepository : IRepository<Claim>
 {
     Task<Claim> GetClaimByIdAsync(int id);
     Task<List<Claim>> GetClaimsByIdsAsync(IEnumerable<int> ids);

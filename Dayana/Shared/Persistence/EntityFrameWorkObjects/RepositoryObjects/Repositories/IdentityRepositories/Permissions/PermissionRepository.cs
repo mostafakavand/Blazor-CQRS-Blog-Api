@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Permissions;
 
-public class PermissionRepository : Repository<Permission, PermissionModel>, IPermissionRepository
+public class PermissionRepository : Repository<Permission>, IPermissionRepository
 {
     private readonly IQueryable<Permission> _queryable;
 
-    public PermissionRepository(AppDbContext context, IMapper mapper) : base(context, mapper)
+    public PermissionRepository(AppDbContext context) : base(context)
     {
         _queryable = DbContext.Set<Permission>();
     }

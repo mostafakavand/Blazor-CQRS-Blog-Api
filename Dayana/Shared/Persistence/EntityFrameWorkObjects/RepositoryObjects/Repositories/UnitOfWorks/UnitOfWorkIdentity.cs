@@ -17,14 +17,14 @@ public class UnitOfWorkIdentity : IUnitOfWorkIdentity
     public IClaimRepository Claims { get; }
     public IPermissionRepository Permissions { get; }
 
-    public UnitOfWorkIdentity(AppDbContext context, IMapper mapper)
+    public UnitOfWorkIdentity(AppDbContext context)
     {
         _context = context;
 
-        Users = new UserRepository(_context, mapper);
-        Roles = new RoleRepository(_context, mapper);
-        Claims = new ClaimRepository(_context, mapper);
-        Permissions = new PermissionRepository(_context, mapper);
+        Users = new UserRepository(_context);
+        Roles = new RoleRepository(_context);
+        Claims = new ClaimRepository(_context);
+        Permissions = new PermissionRepository(_context);
     }
 
     public async Task<bool> CommitAsync()

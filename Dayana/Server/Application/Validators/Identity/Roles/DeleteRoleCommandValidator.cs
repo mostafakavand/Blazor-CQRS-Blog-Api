@@ -1,8 +1,8 @@
 ﻿using Dayana.Shared.Domains.Identity.Permissions;
+using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
 using FluentValidation;
-using StackExchange.Redis;
 
 namespace Dayana.Server.Application.Validators.Identity.Roles;
 

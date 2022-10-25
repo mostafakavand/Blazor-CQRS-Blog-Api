@@ -66,15 +66,15 @@ public static class Defaults
     public const int MinPasswordLength = 7;
     public const int MaxPasswordLength = 69;
 
+
     public const double MinScore = 1.0;
     public const double MaxScore = 5.0;
 
     #endregion
 
     #region Business
-
+    public const int UsernameMinLength = 4;
     public const int UsernameMaxLength = 30;
-    public const int UsernameMinLength = 30;
 
     public const int MaxTitleLength = 140;
     public const int MinTitleLength = 3;

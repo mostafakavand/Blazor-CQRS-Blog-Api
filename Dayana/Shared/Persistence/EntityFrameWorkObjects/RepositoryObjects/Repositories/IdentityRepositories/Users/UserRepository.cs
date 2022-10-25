@@ -10,12 +10,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Users;
 
-public class UserRepository : Repository<User, UserModel>, IUserRepository
+public class UserRepository : Repository<User>, IUserRepository
 {
     private readonly IQueryable<User> _queryable;
     
 
-    public UserRepository(AppDbContext context, IMapper mapper) : base(context, mapper)
+    public UserRepository(AppDbContext context) : base(context)
     {
         _queryable = DbContext.Set<User>();
     }
