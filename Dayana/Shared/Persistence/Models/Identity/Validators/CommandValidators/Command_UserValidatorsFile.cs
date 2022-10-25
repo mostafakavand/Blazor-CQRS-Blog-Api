@@ -23,14 +23,15 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 
         RuleFor(x => x.Password)
             .NotEmpty()
-            .MinimumLength(Defaults.MinPasswordLength)
-            .WithState(_ => GenericErrors<User>.);
+            .Length(Defaults.MinPasswordLength,Defaults.MaxPasswordLength)
+            .WithState(_ => GenericErrors<User>.IntervalError(Defaults.MobileNumberMinLength, Defaults.MobileNumberMaxLength, "mobile number length"));
 
         RuleFor(x => x.Mobile)
-            .MaximumLength(Defaults.MobileNumberLength)
-            .WithState(_ => UserErrors.InvalidPhoneNumberValidationError);
+            .Length(Defaults.MobileNumberMinLength,Defaults.MobileNumberMaxLength)
+            .WithState(_ => GenericErrors<User>.IntervalError(Defaults.MinPasswordLength, Defaults.MaxPasswordLength, "password length"));
 
         RuleFor(x => x.Email)
+            .EmailAddress()
             .NotEmpty()
             .WithState(_ => GenericErrors<User>.InvalidVariableError("email"));
     }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Dayana.Shared.Domains.Blog.BlogPosts;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Persistence.Models.Blog.Commands;
+using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
