@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.IdentityRepositories.Roles;
 
-public class RoleRepository : Repository<Role, RoleModel>, IRoleRepository
+public class RoleRepository : Repository<Role>, IRoleRepository
 {
     private readonly IQueryable<Role> _queryable;
 
-    public RoleRepository(AppDbContext context, IMapper mapper) : base(context, mapper)
+    public RoleRepository(AppDbContext context) : base(context)
     {
         _queryable = DbContext.Set<Role>();
     }

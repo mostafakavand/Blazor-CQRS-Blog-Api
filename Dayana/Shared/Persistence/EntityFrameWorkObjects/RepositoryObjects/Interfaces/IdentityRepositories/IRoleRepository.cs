@@ -4,7 +4,7 @@ using Dayana.Shared.Persistence.Models.Identity.Base;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 
-public interface IRoleRepository : IRepository<Role, RoleModel>
+public interface IRoleRepository : IRepository<Role>
 {
     Task<Role> GetRoleByIdAsync(int id);
     Task<List<Role>> GetRolesByIdsAsync(IEnumerable<int> ids);

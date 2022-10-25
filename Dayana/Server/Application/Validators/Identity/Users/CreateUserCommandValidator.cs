@@ -16,8 +16,8 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
             .WithState(_ => GenericErrors<User>.InvalidVariableError("user name"));
 
         RuleFor(x => x.Username)
-            .Length(min:Defaults.MinUsernameLength, max:Defaults.MaxUsernameLength)
-            .WithState(_ => GenericErrors<User>.IntervalError(min:Defaults.MinUsernameLength, max:Defaults.MaxUsernameLength,variableName:"user id"));
+            .Length(min:Defaults.UsernameMinLength, max:Defaults.UsernameMaxLength)
+            .WithState(_ => GenericErrors<User>.IntervalError(min:Defaults.UsernameMinLength, max:Defaults.UsernameMaxLength,variableName:"user id"));
 
         RuleFor(x => x.Password)
             .NotEmpty()

@@ -4,7 +4,7 @@ using Dayana.Shared.Persistence.Models.Identity.Base;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 
-public interface IPermissionRepository : IRepository<Permission,PermissionModel>
+public interface IPermissionRepository : IRepository<Permission>
 {
     Task<Permission> GetPermissionByIdAsync(int id);
     Task<List<Permission>> GetPermissionsByIdsAsync(IEnumerable<int> ids);
