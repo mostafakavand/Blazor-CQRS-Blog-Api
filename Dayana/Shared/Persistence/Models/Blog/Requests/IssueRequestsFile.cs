@@ -6,6 +6,7 @@ namespace Dayana.Shared.Persistence.Models.Blog.Requests;
 
 public record CreatePostIssueRequest
 {
+    public string PostEid { get; set; }
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }
 }
@@ -22,6 +23,7 @@ public record GetPostIssueByFilterRequest : DefaultPaginationFilter
 
 public record UpdatePostIssueRequest
 {
+    public string PostEid { get; set; }
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }
 }

@@ -130,6 +130,8 @@ public record UpdatePostIssueCommand : IRequestInfo, IRequest<OperationResult>
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }
     public int PostId { get; set; }
+    public int PosIssueId { get; set; }
+
 }
 
 
