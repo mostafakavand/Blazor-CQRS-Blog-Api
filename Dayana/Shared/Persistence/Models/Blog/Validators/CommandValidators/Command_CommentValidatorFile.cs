@@ -62,50 +62,41 @@ public class DeletePostCommentCommandValidator : AbstractValidator<DeletePostCom
 
 #endregion
 
-#region Post Category comment
-public class CreatePostCategoryCommentCommandValidator : AbstractValidator<CreatePostCategoryCommentCommand>
+#region Post and Post Category Issue Comment Validator
+
+public class CreatePostIssueCommentCommandValidator : AbstractValidator<CreatePostIssueCommentCommand>
 {
-    public CreatePostCategoryCommentCommandValidator()
+    public CreatePostIssueCommentCommandValidator()
     {
         RuleFor(x => x.CommentText)
             .NotEmpty()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("text"));
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("text"));
 
-        RuleFor(x => x.PostCategoryId)
+        RuleFor(x => x.PostIssueId)
             .NotNull()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("post category id"));
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("post issue id"));
 
         RuleFor(x => x.CommentOwnerId)
             .NotEmpty()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("writer id"));
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("writer id"));
     }
 }
 
-public class UpdatePostCategoryCommentCommandValidator : AbstractValidator<UpdatePostCategoryCommentCommand>
+public class CreatePostCategoryIssueCommentCommandValidator : AbstractValidator<CreatePostCategoryIssueCommentCommand>
 {
-    public UpdatePostCategoryCommentCommandValidator()
+    public CreatePostCategoryIssueCommentCommandValidator()
     {
         RuleFor(x => x.CommentText)
             .NotEmpty()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("text"));
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("text"));
 
-        RuleFor(x => x.PostCategoryId)
+        RuleFor(x => x.PostCategoryIssueId)
             .NotNull()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("post category id"));
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("post category issue id"));
 
         RuleFor(x => x.CommentOwnerId)
             .NotEmpty()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("writer id"));
-    }
-}
-
-public class DeletePostCategoryCommentCommandValidator : AbstractValidator<DeletePostCategoryCommentCommand>
-{
-    public DeletePostCategoryCommentCommandValidator()
-    {
-        RuleFor(x => x.Id)
-            .NotEmpty()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("id"));
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("writer id"));
     }
 }
 

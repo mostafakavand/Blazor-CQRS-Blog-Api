@@ -9,44 +9,90 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Validators.BaseValidators;
-public class PostCategoryCommentModelValidator : AbstractValidator<PostCategoryCommentModel>
+
+
+#region issue comments
+
+public class PostCategoryIssueCommentModelValidator : AbstractValidator<PostCategoryIssueCommentModel>
 {
-    public PostCategoryCommentModelValidator()
+    public PostCategoryIssueCommentModelValidator()
     {
         RuleFor(x => x.CommentOwnerId)
             .NotNull()
             .GreaterThan(0)
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("comment writer id"));
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("comment writer id"));
 
         RuleFor(x => x.CommentText)
             .NotNull()
             .NotEmpty()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("comment text"));
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("comment text"));
 
         RuleFor(x => x.IsReply)
             .NotNull()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("is-reply"));
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("is-reply"));
 
-        RuleFor(x => x.PostCategoryId)
+        RuleFor(x => x.PostCategoryIssueId)
           .NotNull()
           .GreaterThan(0)
-          .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("post category id"));
+          .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("post category issue id"));
 
         RuleFor(x => x.ReplyToCommentId)
           .NotNull()
           .When(x => x.IsReply == true)
           .GreaterThan(0)
-          .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("reply to comment id"));
+          .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("reply to comment id"));
 
         RuleFor(x => x.CreatedAt)
             .NotNull()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("create time"));
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("create time"));
         RuleFor(x => x.UpdatedAt)
             .NotNull()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("update time"));
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("update time"));
 
     }
 }
+
+
+public class PostIssueCommentModelValidator : AbstractValidator<PostIssueCommentModel>
+{
+    public PostIssueCommentModelValidator()
+    {
+        RuleFor(x => x.CommentOwnerId)
+            .NotNull()
+            .GreaterThan(0)
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("writer id"));
+
+        RuleFor(x => x.CommentText)
+            .NotNull()
+            .NotEmpty()
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("text"));
+
+        RuleFor(x => x.IsReply)
+            .NotNull()
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("is-reply"));
+
+        RuleFor(x => x.PostIssueId)
+          .NotNull()
+          .GreaterThan(0)
+          .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("post category id"));
+
+        RuleFor(x => x.ReplyToCommentId)
+          .NotNull()
+          .When(x => x.IsReply == true)
+          .GreaterThan(0)
+          .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("reply to comment id"));
+
+        RuleFor(x => x.CreatedAt)
+            .NotNull()
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("create time"));
+        RuleFor(x => x.UpdatedAt)
+            .NotNull()
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("update time"));
+
+    }
+}
+
+#endregion
 
 public class PostCommentModelValidator : AbstractValidator<PostCommentModel>
 {
