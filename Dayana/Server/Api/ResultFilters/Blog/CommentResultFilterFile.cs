@@ -118,19 +118,20 @@ public class UpdatePostCommentResultFilter : ResultFilterAttribute
 
 #endregion
 
-#region post category Comment
+#region post issue Comment
 
-public class CreatePostCategoryCommentResultFilter : ResultFilterAttribute
+
+public class CreatePostIssueCommentResultFilter : ResultFilterAttribute
 {
     public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is PostCategoryComment value)
+        if (result?.Value is PostIssueComment value)
             result.Value = new
             {
                 Eid = value.Id.EncodeInt(),
-                EPostCategoryId = value.PostCategoryId.EncodeInt(),
+                EPostIssueId = value.PostIssueId.EncodeInt(),
                 ECommentOwnerId = value.CommentOwnerId.EncodeInt(),
                 EReplyTOCommentId = value.ReplyToCommentId?.EncodeInt(),
                 value.CommentText,
@@ -142,30 +143,30 @@ public class CreatePostCategoryCommentResultFilter : ResultFilterAttribute
     }
 }
 
-public class DeletePostCategoryCommentResultFilter : ResultFilterAttribute
+public class DeletePostIssueCommentResultFilter : ResultFilterAttribute
 {
     public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is PostCategoryComment value)
+        if (result?.Value is PostIssueComment value)
             result.Value = new
             {
                 Eid = value.Id.EncodeInt(),
-                EPostCategoryId = value.PostCategoryId.EncodeInt(),
+                EPostIssueId = value.PostIssueId.EncodeInt(),
             };
 
         await next();
     }
 }
 
-public class GetPostCategoryCommentByFilterResultFilter : ResultFilterAttribute
+public class GetPostIssueCommentByFilterResultFilter : ResultFilterAttribute
 {
     public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is PaginatedList<PostCategoryCommentModel> value)
+        if (result?.Value is PaginatedList<PostIssueCommentModel> value)
             result.Value = new
             {
                 value.Page,
@@ -174,7 +175,7 @@ public class GetPostCategoryCommentByFilterResultFilter : ResultFilterAttribute
                 Data = value.Data.Select(x => new
                 {
                     Eid = x.Id.EncodeInt(),
-                    EPostCategoryId = x.PostCategoryId.EncodeInt(),
+                    EPostIssueId = x.PostIssueId.EncodeInt(),
                     ECommentOwnerId = x.CommentOwnerId.EncodeInt(),
                     EReplyTOCommentId = x.ReplyToCommentId?.EncodeInt(),
                     x.CommentText,
@@ -187,17 +188,17 @@ public class GetPostCategoryCommentByFilterResultFilter : ResultFilterAttribute
     }
 }
 
-public class GetPostCategoryCommentByIdResultFilter : ResultFilterAttribute
+public class GetPostIssueCommentByIdResultFilter : ResultFilterAttribute
 {
     public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is PostCategoryCommentModel value)
+        if (result?.Value is PostIssueCommentModel value)
             result.Value = new
             {
                 Eid = value.Id.EncodeInt(),
-                EPostCategoryId = value.PostCategoryId.EncodeInt(),
+                EPostIssueId = value.PostIssueId.EncodeInt(),
                 ECommentOwnerId = value.CommentOwnerId.EncodeInt(),
                 EReplyTOCommentId = value.ReplyToCommentId?.EncodeInt(),
                 value.CommentText,
@@ -209,17 +210,128 @@ public class GetPostCategoryCommentByIdResultFilter : ResultFilterAttribute
     }
 }
 
-public class UpdatePostCategoryCommentResultFilter : ResultFilterAttribute
+public class UpdatePostIssueCommentResultFilter : ResultFilterAttribute
 {
     public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
         var result = context.Result as ObjectResult;
 
-        if (result?.Value is PostCategoryComment value)
+        if (result?.Value is PostIssueComment value)
             result.Value = new
             {
                 Eid = value.Id.EncodeInt(),
-                EPostCategoryId = value.PostCategoryId.EncodeInt(),
+                EPostIssueId = value.PostIssueId.EncodeInt(),
+            };
+
+        await next();
+    }
+}
+
+#endregion
+
+#region post category issue Comment
+
+
+public class CreatePostCategoryIssueCommentResultFilter : ResultFilterAttribute
+{
+    public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
+    {
+        var result = context.Result as ObjectResult;
+
+        if (result?.Value is PostCategoryIssueComment value)
+            result.Value = new
+            {
+                Eid = value.Id.EncodeInt(),
+                EPostCategoryIssueId = value.PostCategoryIssueId.EncodeInt(),
+                ECommentOwnerId = value.CommentOwnerId.EncodeInt(),
+                EReplyTOCommentId = value.ReplyToCommentId?.EncodeInt(),
+                value.CommentText,
+                value.CreatedAt,
+                value.UpdatedAt,
+            };
+
+        await next();
+    }
+}
+
+public class DeletePostCategoryIssueCommentResultFilter : ResultFilterAttribute
+{
+    public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
+    {
+        var result = context.Result as ObjectResult;
+
+        if (result?.Value is PostCategoryIssueComment value)
+            result.Value = new
+            {
+                Eid = value.Id.EncodeInt(),
+                EPostCAtegoryIssueId = value.PostCategoryIssueId.EncodeInt(),
+            };
+
+        await next();
+    }
+}
+
+public class GetPostCategoryIssueCommentByFilterResultFilter : ResultFilterAttribute
+{
+    public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
+    {
+        var result = context.Result as ObjectResult;
+
+        if (result?.Value is PaginatedList<PostCategoryIssueCommentModel> value)
+            result.Value = new
+            {
+                value.Page,
+                value.PageSize,
+                value.TotalCount,
+                Data = value.Data.Select(x => new
+                {
+                    Eid = x.Id.EncodeInt(),
+                    EPostCategoryIssueId = x.PostCategoryIssueId.EncodeInt(),
+                    ECommentOwnerId = x.CommentOwnerId.EncodeInt(),
+                    EReplyTOCommentId = x.ReplyToCommentId?.EncodeInt(),
+                    x.CommentText,
+                    x.CreatedAt,
+                    x.UpdatedAt,
+                })
+            };
+
+        await next();
+    }
+}
+
+public class GetPostCategoryIssueCommentByIdResultFilter : ResultFilterAttribute
+{
+    public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
+    {
+        var result = context.Result as ObjectResult;
+
+        if (result?.Value is PostCategoryIssueCommentModel value)
+            result.Value = new
+            {
+                Eid = value.Id.EncodeInt(),
+                EPostCategoryIssueId = value.PostCategoryIssueId.EncodeInt(),
+                ECommentOwnerId = value.CommentOwnerId.EncodeInt(),
+                EReplyTOCommentId = value.ReplyToCommentId?.EncodeInt(),
+                value.CommentText,
+                value.CreatedAt,
+                value.UpdatedAt,
+            };
+
+        await next();
+    }
+}
+
+public class UpdatePostCategoryIssueCommentResultFilter : ResultFilterAttribute
+{
+    public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
+    {
+        var result = context.Result as ObjectResult;
+
+        if (result?.Value is PostCategoryIssueComment value)
+            result.Value = new
+            {
+                Eid = value.Id.EncodeInt(),
+                EPostCategoryIssueId = value.PostCategoryIssueId.EncodeInt(),
             };
 
         await next();
