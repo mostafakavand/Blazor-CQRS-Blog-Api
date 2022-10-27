@@ -34,22 +34,24 @@ public record UpdatePostIssueRequest
 
 public record CreatePostCategoryIssueRequest
 {
-    public string CategoryTitle { get; set; }
-    public string CategoryIcon { get; set; }
+    public string PostCategoryEid { get; set; }
+    public string IssueTitle { get; set; }
+    public string IssueDescription { get; set; }
 }
-public record GetPostCategoryIssueByFilterRequst : DefaultPaginationFilter
+public record GetPostCategoryIssueByFilterRequest : DefaultPaginationFilter
 {
-    protected GetPostCategoryIssueByFilterRequst(int page, int pageSize) : base(page, pageSize)
+    protected GetPostCategoryIssueByFilterRequest(int page, int pageSize) : base(page, pageSize)
     {
     }
 
-    public GetPostCategoryIssueByFilterRequst()
+    public GetPostCategoryIssueByFilterRequest()
     {
     }
 }
 
-public record UpdatPostCategoryeIssueRequest
+public record UpdatePostCategoryIssueRequest
 {
+    public string PostCategoryEid { get; set; }
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }
 }

@@ -173,6 +173,7 @@ public record UpdatePostCategoryIssueCommand : IRequestInfo, IRequest<OperationR
     public string IssueTitle { get; set; }
     public string IssueDescription { get; set; }
     public int PostCategoryId { get; set; }
+    public int Id { get; set; }
 }
 
 
