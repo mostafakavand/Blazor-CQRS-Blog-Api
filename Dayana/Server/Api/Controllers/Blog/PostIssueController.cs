@@ -20,7 +20,7 @@ public class PostIssueController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost(BlogRoutes.PostIssue + "AddPostIssue")]
+    [HttpPost(BlogRoutes.PostIssue + "add")]
     [CreatePostIssueResultFilter]
     public async Task<IActionResult> AddPostIssue([FromBody] CreatePostIssueRequest request)
     {

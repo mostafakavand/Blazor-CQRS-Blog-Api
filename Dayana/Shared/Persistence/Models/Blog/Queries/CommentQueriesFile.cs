@@ -6,7 +6,7 @@ using MediatR;
 namespace Dayana.Shared.Persistence.Models.Blog.Queries;
 
 #region post comment
-public record GetPostCommentFilterQuery : IRequestInfo, IRequest<OperationResult>
+public record GetPostCommentByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
     public GetPostCommentFilterQuery(RequestInfo requestInfo)
     {

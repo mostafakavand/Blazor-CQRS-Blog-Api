@@ -20,7 +20,7 @@ public class PostCategoryController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost(BlogRoutes.PostCategory + "AddPostCategory")]
+    [HttpPost(BlogRoutes.PostCategory + "add")]
     [CreatePostCategoryResultFilter]
     public async Task<IActionResult> AddPostCategory([FromBody] CreatePostCategoryRequest request)
     {

@@ -6,8 +6,11 @@ namespace Dayana.Shared.Persistence.Models.Blog.Requests;
 
 public record CreatePostCommentRequest
 {
-    public string CommentTitle { get; set; }
-    public string CommentDescription { get; set; }
+    public string CommentOwnerEid { get; set; }
+    public string CommentPostEid { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public string? ReplyToCommentEid { get; set; }
 }
 
 public record GetPostCommentByFilterRequest : DefaultPaginationFilter
@@ -22,8 +25,11 @@ public record GetPostCommentByFilterRequest : DefaultPaginationFilter
 
 public record UpdatePostCommentRequest
 {
-    public string CommentTitle { get; set; }
-    public string CommentDescription { get; set; }
+    public string CommentOwnerEid { get; set; }
+    public string CommentPostEid { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public string? ReplyToCommentEid { get; set; }
 }
 
 #endregion
