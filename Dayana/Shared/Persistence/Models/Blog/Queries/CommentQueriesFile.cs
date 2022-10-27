@@ -8,7 +8,7 @@ namespace Dayana.Shared.Persistence.Models.Blog.Queries;
 #region post comment
 public record GetPostCommentByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
-    public GetPostCommentFilterQuery(RequestInfo requestInfo)
+    public GetPostCommentByFilterQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }

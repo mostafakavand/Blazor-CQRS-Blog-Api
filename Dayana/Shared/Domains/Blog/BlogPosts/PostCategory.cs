@@ -14,7 +14,6 @@ public class PostCategory : BaseDomain, IEntity
 
     #region Navigation
     public ICollection<Post> CategoryPosts { get; set; }
-    public ICollection<PostCategoryComment> PostCategoryComments { get; set; }
     public ICollection<PostCategoryIssue> PostCategoryIssues { get; set; }
     #endregion
 }
