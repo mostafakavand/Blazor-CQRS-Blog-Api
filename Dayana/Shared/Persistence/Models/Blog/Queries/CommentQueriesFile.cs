@@ -56,9 +56,9 @@ public record GetPostIssueCommentByIdQuery : IRequestInfo, IRequest<OperationRes
 #endregion
 
 #region post category issue comment
-public record GetPostCategoryIssueCommentFilterQuery : IRequestInfo, IRequest<OperationResult>
+public record GetPostCategoryIssueCommentByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
-    public GetPostCategoryIssueCommentFilterQuery(RequestInfo requestInfo)
+    public GetPostCategoryIssueCommentByFilterQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }

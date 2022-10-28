@@ -78,18 +78,18 @@ public record CreatePostCategoryIssueCommentRequest
     public bool IsReply { get; set; }
     public string? ReplyToCommentEid { get; set; }
 }
-public record GetPostCategoryIssueCommentByFilterRequst : DefaultPaginationFilter
+public record GetPostCategoryIssueCommentByFilterRequest : DefaultPaginationFilter
 {
-    protected GetPostCategoryIssueCommentByFilterRequst(int page, int pageSize) : base(page, pageSize)
+    protected GetPostCategoryIssueCommentByFilterRequest(int page, int pageSize) : base(page, pageSize)
     {
     }
 
-    public GetPostCategoryIssueCommentByFilterRequst()
+    public GetPostCategoryIssueCommentByFilterRequest()
     {
     }
 }
 
-public record UpdatPostCategoryIssueCommentRequest
+public record UpdatePostCategoryIssueCommentRequest
 {
     public string CommentOwnerEid { get; set; }
     public string CommentPostCategoryIssueEid { get; set; }

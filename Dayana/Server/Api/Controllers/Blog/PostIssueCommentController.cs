@@ -11,11 +11,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Dayana.Server.Api.Controllers.Blog;
 
-public class PostIssueIssueCommentController : ControllerBase
+public class PostIssueCommentController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public PostIssueIssueCommentController(IMediator mediator)
+    public PostIssueCommentController(IMediator mediator)
     {
         _mediator = mediator;
     }

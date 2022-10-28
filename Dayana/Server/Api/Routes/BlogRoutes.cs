@@ -11,4 +11,5 @@ public static class BlogRoutes
     public const string PostComment = Api + "post_comment/";
     public const string PostCategoryComment = Api + "post_category_comment/";
     public const string PostIssueComment = Api + "post_issue_comment/";
+    public const string PostCategoryIssueComment = Api + "post_category_issue_comment/";
 }
