@@ -38,7 +38,7 @@ public class GetPostCommentByIdQueryModelValidator : AbstractValidator<GetPostCo
 
 #region post and post category issue comment
 
-public class GetPostIssueCommentFilterQueryModelValidator : AbstractValidator<GetPostIssueCommentFilterQuery>
+public class GetPostIssueCommentFilterQueryModelValidator : AbstractValidator<GetPostIssueCommentByFilterQuery>
 {
     public GetPostIssueCommentFilterQueryModelValidator()
     {
@@ -59,7 +59,7 @@ public class GetPostIssueCommentByIdQueryModelValidator : AbstractValidator<GetP
 }
 
 
-public class GetPostCategoryIssueCommentFilterQueryModelValidator : AbstractValidator<GetPostCategoryIssueCommentFilterQuery>
+public class GetPostCategoryIssueCommentFilterQueryModelValidator : AbstractValidator<GetPostCategoryIssueCommentByFilterQuery>
 {
     public GetPostCategoryIssueCommentFilterQueryModelValidator()
     {
