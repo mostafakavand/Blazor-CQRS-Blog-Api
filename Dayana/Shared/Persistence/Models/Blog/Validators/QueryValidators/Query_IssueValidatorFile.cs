@@ -12,54 +12,10 @@ using System.Threading.Tasks;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Validators.QueryValidators;
 
-#region post and post category issue comment
-
-public class GetPostIssueCommentFilterQueryModelValidator : AbstractValidator<GetPostIssueCommentFilterQuery>
-{
-    public GetPostIssueCommentFilterQueryModelValidator()
-    {
-        RuleFor(x => x.Filter)
-            .NotNull()
-            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("filter"));
-    }
-}
-
-public class GetPostIssueCommentByIdQueryModelValidator : AbstractValidator<GetPostIssueCommentByIdQuery>
-{
-    public GetPostIssueCommentByIdQueryModelValidator()
-    {
-        RuleFor(x => x.PostIssueId)
-            .NotNull()
-            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("id"));
-    }
-}
-
-
-public class GetPostCategoryIssueCommentFilterQueryModelValidator : AbstractValidator<GetPostCategoryIssueCommentFilterQuery>
-{
-    public GetPostCategoryIssueCommentFilterQueryModelValidator()
-    {
-        RuleFor(x => x.Filter)
-            .NotNull()
-            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("filter"));
-    }
-}
-
-public class GetPostCategoryIssueCommentByIdQueryModelValidator : AbstractValidator<GetPostCategoryIssueCommentByIdQuery>
-{
-    public GetPostCategoryIssueCommentByIdQueryModelValidator()
-    {
-        RuleFor(x => x.PostCategoryIssueId)
-            .NotNull()
-            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("id"));
-    }
-}
-
-#endregion
 
 #region post issue
 
-public class GetPostIssueFilterQueryModelValidator : AbstractValidator<GetPostIssueFilterQuery>
+public class GetPostIssueFilterQueryModelValidator : AbstractValidator<GetPostIssueByFilterQuery>
 {
     public GetPostIssueFilterQueryModelValidator()
     {

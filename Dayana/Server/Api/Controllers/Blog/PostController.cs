@@ -20,7 +20,7 @@ public class PostController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost(BlogRoutes.Post + "AddPost")]
+    [HttpPost(BlogRoutes.Post + "add")]
     [CreatePostResultFilter]
     public async Task<IActionResult> AddPost([FromBody] CreatePostRequest request)
     {

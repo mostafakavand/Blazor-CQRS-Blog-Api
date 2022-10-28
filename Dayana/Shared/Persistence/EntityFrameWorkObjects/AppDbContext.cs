@@ -30,7 +30,6 @@ public sealed class AppDbContext : DbContext
     public DbSet<PostIssue> PostIssues { get; set; }
     public DbSet<PostCategoryIssue> PostCategoryIssues { get; set; }
     public DbSet<PostComment> PostComments { get; set; }
-    public DbSet<PostCategoryComment> PostCategoryComments { get; set; }
     public DbSet<PostCategoryIssueComment> PostCategoryIssueComments { get; set; }
     public DbSet<PostIssueComment> PostIssueComments { get; set; }
     #endregion

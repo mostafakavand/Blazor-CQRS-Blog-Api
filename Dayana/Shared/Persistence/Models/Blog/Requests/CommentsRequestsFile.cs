@@ -2,12 +2,15 @@
 
 namespace Dayana.Shared.Persistence.Models.Blog.Requests;
 
-#region post
+#region post comment
 
 public record CreatePostCommentRequest
 {
-    public string CommentTitle { get; set; }
-    public string CommentDescription { get; set; }
+    public string CommentOwnerEid { get; set; }
+    public string CommentPostEid { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public string? ReplyToCommentEid { get; set; }
 }
 
 public record GetPostCommentByFilterRequest : DefaultPaginationFilter
@@ -22,34 +25,77 @@ public record GetPostCommentByFilterRequest : DefaultPaginationFilter
 
 public record UpdatePostCommentRequest
 {
-    public string CommentTitle { get; set; }
-    public string CommentDescription { get; set; }
+    public string CommentOwnerEid { get; set; }
+    public string CommentPostEid { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public string? ReplyToCommentEid { get; set; }
 }
 
 #endregion
 
-#region post category
+#region post issue comment
 
-public record CreatePostCategoryCommentRequest
+
+public record CreatePostIssueCommentRequest
 {
-    public string CategoryTitle { get; set; }
-    public string CategoryIcon { get; set; }
+    public string CommentOwnerEid { get; set; }
+    public string CommentPostIssueEid { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public string? ReplyToCommentEid { get; set; }
 }
-public record GetPostCategoryCommentByFilterRequst : DefaultPaginationFilter
+
+public record GetPostIssueCommentByFilterRequest : DefaultPaginationFilter
 {
-    protected GetPostCategoryCommentByFilterRequst(int page, int pageSize) : base(page, pageSize)
+    protected GetPostIssueCommentByFilterRequest(int page, int pageSize) : base(page, pageSize)
+    {
+    }
+    public GetPostIssueCommentByFilterRequest()
+    {
+    }
+}
+
+public record UpdatePostIssueCommentRequest
+{
+    public string CommentOwnerEid { get; set; }
+    public string CommentPostIssueEid { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public string? ReplyToCommentEid { get; set; }
+}
+
+
+#endregion
+
+#region post category issue comment
+
+public record CreatePostCategoryIssueCommentRequest
+{
+    public string CommentOwnerEid { get; set; }
+    public string CommentPostCategoryIssueEid { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public string? ReplyToCommentEid { get; set; }
+}
+public record GetPostCategoryIssueCommentByFilterRequest : DefaultPaginationFilter
+{
+    protected GetPostCategoryIssueCommentByFilterRequest(int page, int pageSize) : base(page, pageSize)
     {
     }
 
-    public GetPostCategoryCommentByFilterRequst()
+    public GetPostCategoryIssueCommentByFilterRequest()
     {
     }
 }
 
-public record UpdatPostCategoryeCommentRequest
+public record UpdatePostCategoryIssueCommentRequest
 {
-    public string CommentTitle { get; set; }
-    public string CommentDescription { get; set; }
+    public string CommentOwnerEid { get; set; }
+    public string CommentPostCategoryIssueEid { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public string? ReplyToCommentEid { get; set; }
 }
 
 #endregion

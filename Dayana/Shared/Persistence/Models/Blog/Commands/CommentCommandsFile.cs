@@ -4,50 +4,6 @@ using MediatR;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Commands;
 
-
-#region PostCategoryComments
-
-public record CreatePostCategoryCommentCommand : IRequestInfo, IRequest<OperationResult>
-{
-    public CreatePostCategoryCommentCommand(RequestInfo requestInfo)
-    {
-        RequestInfo = requestInfo;
-    }
-    public RequestInfo RequestInfo { get; set; }
-    public string CommentText { get; set; }
-    public bool IsReply { get; set; }
-    public int PostCategoryId { get; set; }
-    public int CommentOwnerId { get; set; }
-    public int? ReplyToCommentId { get; set; }
-}
-
-public record DeletePostCategoryCommentCommand : IRequestInfo, IRequest<OperationResult>
-{
-    public DeletePostCategoryCommentCommand(RequestInfo requestInfo)
-    {
-        RequestInfo = requestInfo;
-    }
-    public RequestInfo RequestInfo { get; set; }
-    public int Id { get; set; }
-}
-
-public record UpdatePostCategoryCommentCommand : IRequestInfo, IRequest<OperationResult>
-{
-    public UpdatePostCategoryCommentCommand(RequestInfo requestInfo)
-    {
-        RequestInfo = requestInfo;
-    }
-    public RequestInfo RequestInfo { get; set; }
-    public int Id { get; set; }
-    public string CommentText { get; set; }
-    public bool IsReply { get; set; }
-    public int PostCategoryId { get; set; }
-    public int CommentOwnerId { get; set; }
-    public int? ReplyToCommentId { get; set; }
-}
-
-#endregion
-
 #region PostComment
 
 public record CreatePostCommentCommand : IRequestInfo, IRequest<OperationResult>
@@ -93,6 +49,94 @@ public record UpdatePostCommentCommand : IRequestInfo, IRequest<OperationResult>
 
     public RequestInfo RequestInfo { get; set; }
 }
+
+#endregion
+
+#region PostIssueComments
+
+public record CreatePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+{
+    public CreatePostIssueCommentCommand(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+    public RequestInfo RequestInfo { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public int PostIssueId { get; set; }
+    public int CommentOwnerId { get; set; }
+    public int? ReplyToCommentId { get; set; }
+}
+
+public record DeletePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+{
+    public DeletePostIssueCommentCommand(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+    public RequestInfo RequestInfo { get; set; }
+    public int Id { get; set; }
+}
+
+public record UpdatePostIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+{
+    public UpdatePostIssueCommentCommand(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+    public RequestInfo RequestInfo { get; set; }
+    public int Id { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public int PostIssueId { get; set; }
+    public int CommentOwnerId { get; set; }
+    public int? ReplyToCommentId { get; set; }
+}
+
+#endregion
+
+#region PostCategoryIssueComments
+
+public record CreatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+{
+    public CreatePostCategoryIssueCommentCommand(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+    public RequestInfo RequestInfo { get; set; }
+
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public int PostCategoryIssueId { get; set; }
+    public int CommentOwnerId { get; set; }
+    public int? ReplyToCommentId { get; set; }
+}
+
+public record DeletePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+{
+    public DeletePostCategoryIssueCommentCommand(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+    public RequestInfo RequestInfo { get; set; }
+    public int Id { get; set; }
+}
+
+public record UpdatePostCategoryIssueCommentCommand : IRequestInfo, IRequest<OperationResult>
+{
+    public UpdatePostCategoryIssueCommentCommand(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+    public RequestInfo RequestInfo { get; set; }
+    public int Id { get; set; }
+    public string CommentText { get; set; }
+    public bool IsReply { get; set; }
+    public int PostCategoryIssueId { get; set; }
+    public int CommentOwnerId { get; set; }
+    public int? ReplyToCommentId { get; set; }
+}
+
 
 #endregion
 

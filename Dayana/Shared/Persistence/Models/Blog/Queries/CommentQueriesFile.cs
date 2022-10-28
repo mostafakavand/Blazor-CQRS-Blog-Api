@@ -6,9 +6,9 @@ using MediatR;
 namespace Dayana.Shared.Persistence.Models.Blog.Queries;
 
 #region post comment
-public record GetPostCommentFilterQuery : IRequestInfo, IRequest<OperationResult>
+public record GetPostCommentByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
-    public GetPostCommentFilterQuery(RequestInfo requestInfo)
+    public GetPostCommentByFilterQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }
@@ -31,11 +31,10 @@ public record GetPostCommentByIdQuery : IRequestInfo, IRequest<OperationResult>
 
 #endregion
 
-#region post category comment
-
-public record GetPostCategoryCommentByFilterQuery : IRequestInfo, IRequest<OperationResult>
+#region post issue comment
+public record GetPostIssueCommentByFilterQuery : IRequestInfo, IRequest<OperationResult>
 {
-    public GetPostCategoryCommentByFilterQuery(RequestInfo requestInfo)
+    public GetPostIssueCommentByFilterQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }
@@ -44,14 +43,38 @@ public record GetPostCategoryCommentByFilterQuery : IRequestInfo, IRequest<Opera
     public RequestInfo RequestInfo { get; private set; }
 }
 
-public record GetPostCategoryCommentByIdQuery : IRequestInfo, IRequest<OperationResult>
+public record GetPostIssueCommentByIdQuery : IRequestInfo, IRequest<OperationResult>
 {
-    public GetPostCategoryCommentByIdQuery(RequestInfo requestInfo)
+    public GetPostIssueCommentByIdQuery(RequestInfo requestInfo)
     {
         RequestInfo = requestInfo;
     }
 
-    public int Id { get; set; }
+    public int PostIssueId { get; set; }
+    public RequestInfo RequestInfo { get; private set; }
+}
+#endregion
+
+#region post category issue comment
+public record GetPostCategoryIssueCommentByFilterQuery : IRequestInfo, IRequest<OperationResult>
+{
+    public GetPostCategoryIssueCommentByFilterQuery(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+
+    public DefaultPaginationFilter Filter { get; set; }
+    public RequestInfo RequestInfo { get; private set; }
+}
+
+public record GetPostCategoryIssueCommentByIdQuery : IRequestInfo, IRequest<OperationResult>
+{
+    public GetPostCategoryIssueCommentByIdQuery(RequestInfo requestInfo)
+    {
+        RequestInfo = requestInfo;
+    }
+
+    public int PostCategoryIssueId { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }
 #endregion

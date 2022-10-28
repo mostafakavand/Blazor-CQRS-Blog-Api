@@ -15,7 +15,7 @@ namespace Dayana.Shared.Persistence.Models.Blog.Validators.QueryValidators;
 
 #region post comment
 
-public class GetPostCommentFilterQueryModelValidator : AbstractValidator<GetPostCommentFilterQuery>
+public class GetPostCommentFilterQueryModelValidator : AbstractValidator<GetPostCommentByFilterQuery>
 {
     public GetPostCommentFilterQueryModelValidator()
     {
@@ -36,25 +36,47 @@ public class GetPostCommentByIdQueryModelValidator : AbstractValidator<GetPostCo
 }
 #endregion
 
-#region post Category comment
+#region post and post category issue comment
 
-public class GetPostCategoryCommentFilterQueryModelValidator : AbstractValidator<GetPostCategoryCommentByFilterQuery>
+public class GetPostIssueCommentFilterQueryModelValidator : AbstractValidator<GetPostIssueCommentByFilterQuery>
 {
-    public GetPostCategoryCommentFilterQueryModelValidator()
+    public GetPostIssueCommentFilterQueryModelValidator()
     {
         RuleFor(x => x.Filter)
             .NotNull()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("filter"));
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("filter"));
     }
 }
 
-public class GetPostCategoryCommentByIdQueryModelValidator : AbstractValidator<GetPostCategoryCommentByIdQuery>
+public class GetPostIssueCommentByIdQueryModelValidator : AbstractValidator<GetPostIssueCommentByIdQuery>
 {
-    public GetPostCategoryCommentByIdQueryModelValidator()
+    public GetPostIssueCommentByIdQueryModelValidator()
     {
-        RuleFor(x => x.Id)
+        RuleFor(x => x.PostIssueId)
             .NotNull()
-            .WithState(_ => GenericErrors<PostCategoryComment>.InvalidVariableError("id"));
+            .WithState(_ => GenericErrors<PostIssueComment>.InvalidVariableError("id"));
     }
 }
+
+
+public class GetPostCategoryIssueCommentFilterQueryModelValidator : AbstractValidator<GetPostCategoryIssueCommentByFilterQuery>
+{
+    public GetPostCategoryIssueCommentFilterQueryModelValidator()
+    {
+        RuleFor(x => x.Filter)
+            .NotNull()
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("filter"));
+    }
+}
+
+public class GetPostCategoryIssueCommentByIdQueryModelValidator : AbstractValidator<GetPostCategoryIssueCommentByIdQuery>
+{
+    public GetPostCategoryIssueCommentByIdQueryModelValidator()
+    {
+        RuleFor(x => x.PostCategoryIssueId)
+            .NotNull()
+            .WithState(_ => GenericErrors<PostCategoryIssueComment>.InvalidVariableError("id"));
+    }
+}
+
 #endregion

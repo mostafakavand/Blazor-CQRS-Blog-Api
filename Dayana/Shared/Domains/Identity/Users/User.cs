@@ -54,7 +54,6 @@ public class User : BaseDomain, IEntity
     public ICollection<Claim> Claims { get; set; }
     public ICollection<UserRole> UserRoles { get; set; }
     public ICollection<Post> UserPosts { get; set; }
-    public ICollection<PostCategoryComment> PostCategoryComments { get; set; }
     public ICollection<PostCategoryIssueComment> PostCategoryIssueComments { get; set; }
     public ICollection<PostComment> PostComments { get; set; }
     public ICollection<PostIssueComment> PostIssueComments { get; set; }

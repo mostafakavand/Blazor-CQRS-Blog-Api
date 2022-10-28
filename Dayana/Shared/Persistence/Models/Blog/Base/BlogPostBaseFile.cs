@@ -9,7 +9,6 @@ public record PostCategoryModel : BaseModel
 
     #region Navigation
     public ICollection<PostModel> CategoryPosts { get; set; }
-    public ICollection<PostCategoryCommentModel> PostCategoryComments { get; set; }
     public ICollection<PostCategoryIssueModel> PostCategoryIssues { get; set; }
     #endregion
 }
