@@ -81,8 +81,8 @@ public class GetRoleByIdHandler : IRequestHandler<GetRoleByIdQuery, OperationRes
 
         if (entity == null)
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.NotFoundError("role id"));
-        var model = new RoleModel();
-        model = _mapper.Map<RoleModel>(entity);
+        _ = new RoleModel();
+        RoleModel? model = _mapper.Map<RoleModel>(entity);
 
         return new OperationResult(OperationResultStatus.Ok, value: model);
     }
