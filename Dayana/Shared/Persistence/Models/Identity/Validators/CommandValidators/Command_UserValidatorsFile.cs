@@ -1,5 +1,4 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
-using Dayana.Shared.Domains.Identity.Permissions;
 using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
@@ -23,11 +22,11 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 
         RuleFor(x => x.Password)
             .NotEmpty()
-            .Length(Defaults.MinPasswordLength,Defaults.MaxPasswordLength)
+            .Length(Defaults.MinPasswordLength, Defaults.MaxPasswordLength)
             .WithState(_ => GenericErrors<User>.IntervalError(Defaults.MobileNumberMinLength, Defaults.MobileNumberMaxLength, "mobile number length"));
 
         RuleFor(x => x.Mobile)
-            .Length(Defaults.MobileNumberMinLength,Defaults.MobileNumberMaxLength)
+            .Length(Defaults.MobileNumberMinLength, Defaults.MobileNumberMaxLength)
             .WithState(_ => GenericErrors<User>.IntervalError(Defaults.MinPasswordLength, Defaults.MaxPasswordLength, "password length"));
 
         RuleFor(x => x.Email)

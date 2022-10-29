@@ -1,7 +1,6 @@
 ﻿using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
-using Dayana.Shared.Persistence.Models.Identity.Base;
 using Dayana.Shared.Persistence.Models.Identity.Requests;
 using FluentValidation;
 
@@ -33,7 +32,7 @@ public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>
         RuleFor(x => x.Email)
          .NotEmpty()
          .When(x => string.IsNullOrEmpty(x.Mobile))
-         .WithState(_ => GenericErrors<User>.CustomError(variableName:"email", causeOfError:"fill at least one of email and mobile fields"));
+         .WithState(_ => GenericErrors<User>.CustomError(variableName: "email", causeOfError: "fill at least one of email and mobile fields"));
 
 
         RuleFor(x => x.Mobile)

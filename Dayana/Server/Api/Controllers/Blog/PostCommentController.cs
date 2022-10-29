@@ -30,7 +30,7 @@ public class PostCommentController : ControllerBase
             PostId = request.CommentPostEid.DecodeInt(),
             CommentText = request.CommentText,
             IsReply = request.IsReply,
-            ReplyToCommentId = request.IsReply ? request.ReplyToCommentEid?.DecodeInt(): null,            
+            ReplyToCommentId = request.IsReply ? request.ReplyToCommentEid?.DecodeInt() : null,
         });
 
         return this.ReturnResponse(operation);

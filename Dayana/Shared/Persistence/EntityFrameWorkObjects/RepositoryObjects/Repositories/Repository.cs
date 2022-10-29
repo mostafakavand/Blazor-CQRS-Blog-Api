@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Dayana.Shared.Basic.MethodsAndObjects.Models;
+﻿using Dayana.Shared.Basic.MethodsAndObjects.Models;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;

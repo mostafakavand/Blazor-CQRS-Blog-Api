@@ -1,7 +1,6 @@
 ﻿using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
-using Dayana.Shared.Persistence.Models.Identity.Requests;
 using FluentValidation;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Validators.CommandValidators;

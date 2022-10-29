@@ -2,7 +2,7 @@
 using Dayana.Shared.Basic.MethodsAndObjects.Models;
 
 namespace Dayana.Shared.Infrastructure.Errors;
-public static class GenericErrors<TEntity> where TEntity : class , IEntity
+public static class GenericErrors<TEntity> where TEntity : class, IEntity
 {
     public static ErrorModel InvalidVariableError(string variableName) => new ErrorModel(
       code: 666,

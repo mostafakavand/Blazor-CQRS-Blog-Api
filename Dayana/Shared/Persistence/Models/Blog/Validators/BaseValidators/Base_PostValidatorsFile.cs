@@ -76,6 +76,6 @@ public class PostCategoryModelValidator : AbstractValidator<PostCategoryModel>
         RuleFor(x => x.UpdatedAt)
             .NotNull()
             .WithState(_ => GenericErrors<PostCategory>.InvalidVariableError("update time"));
-     
+
     }
 }
