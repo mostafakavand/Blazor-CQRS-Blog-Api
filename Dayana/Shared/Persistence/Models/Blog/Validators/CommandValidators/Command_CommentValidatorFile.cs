@@ -1,13 +1,7 @@
 ﻿using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Blog.Commands;
-using Dayana.Shared.Persistence.Models.Identity.Commands;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dayana.Shared.Persistence.Models.Blog.Validators.CommandValidators;
 

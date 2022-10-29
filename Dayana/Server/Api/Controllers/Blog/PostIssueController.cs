@@ -40,10 +40,10 @@ public class PostIssueController : ControllerBase
     {
         var operation = await _mediator.Send(new UpdatePostIssueCommand(Request.GetRequestInfo())
         {
-           PosIssueId = wpieid.DecodeInt(),
-           PostId = request.PostEid.DecodeInt(),
-           IssueDescription = request.IssueDescription,
-           IssueTitle = request.IssueTitle
+            PosIssueId = wpieid.DecodeInt(),
+            PostId = request.PostEid.DecodeInt(),
+            IssueDescription = request.IssueDescription,
+            IssueTitle = request.IssueTitle
         });
 
         return this.ReturnResponse(operation);

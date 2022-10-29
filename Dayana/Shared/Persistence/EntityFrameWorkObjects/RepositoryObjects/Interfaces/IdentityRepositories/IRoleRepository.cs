@@ -1,6 +1,5 @@
 ﻿using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Infrastructure.Pagination;
-using Dayana.Shared.Persistence.Models.Identity.Base;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 

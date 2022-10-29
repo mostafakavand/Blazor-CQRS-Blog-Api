@@ -1,5 +1,4 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
-using Dayana.Shared.Domains.Identity.Permissions;
 using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
@@ -16,8 +15,8 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
             .WithState(_ => GenericErrors<User>.InvalidVariableError("user name"));
 
         RuleFor(x => x.Username)
-            .Length(min:Defaults.UsernameMinLength, max:Defaults.UsernameMaxLength)
-            .WithState(_ => GenericErrors<User>.IntervalError(min:Defaults.UsernameMinLength, max:Defaults.UsernameMaxLength,variableName:"user name"));
+            .Length(min: Defaults.UsernameMinLength, max: Defaults.UsernameMaxLength)
+            .WithState(_ => GenericErrors<User>.IntervalError(min: Defaults.UsernameMinLength, max: Defaults.UsernameMaxLength, variableName: "user name"));
 
         RuleFor(x => x.Password)
             .NotEmpty()
@@ -30,7 +29,7 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
             .NotEmpty()
             .Length(Defaults.MobileNumberMinLength, Defaults.MobileNumberMaxLength)
             .WithState(_ => GenericErrors<User>
-            .IntervalError(min:Defaults.MobileNumberMinLength, max: Defaults.MobileNumberMaxLength, "mobile"));
+            .IntervalError(min: Defaults.MobileNumberMinLength, max: Defaults.MobileNumberMaxLength, "mobile"));
 
         RuleFor(x => x.Email)
             .NotEmpty()

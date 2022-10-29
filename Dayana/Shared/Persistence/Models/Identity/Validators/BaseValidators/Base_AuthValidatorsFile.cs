@@ -2,7 +2,6 @@
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Base;
 using FluentValidation;
-using StackExchange.Redis;
 
 namespace Dayana.Shared.Persistence.Models.Identity.Validators.BaseValidators;
 

@@ -1,7 +1,5 @@
 ﻿using Dayana.Shared.Domains.Identity.Permissions;
-using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
-using Dayana.Shared.Persistence.EntityFrameWorkObjects.Seeding.IdentitySeeds;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
 using FluentValidation;
 

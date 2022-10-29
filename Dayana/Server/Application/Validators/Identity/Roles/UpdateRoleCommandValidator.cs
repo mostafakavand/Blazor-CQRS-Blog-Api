@@ -1,6 +1,5 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Domains.Identity.Roles;
-using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
 using FluentValidation;
@@ -22,7 +21,7 @@ public class UpdateRoleCommandValidator : AbstractValidator<UpdateRoleCommand>
         RuleFor(x => x.Title)
             .NotEmpty()
             .Length(min: Defaults.MinTitleLength, max: Defaults.MaxTitleLength)
-            .WithState(_ => GenericErrors<Role>.IntervalError(min:Defaults.MinTitleLength, max: Defaults.MaxTitleLength, "title"));
+            .WithState(_ => GenericErrors<Role>.IntervalError(min: Defaults.MinTitleLength, max: Defaults.MaxTitleLength, "title"));
 
     }
 }

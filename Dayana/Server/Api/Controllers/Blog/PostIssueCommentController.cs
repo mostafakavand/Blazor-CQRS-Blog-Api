@@ -59,7 +59,7 @@ public class PostIssueCommentController : ControllerBase
     {
         var operation = await _mediator.Send(new GetPostIssueCommentByIdQuery(Request.GetRequestInfo())
         {
-           PostIssueId = wpiceid.DecodeInt(),
+            PostIssueId = wpiceid.DecodeInt(),
         });
 
         return this.ReturnResponse(operation);

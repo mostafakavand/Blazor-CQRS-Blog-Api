@@ -1,6 +1,5 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Models;
-using Dayana.Shared.Domains.Blog.Comments;
 using Dayana.Shared.Domains.Blog.Issues;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
