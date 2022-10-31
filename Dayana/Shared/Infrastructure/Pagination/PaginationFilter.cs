@@ -97,10 +97,10 @@ public record CustomaizedPaginationFilterThree<T1, T2, T3> : PaginationFilter
 }
 
 
-public record CustomaizedPaginationFilterfOur<T1, T2, T3, T4> : PaginationFilter
+public record CustomaizedPaginationFilterfour<T1, T2, T3, T4> : PaginationFilter
 {
-    public CustomaizedPaginationFilterfOur(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
-    public CustomaizedPaginationFilterfOur() { }
+    public CustomaizedPaginationFilterfour(int pageNumber, int pageSize) : base(pageNumber, pageSize) { }
+    public CustomaizedPaginationFilterfour() { }
 
     public string? keyword { get; init; }
     public int? IntValue { get; init; }
