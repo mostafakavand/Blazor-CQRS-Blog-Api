@@ -1,6 +1,7 @@
 using Dayana.Server.Api.Extensions.DependencyInjection;
 using Dayana.Server.Api.Extensions.Middleware;
 using Serilog;
+using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ Log.Logger = new LoggerConfiguration()
         .CreateLogger();
 builder.Host.UseSerilog().
     ConfigureLogging(loggingConfiguration => loggingConfiguration.ClearProviders());
+
+builder.Services.AddSyncfusionBlazor();
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjQyN0AzMjMwMkUzMzJFMzBPcFQ2bVNrT1RpOWNSQlo5cDduRG83STVVUlhGcmcrNnRKOU9GTk5JV2o0PQ==");
 
 
 //builder.Services.AddMudServices();
