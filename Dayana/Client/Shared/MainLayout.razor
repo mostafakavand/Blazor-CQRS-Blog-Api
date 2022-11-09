@@ -1,20 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @using Dayana.Client.Shared
 @using MudBlazor
-@*<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <article class="content px-4" style="background-image:src('/media/green-girl.jpg')">
-            @Body
-        </article>
-    </main>
-</div>*@
-
-
-
 <MudLayout>
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
@@ -22,8 +8,8 @@
         <MudSpacer />
         <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
-        @*NavMenu*@
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always5" Elevation="2">
+        <NavMenu />
     </MudDrawer>
     <MudMainContent>
         @Body
@@ -38,8 +24,6 @@
         _drawerOpen = !_drawerOpen;
     }
 }
-
-
 
 <MudThemeProvider/>
 <MudDialogProvider/>
