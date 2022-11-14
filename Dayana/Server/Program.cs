@@ -1,7 +1,8 @@
 using Dayana.Server.Api.Extensions.DependencyInjection;
 using Dayana.Server.Api.Extensions.Middleware;
+using MudBlazor;
+using MudBlazor.Services;
 using Serilog;
-using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +17,6 @@ Log.Logger = new LoggerConfiguration()
         .CreateLogger();
 builder.Host.UseSerilog().
     ConfigureLogging(loggingConfiguration => loggingConfiguration.ClearProviders());
-
-builder.Services.AddSyncfusionBlazor();
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjQyN0AzMjMwMkUzMzJFMzBPcFQ2bVNrT1RpOWNSQlo5cDduRG83STVVUlhGcmcrNnRKOU9GTk5JV2o0PQ==");
 
 
 //builder.Services.AddMudServices();
@@ -37,6 +35,14 @@ try
     builder.Services.AddConfiguredMediatR();
 
     builder.Services.AddMvc();
+
+    builder.Services.AddMudServices(config =>
+    {
+        config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.TopCenter;
+        config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+        config.SnackbarConfiguration.ShowCloseIcon = true;
+        config.SnackbarConfiguration.MaxDisplayedSnackbars = 2;
+    });
     #endregion
 
     var app = builder.Build();
