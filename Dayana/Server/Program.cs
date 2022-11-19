@@ -1,7 +1,5 @@
 using Dayana.Server.Api.Extensions.DependencyInjection;
 using Dayana.Server.Api.Extensions.Middleware;
-using MudBlazor;
-using MudBlazor.Services;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,13 +34,6 @@ try
 
     builder.Services.AddMvc();
 
-    builder.Services.AddMudServices(config =>
-    {
-        config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.TopCenter;
-        config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
-        config.SnackbarConfiguration.ShowCloseIcon = true;
-        config.SnackbarConfiguration.MaxDisplayedSnackbars = 2;
-    });
     #endregion
 
     var app = builder.Build();

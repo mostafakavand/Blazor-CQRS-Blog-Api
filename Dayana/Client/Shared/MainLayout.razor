@@ -1,30 +1,17 @@
 ﻿@inherits LayoutComponentBase
-@using Dayana.Client.Shared
-@using MudBlazor
-<MudLayout>
-    <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Application</MudText>
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
-    </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Style="background-image: linear-gradient(to right, white, black);">
+
+<div class="page">
+    <div class="sidebar">
         <NavMenu />
-    </MudDrawer>
-    <MudMainContent>
-        @Body
-    </MudMainContent>
-</MudLayout>
+    </div>
 
-@code {
-    bool _drawerOpen = true;
+    <main>
+        <div class="top-row px-4">
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
 
-    void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
-}
-
-<MudThemeProvider/>
-<MudDialogProvider/>
-<MudSnackbarProvider/>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
