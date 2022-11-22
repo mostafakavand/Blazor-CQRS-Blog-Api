@@ -21,4 +21,8 @@
 		<ProjectReference Include="..\Shared\Dayana.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="wwwroot\media\" />
+	</ItemGroup>
+
 </Project>
