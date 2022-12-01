@@ -1,5 +1,4 @@
 ﻿using Dayana.Shared.Basic.ConfigAndConstants.Configs;
-using Dayana.Shared.Basic.MethodsAndObjects.HealthChecks;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.UnitOfWorks;
@@ -40,10 +39,7 @@ public static class ServiceInjection
           options.UseSqlServer(configuration.GetConnectionString("ServerDbConnection"))
           .EnableDetailedErrors());
 
-        services.AddHealthChecks().AddCheck<GeneralHealthCheck>("general-check");
-
-
-        var rabbitConfig = configuration.GetSection(RabbitMQConfig.Key).Get<RabbitMQConfig>();
+                var rabbitConfig = configuration.GetSection(RabbitMQConfig.Key).Get<RabbitMQConfig>();
         services.AddMassTransit(x =>
         {
             x.SetKebabCaseEndpointNameFormatter();
