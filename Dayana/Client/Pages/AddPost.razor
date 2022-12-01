@@ -1,0 +1,19 @@
+﻿@page "/a-p-p-a-d-d-p-o-s-t"
+<style>
+    .box_border {
+        border: 3px dotted black;
+        border-radius: 10%;
+        margin-top:20%;
+    }
+</style>
+<div class="row accordion-body">
+    <EditForm class="box_border row justify-content-center  oi-vertical-align-center" Model="@model">
+        <div class="col-6  align-content-center">
+            <InputText class="row m-4" @bind-Value="model.Title"></InputText>
+            <InputText class="row m-4" @bind-Value="model.Summery"></InputText>
+            <InputTextArea class="row m-4" @bind-Value="model.TextContent"></InputTextArea>
+            <button type="submit" class="btn btn-success row m-4">Add Post</button>
+        </div>
+    </EditForm>
+</div>
+
