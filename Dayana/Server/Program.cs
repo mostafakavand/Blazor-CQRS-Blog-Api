@@ -17,8 +17,6 @@ builder.Host.UseSerilog().
     ConfigureLogging(loggingConfiguration => loggingConfiguration.ClearProviders());
 
 
-//builder.Services.AddMudServices();
-
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 try
 {
@@ -68,13 +66,10 @@ try
     app.MapRazorPages();
     app.MapControllers();
     app.UseRouting();
-
-    app.UseEndpoints(endpoints =>
-    {
-        endpoints.MapHealthChecks("/health");
-        endpoints.MapRazorPages(); // <- Add this (for prerendering)
-        endpoints.MapFallbackToPage("/_Host"); // <- Change method + file (for prerendering)
-    });
+    app.MapHealthChecks("/health");
+    app.MapRazorPages(); // <- Add this (for prerendering)
+    app.MapFallbackToPage("/_Host"); // <- Change method + file (for prerendering)
+  
     app.Run();
 
     #endregion

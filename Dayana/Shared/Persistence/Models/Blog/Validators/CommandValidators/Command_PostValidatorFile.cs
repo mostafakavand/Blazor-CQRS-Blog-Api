@@ -67,8 +67,6 @@ public class DeletePostCommandValidator : AbstractValidator<DeletePostCommand>
 
 #endregion
 
-
-
 #region post category
 public class CreatePostCategoryCommandValidator : AbstractValidator<CreatePostCategoryCommand>
 {
