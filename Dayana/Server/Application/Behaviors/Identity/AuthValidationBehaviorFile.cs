@@ -1,9 +1,9 @@
-﻿using Dayana.Server.Application.Validators.Identity.Auth;
-using Dayana.Shared.Infrastructure.Operations;
+﻿using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
 using MediatR;
 
-namespace Dayana.Server.Application.Behaviors.Identity.Auth;
+namespace Dayana.Server.Application.Behaviors.Identity;
+
 
 public class LoginCommandValidationBehavior<TRequest, TResponse> : IPipelineBehavior<LoginCommand, OperationResult>
 {
