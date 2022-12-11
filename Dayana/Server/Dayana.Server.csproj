@@ -39,8 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Handlers\Blog\" />
-    <Folder Include="Application\Specifications\Blog\" />
+    <Folder Include="Application\Validators\Blog\" />
   </ItemGroup>
 
 

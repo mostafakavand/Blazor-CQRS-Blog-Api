@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Dayana.Server.Application.Specifications.Identity.Claims;
-using Dayana.Server.Application.Specifications.Identity.Users;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
 using Dayana.Shared.Domains.Identity.Permissions;

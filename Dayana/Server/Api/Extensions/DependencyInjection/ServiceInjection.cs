@@ -39,7 +39,7 @@ public static class ServiceInjection
           options.UseSqlServer(configuration.GetConnectionString("ServerDbConnection"))
           .EnableDetailedErrors());
 
-                var rabbitConfig = configuration.GetSection(RabbitMQConfig.Key).Get<RabbitMQConfig>();
+        var rabbitConfig = configuration.GetSection(RabbitMQConfig.Key).Get<RabbitMQConfig>();
         services.AddMassTransit(x =>
         {
             x.SetKebabCaseEndpointNameFormatter();
