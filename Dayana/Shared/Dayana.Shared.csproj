@@ -36,8 +36,4 @@
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Persistence\EntityFrameWorkObjects\RepositoryObjects\Interfaces\BlogRepository\" />
-  </ItemGroup>
 </Project>
