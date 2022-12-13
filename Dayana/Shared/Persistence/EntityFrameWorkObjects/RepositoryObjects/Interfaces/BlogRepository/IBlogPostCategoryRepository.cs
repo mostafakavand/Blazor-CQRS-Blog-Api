@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dayana.Shared.Domains.Blog.BlogPosts;
+using Dayana.Shared.Infrastructure.Pagination;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.BlogRepository;
-internal class IBlogPostCategoryRepository
+public interface IBlogPostCategoryRepository : IRepository<PostCategory>
 {
+    Task<PostCategory> GetPostCategoryByIdAsync(int id);
+    Task<PostCategory> GetPostCategoryByPostnameAsync(string postCategoryname);
+    Task<List<PostCategory>> GetPostCategoriesByIdsAsync(IEnumerable<int> ids);
+    Task<List<PostCategory>> GetPostCategoriesByFilterAsync(DefaultPaginationFilter filter);
 }
