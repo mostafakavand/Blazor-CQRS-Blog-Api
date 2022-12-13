@@ -2,13 +2,13 @@
 using Dayana.Shared.Domains.Identity.Roles;
 using System.Linq.Expressions;
 
-namespace Dayana.Server.Application.Specifications.Identity.Roles;
+namespace Dayana.Server.Application.Specifications.Identity;
 
-public class DuplicateRoleSpecification : Specification<Role>
+public class DuplicateRoleSpecificationFile : Specification<Role>
 {
     private readonly string _title;
 
-    public DuplicateRoleSpecification(string title)
+    public DuplicateRoleSpecificationFile(string title)
     {
         _title = title;
     }

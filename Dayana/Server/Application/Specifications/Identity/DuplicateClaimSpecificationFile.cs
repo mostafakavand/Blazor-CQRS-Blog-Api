@@ -2,14 +2,14 @@
 using Dayana.Shared.Domains.Identity.Claims;
 using System.Linq.Expressions;
 
-namespace Dayana.Server.Application.Specifications.Identity.Claims;
+namespace Dayana.Server.Application.Specifications.Identity;
 
-public class DuplicateClaimSpecification : Specification<Claim>
+public class DuplicateClaimSpecificationFile : Specification<Claim>
 {
     private readonly int _userId;
     private readonly int _permissionId;
 
-    public DuplicateClaimSpecification(int userId, int permissionId)
+    public DuplicateClaimSpecificationFile(int userId, int permissionId)
     {
         _userId = userId;
         _permissionId = permissionId;

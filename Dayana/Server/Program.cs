@@ -69,7 +69,7 @@ try
     app.MapHealthChecks("/health");
     app.MapRazorPages(); // <- Add this (for prerendering)
     app.MapFallbackToPage("/_Host"); // <- Change method + file (for prerendering)
-  
+
     app.Run();
 
     #endregion

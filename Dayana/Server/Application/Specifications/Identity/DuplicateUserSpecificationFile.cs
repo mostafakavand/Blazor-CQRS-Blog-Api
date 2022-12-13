@@ -2,13 +2,13 @@
 using Dayana.Shared.Domains.Identity.Users;
 using System.Linq.Expressions;
 
-namespace Dayana.Server.Application.Specifications.Identity.Users;
+namespace Dayana.Server.Application.Specifications.Identity;
 
-public class DuplicateUserSpecification : Specification<User>
+public class DuplicateUserSpecificationFile : Specification<User>
 {
     private readonly string _username;
 
-    public DuplicateUserSpecification(string username)
+    public DuplicateUserSpecificationFile(string username)
     {
         _username = username;
     }
