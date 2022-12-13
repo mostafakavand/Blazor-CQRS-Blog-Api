@@ -1,0 +1,11 @@
+﻿using Dayana.Shared.Domains.Blog.BlogPosts;
+using Dayana.Shared.Infrastructure.Pagination;
+
+namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.BlogRepository;
+public interface BlogPostCategoryRepository : IRepository<PostCategory>
+{
+    Task<PostCategory> GetPostCategoryByIdAsync(int id);
+    Task<PostCategory> GetPostCategoryByPostnameAsync(string postCategoryname);
+    Task<List<PostCategory>> GetPostCategoriesByIdsAsync(IEnumerable<int> ids);
+    Task<List<PostCategory>> GetPostCategoriesByFilterAsync(DefaultPaginationFilter filter);
+}
