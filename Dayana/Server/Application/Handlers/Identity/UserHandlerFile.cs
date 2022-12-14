@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Dayana.Server.Application.Specifications.Identity;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants;
 using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
 using Dayana.Shared.Domains.Identity.Permissions;
@@ -27,7 +28,7 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, OperationRes
     public async Task<OperationResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         var isExist = await _unitOfWork.Users
-            .ExistsAsync(new DuplicateUserSpecification(request.Username).ToExpression());
+            .ExistsAsync(new DuplicateUserSpecificationFile(request.Username).ToExpression());
 
         if (isExist)
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<User>.DuplicateError("user name"));
@@ -64,7 +65,7 @@ public class CreateUserPermissionHandler : IRequestHandler<CreateUserPermissionC
     public async Task<OperationResult> Handle(CreateUserPermissionCommand request, CancellationToken cancellationToken)
     {
         var isExist = await _unitOfWork.Claims
-            .ExistsAsync(new DuplicateClaimSpecification(request.PermissionId, request.UserId).ToExpression());
+            .ExistsAsync(new DuplicateClaimSpecificationFile(request.PermissionId, request.UserId).ToExpression());
 
         if (isExist)
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Permission>.NotFoundError("user Id and permission id"));

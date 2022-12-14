@@ -1,12 +1,7 @@
-﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
-using Dayana.Shared.Domains.Blog.BlogPosts;
-using Dayana.Shared.Domains.Identity.Users;
+﻿using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Infrastructure.Pagination;
-using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories;
-using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.BlogRepository;

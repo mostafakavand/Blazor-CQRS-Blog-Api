@@ -1,11 +1,6 @@
 ﻿using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Infrastructure.Pagination;
 using Dayana.Shared.Persistence.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dayana.Shared.Persistence.Extensions.Blog;
 public static class PostCategoryQueryableExtension
