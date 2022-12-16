@@ -6,7 +6,6 @@ namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Int
 public interface IPostCategoryIssueRepository : IRepository<PostCategoryIssue>
 {
     Task<PostCategoryIssue> GetPostCategoryIssueByIdAsync(int id);
-    Task<PostCategoryIssue> GetPostCategoryIssueByPostCategoryIssuenameAsync(string PostCategoryIssuename);
-    Task<List<PostCategoryIssue>> GetPostCategoryIssuesByIdsAsync(IEnumerable<int> ids);
+    Task<PostCategoryIssue> GetPostCategoryIssueByTitleAsync(string PostCategoryIssuename);
     Task<List<PostCategoryIssue>> GetPostCategoryIssuesByFilterAsync(DefaultPaginationFilter filter);
 }

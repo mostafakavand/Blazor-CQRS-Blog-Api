@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Dayana.Server.Application.Specifications.Identity;
 using Dayana.Shared.Basic.MethodsAndObjects.Helpers;
 using Dayana.Shared.Domains.Identity.Roles;
 using Dayana.Shared.Infrastructure.Errors;
@@ -25,7 +26,7 @@ public class CreateRoleHandler : IRequestHandler<CreateRoleCommand, OperationRes
     public async Task<OperationResult> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
     {
         var isExist = await _unitOfWork.Roles
-            .ExistsAsync(new DuplicateRoleSpecification(request.Title).ToExpression());
+            .ExistsAsync(new DuplicateRoleSpecificationFile(request.Title).ToExpression());
 
         if (isExist)
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.NotFoundError("title"));
@@ -137,7 +138,7 @@ public class UpdateRoleHandler : IRequestHandler<UpdateRoleCommand, OperationRes
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.NotFoundError("role id"));
 
         var isExist = await _unitOfWork.Roles
-            .ExistsAsync(new DuplicateRoleSpecification(request.Title).ToExpression());
+            .ExistsAsync(new DuplicateRoleSpecificationFile(request.Title).ToExpression());
 
         if (isExist && role.Title != request.Title)
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Role>.DuplicateError("title"));

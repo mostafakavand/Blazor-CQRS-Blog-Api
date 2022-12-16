@@ -6,6 +6,5 @@ public interface IBlogPostCategoryRepository : IRepository<PostCategory>
 {
     Task<PostCategory> GetPostCategoryByIdAsync(int id);
     Task<PostCategory> GetPostCategoryByPostnameAsync(string postCategoryname);
-    Task<List<PostCategory>> GetPostCategoriesByIdsAsync(IEnumerable<int> ids);
     Task<List<PostCategory>> GetPostCategoriesByFilterAsync(DefaultPaginationFilter filter);
 }

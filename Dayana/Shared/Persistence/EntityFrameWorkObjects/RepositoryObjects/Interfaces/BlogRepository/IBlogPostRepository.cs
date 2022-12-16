@@ -7,6 +7,5 @@ public interface IBlogPostRepository : IRepository<Post>
 {
     Task<Post> GetPostByIdAsync(int id);
     Task<Post> GetPostByPostnameAsync(string Postname);
-    Task<List<Post>> GetPostsByIdsAsync(IEnumerable<int> ids);
     Task<List<Post>> GetPostsByFilterAsync(DefaultPaginationFilter filter);
 }

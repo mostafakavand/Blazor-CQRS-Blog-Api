@@ -1,12 +1,9 @@
 ﻿using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Domains.Blog.BlogPosts;
-using Dayana.Shared.Domains.Identity.Users;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Infrastructure.Pagination;
-using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.IdentityRepositories;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories;
-using Dayana.Shared.Persistence.Extensions.Identity;
-using Dayana.Shared.Persistence.Models.Enums;
+using Dayana.Shared.Persistence.Extensions.Blog;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.BlogRepository;
@@ -21,14 +18,16 @@ public class BlogPostCategoryRepository : Repository<PostCategory>, IBlogPostCat
         _queryable = DbContext.Set<PostCategory>();
     }
 
-    public Task<List<PostCategory>> GetPostCategoriesByFilterAsync(DefaultPaginationFilter filter)
+    public async Task<List<PostCategory>> GetPostCategoriesByFilterAsync(DefaultPaginationFilter filter)
     {
-        throw new NotImplementedException();
-    }
+        var query = _queryable;
 
-    public Task<List<PostCategory>> GetPostCategoriesByIdsAsync(IEnumerable<int> ids)
-    {
-        throw new NotImplementedException();
+        query = query.AsNoTracking();
+
+        query = query.ApplyFilter(filter);
+        query = query.ApplySort((filter.SortBy));
+
+        return await query.Paginate(filter.Page, filter.PageSize).ToListAsync();
     }
 
     public async Task<PostCategory> GetPostCategoryByIdAsync(int id)

@@ -6,7 +6,5 @@ namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Int
 public interface IPostIssueCommentRepository : IRepository<PostIssueComment>
 {
     Task<PostIssueComment> GetPostIssueCommentByIdAsync(int id);
-    Task<PostIssueComment> GetPostIssueCommentByPostnameAsync(string postCategoryIssueCommentname);
-    Task<List<PostIssueComment>> GetPostCategoriesByIdsAsync(IEnumerable<int> ids);
-    Task<List<PostIssueComment>> GetPostCategoriesByFilterAsync(DefaultPaginationFilter filter);
+    Task<List<PostIssueComment>> GetPostIssueCommentsByFilterAsync(DefaultPaginationFilter filter);
 }

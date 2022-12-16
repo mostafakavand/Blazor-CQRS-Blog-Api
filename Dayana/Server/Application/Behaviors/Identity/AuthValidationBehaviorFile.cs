@@ -1,5 +1,6 @@
 ﻿using Dayana.Shared.Infrastructure.Operations;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
+using Dayana.Shared.Persistence.Models.Identity.Validators.CommandValidators;
 using MediatR;
 
 namespace Dayana.Server.Application.Behaviors.Identity;
