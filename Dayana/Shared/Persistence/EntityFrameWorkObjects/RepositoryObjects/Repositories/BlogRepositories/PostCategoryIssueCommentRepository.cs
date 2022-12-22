@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.BlogRepository;
 
-public class BlogPostCategoryIssueCommentRepository : Repository<PostCategoryIssueComment>, IPostCategoryIssueCommentRepository
+public class PostCategoryIssueCommentRepository : Repository<PostCategoryIssueComment>, IPostCategoryIssueCommentRepository
 {
     private readonly IQueryable<PostCategoryIssueComment> _queryable;
 
 
-    public BlogPostCategoryIssueCommentRepository(AppDbContext context) : base(context)
+    public PostCategoryIssueCommentRepository(AppDbContext context) : base(context)
     {
         _queryable = DbContext.Set<PostCategoryIssueComment>();
     }
