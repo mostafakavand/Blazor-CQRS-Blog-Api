@@ -143,8 +143,6 @@ public class GetUsersByFilterHandler : IRequestHandler<GetUsersByFilterQuery, Op
 
     public async Task<OperationResult> Handle(GetUsersByFilterQuery request, CancellationToken cancellationToken)
     {
-        //request.Filter.Include = new UserIncludes { Role = true };
-
         var entities = await _unitOfWork.Users.GetUsersByFilterAsync(request.Filter);
 
         var models = _mapper.Map<List<UserModel>>(entities);

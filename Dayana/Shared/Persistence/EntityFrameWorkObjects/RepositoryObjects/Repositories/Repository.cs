@@ -28,7 +28,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, I
 
     #endregion
 
-    #region Commands
+    #region Sync Commands
 
     public void Add(TEntity entity)
     {
@@ -58,6 +58,20 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, I
     public void UpdateRange(IEnumerable<TEntity> entities)
     {
         DbContext.Set<TEntity>().UpdateRange(entities);
+    }
+
+    #endregion
+
+    #region Async Commands
+
+    public async Task AddAsync(TEntity entity)
+    {
+        await DbContext.Set<TEntity>().AddAsync(entity);
+    }
+
+    public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+    {
+        await DbContext.Set<TEntity>().AddRangeAsync(entities);
     }
 
     #endregion
