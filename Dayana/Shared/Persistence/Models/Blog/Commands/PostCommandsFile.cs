@@ -14,6 +14,7 @@ public record CreatePostCommand : IRequestInfo, IRequest<OperationResult>
     public string Title { get; set; }
     public string Summery { get; set; }
     public string TextContent { get; set; }
+    public string PostCategoryEId { get; set; }
     public RequestInfo RequestInfo { get; private set; }
 }
 
