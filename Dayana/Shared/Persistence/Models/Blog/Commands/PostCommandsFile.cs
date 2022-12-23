@@ -53,6 +53,7 @@ public record CreatePostCategoryCommand : IRequestInfo, IRequest<OperationResult
         RequestInfo = requestInfo;
     }
     public string CategoryTitle { get; set; }
+    public string CategorySubject { get; set; }
     public string CategoryIcon { get; set; }
 
     public RequestInfo RequestInfo { get; set; }
@@ -76,6 +77,7 @@ public record UpdatePostCategoryCommand : IRequestInfo, IRequest<OperationResult
     }
     public int Id { get; set; }
     public string CategoryTitle { get; set; }
+    public string CategorySubject { get; set; }
     public string CategoryIcon { get; set; }
 
     public RequestInfo RequestInfo { get; set; }
