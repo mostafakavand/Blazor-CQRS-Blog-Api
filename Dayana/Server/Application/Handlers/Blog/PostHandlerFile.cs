@@ -9,6 +9,7 @@ using Dayana.Shared.Persistence.Models.Blog.Base;
 using Dayana.Shared.Persistence.Models.Blog.Commands;
 using Dayana.Shared.Persistence.Models.Blog.Queries;
 using MediatR;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dayana.Server.Application.Handlers.Blog;
 
@@ -73,7 +74,7 @@ public class UpdatePostHandler : IRequestHandler<UpdatePostCommand, OperationRes
             _unitOfWork.Dispose();
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<Post>.DuplicateError("Post name"));
         }
-
+        var data = await _unitOfWork.BlogPosts.GetPostByIdAsync(request.Id);
         var entity = new Post()
         {
             Id = request.Id,
@@ -85,6 +86,9 @@ public class UpdatePostHandler : IRequestHandler<UpdatePostCommand, OperationRes
             Summary = request.Summery,
             UpdatedAt = DateTime.UtcNow,
             UpdaterId = request.RequestInfo.UserId,
+            //-------------------------//
+            CreatedAt = data.CreatedAt,
+            CreatorId = data.CreatorId
         };
 
         _unitOfWork.BlogPosts.Update(entity);
@@ -161,7 +165,8 @@ public class GetPostByFilterHandler : IRequestHandler<GetPostByFilterQuery, Oper
         if (entityList == null)
         {
             _unitOfWork.Dispose();
-            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostCategory>.DuplicateError("e"));
+            return new OperationResult(OperationResultStatus.UnProcessable, 
+                value: GenericErrors<PostCategory>.NotFoundError("filter"));
         }
 
         _unitOfWork.Dispose();
@@ -229,16 +234,18 @@ public class UpdatePostCategoryHandler : IRequestHandler<UpdatePostCategoryComma
             _unitOfWork.Dispose();
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostCategory>.DuplicateError("PostCategory name"));
         }
-
+        var data = await _unitOfWork.BlogPostCategories.GetPostCategoryByIdAsync(request.Id);
         var entity = new PostCategory()
         {
             Id = request.Id,
             CategoryTitle = request.CategoryTitle,
             CategoryIcon = request.CategoryTitle,
             CategorySubject = request.CategorySubject,
-            CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
             UpdaterId = request.RequestInfo.UserId,
+            //-------------------------//
+            CreatedAt = data.CreatedAt,
+            CreatorId = data.CreatorId
         };
 
         _unitOfWork.BlogPostCategories.Update(entity);
