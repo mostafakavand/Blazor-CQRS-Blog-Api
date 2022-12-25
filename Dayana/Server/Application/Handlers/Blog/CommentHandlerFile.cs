@@ -296,3 +296,147 @@ public class GetPostIssueCommentByFilterHandler : IRequestHandler<GetPostIssueCo
 }
 
 #endregion
+
+
+#region PostCategoryIssueComment
+
+public class CreatePostCategoryIssueCommentHandler : IRequestHandler<CreatePostCategoryIssueCommentCommand, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+
+    public CreatePostCategoryIssueCommentHandler(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<OperationResult> Handle(CreatePostCategoryIssueCommentCommand request, CancellationToken cancellationToken)
+    {
+
+
+        var entity = new PostCategoryIssueComment()
+        {
+            ReplyToCommentId = request.ReplyToCommentId,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            CreatorId = request.RequestInfo.UserId,
+            CommentText = request.CommentText,
+            PostCategoryIssueId = request.PostCategoryIssueId,
+            IsReply = request.IsReply,
+            CommentOwnerId = request.CommentOwnerId,
+        };
+
+        await _unitOfWork.PostCategoryIssueComments.AddAsync(entity);
+        await _unitOfWork.CommitAsync();
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true);
+    }
+}
+
+public class UpdatePostCategoryIssueCommentHandler : IRequestHandler<UpdatePostCategoryIssueCommentCommand, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+
+    public UpdatePostCategoryIssueCommentHandler(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<OperationResult> Handle(UpdatePostCategoryIssueCommentCommand request, CancellationToken cancellationToken)
+    {
+
+        var entity = new PostCategoryIssueComment()
+        {
+            Id = request.Id,
+            ReplyToCommentId = request.ReplyToCommentId,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            UpdaterId = request.RequestInfo.UserId,
+            CommentText = request.CommentText,
+            PostCategoryIssueId = request.PostCategoryIssueId,
+            IsReply = request.IsReply,
+            CommentOwnerId = request.CommentOwnerId,
+        };
+
+        _unitOfWork.PostCategoryIssueComments.Update(entity);
+        await _unitOfWork.CommitAsync();
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true);
+    }
+}
+
+public class DeletePostCategoryIssueCommentHandler : IRequestHandler<DeletePostCategoryIssueCommentCommand, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+
+    public DeletePostCategoryIssueCommentHandler(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<OperationResult> Handle(DeletePostCategoryIssueCommentCommand request, CancellationToken cancellationToken)
+    {
+        var entity = await _unitOfWork.PostCategoryIssueComments.GetPostCategoryIssueCommentByIdAsync(request.Id);
+
+        if (entity == null)
+        {
+            _unitOfWork.Dispose();
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostCategoryIssueComment>.NotFoundError("id"));
+        }
+
+        _unitOfWork.PostCategoryIssueComments.Remove(entity);
+        await _unitOfWork.CommitAsync();
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true);
+    }
+}
+
+public class GetPostCategoryIssueCommentByIdHandler : IRequestHandler<GetPostCategoryIssueCommentByIdQuery, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    public GetPostCategoryIssueCommentByIdHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    {
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
+    }
+
+    public async Task<OperationResult> Handle(GetPostCategoryIssueCommentByIdQuery request, CancellationToken cancellationToken)
+    {
+        var entity = await _unitOfWork.PostCategoryIssueComments.GetPostCategoryIssueCommentByIdAsync(request.PostCategoryIssueId);
+        if (entity == null)
+        {
+            _unitOfWork.Dispose();
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostCategoryIssueComment>.NotFoundError("id"));
+        }
+
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true, value: _mapper.Map<PostCategoryIssueCommentModel>(entity));
+    }
+}
+
+public class GetPostCategoryIssueCommentByFilterHandler : IRequestHandler<GetPostCategoryIssueCommentByFilterQuery, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+
+    public GetPostCategoryIssueCommentByFilterHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    {
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
+    }
+
+    public async Task<OperationResult> Handle(GetPostCategoryIssueCommentByFilterQuery request, CancellationToken cancellationToken)
+    {
+        var entityList = await _unitOfWork.PostCategoryIssueComments.GetPostCategoryIssueCommentsByFilterAsync(filter: request.Filter);
+        if (entityList == null)
+        {
+            _unitOfWork.Dispose();
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostCategoryIssueComment>.DuplicateError("filter"));
+        }
+
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true, value: _mapper.Map<List<PostCategoryIssueCommentModel>>(entityList));
+    }
+}
+
+#endregion

@@ -195,7 +195,7 @@ public class CreatePostCategoryIssueHandler : IRequestHandler<CreatePostCategory
         {
             IssueDescription= request.IssueDescription,
             IssueTitle= request.IssueTitle,
-            PostId= request.PostId,
+            PostCategoryId= request.PostCategoryId,
             IssueWriterId = request.RequestInfo.UserId,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
@@ -228,13 +228,13 @@ public class UpdatePostCategoryIssueHandler : IRequestHandler<UpdatePostCategory
             _unitOfWork.Dispose();
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostCategoryIssue>.DuplicateError("PostCategoryIssue name"));
         }
-        var data = await _unitOfWork.PostCategoryIssues.GetPostCategoryIssueByIdAsync(request.PosIssueId);
+        var data = await _unitOfWork.PostCategoryIssues.GetPostCategoryIssueByIdAsync(request.Id);
         var entity = new PostCategoryIssue()
         {
-            Id = request.PosIssueId,
+            Id = request.Id,
             IssueDescription = request.IssueDescription,
             IssueTitle = request.IssueTitle,
-            PostId = request.PostId,
+            PostCategoryId = request.PostCategoryId,
             IssueWriterId = request.RequestInfo.UserId,
             UpdatedAt = DateTime.UtcNow,
             UpdaterId = request.RequestInfo.UserId,
