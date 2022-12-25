@@ -6,20 +6,20 @@ namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Rep
 public class UnitOfWork : IUnitOfWork
 {
     private readonly AppDbContext _context;
-   
-    public IBlogPostCategoryRepository BlogPostCategories { get;}
 
-    public IBlogPostRepository BlogPosts { get;}
+    public IBlogPostCategoryRepository BlogPostCategories { get; }
 
-    public IPostCategoryIssueCommentRepository PostCategoryIssueComments { get;}
+    public IBlogPostRepository BlogPosts { get; }
 
-    public IPostCategoryIssueRepository PostCategoryIssue { get;}
+    public IPostCategoryIssueCommentRepository PostCategoryIssueComments { get; }
 
-    public IPostCommentRepository PostComments { get;}
+    public IPostCategoryIssueRepository PostCategoryIssues { get; }
 
-    public IPostIssueCommentRepository PostIssueComments { get;}
+    public IPostCommentRepository PostComments { get; }
 
-    public IPostIssueRepository PostIssues { get;}
+    public IPostIssueCommentRepository PostIssueComments { get; }
+
+    public IPostIssueRepository PostIssues { get; }
 
     public async Task<bool> CommitAsync()
     {
@@ -38,7 +38,7 @@ public class UnitOfWork : IUnitOfWork
         BlogPostCategories = new BlogPostCategoryRepository(_context);
         BlogPosts = new BlogPostRepository(_context);
         PostCategoryIssueComments = new PostCategoryIssueCommentRepository(_context);
-        PostCategoryIssue = new PostCategoryIssueRepository(_context);
+        PostCategoryIssues = new PostCategoryIssueRepository(_context);
         PostComments = new PostCommentRepository(_context);
         PostIssueComments = new PostIssueCommentRepository(_context);
         PostIssues = new PostIssueRepository(_context);

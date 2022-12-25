@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Dayana.Server.Application.Specifications.Blog;
-using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Domains.Blog.BlogPosts;
 using Dayana.Shared.Infrastructure.Errors;
 using Dayana.Shared.Infrastructure.Operations;
@@ -9,7 +8,6 @@ using Dayana.Shared.Persistence.Models.Blog.Base;
 using Dayana.Shared.Persistence.Models.Blog.Commands;
 using Dayana.Shared.Persistence.Models.Blog.Queries;
 using MediatR;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dayana.Server.Application.Handlers.Blog;
 
@@ -165,7 +163,7 @@ public class GetPostByFilterHandler : IRequestHandler<GetPostByFilterQuery, Oper
         if (entityList == null)
         {
             _unitOfWork.Dispose();
-            return new OperationResult(OperationResultStatus.UnProcessable, 
+            return new OperationResult(OperationResultStatus.UnProcessable,
                 value: GenericErrors<PostCategory>.NotFoundError("filter"));
         }
 

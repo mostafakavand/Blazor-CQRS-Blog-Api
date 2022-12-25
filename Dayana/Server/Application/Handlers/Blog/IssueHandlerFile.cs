@@ -35,9 +35,9 @@ public class CreatePostIssueHandler : IRequestHandler<CreatePostIssueCommand, Op
 
         var entity = new PostIssue()
         {
-            IssueDescription= request.IssueDescription,
-            IssueTitle= request.IssueTitle,
-            PostId= request.PostId,
+            IssueDescription = request.IssueDescription,
+            IssueTitle = request.IssueTitle,
+            PostId = request.PostId,
             IssueWriterId = request.RequestInfo.UserId,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
@@ -182,7 +182,7 @@ public class CreatePostCategoryIssueHandler : IRequestHandler<CreatePostCategory
 
     public async Task<OperationResult> Handle(CreatePostCategoryIssueCommand request, CancellationToken cancellationToken)
     {
-        var isExist = await _unitOfWork.PostCategoryIssue
+        var isExist = await _unitOfWork.PostCategoryIssues
             .ExistsAsync(new DuplicatePostCategoryIssueSpecification(request.IssueTitle).ToExpression());
 
         if (isExist)
@@ -193,9 +193,9 @@ public class CreatePostCategoryIssueHandler : IRequestHandler<CreatePostCategory
 
         var entity = new PostCategoryIssue()
         {
-            IssueDescription= request.IssueDescription,
-            IssueTitle= request.IssueTitle,
-            PostId= request.PostId,
+            IssueDescription = request.IssueDescription,
+            IssueTitle = request.IssueTitle,
+            PostCategoryId = request.PostCategoryId,
             IssueWriterId = request.RequestInfo.UserId,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
@@ -228,13 +228,13 @@ public class UpdatePostCategoryIssueHandler : IRequestHandler<UpdatePostCategory
             _unitOfWork.Dispose();
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostCategoryIssue>.DuplicateError("PostCategoryIssue name"));
         }
-        var data = await _unitOfWork.PostCategoryIssues.GetPostCategoryIssueByIdAsync(request.PosIssueId);
+        var data = await _unitOfWork.PostCategoryIssues.GetPostCategoryIssueByIdAsync(request.Id);
         var entity = new PostCategoryIssue()
         {
-            Id = request.PosIssueId,
+            Id = request.Id,
             IssueDescription = request.IssueDescription,
             IssueTitle = request.IssueTitle,
-            PostId = request.PostId,
+            PostCategoryId = request.PostCategoryId,
             IssueWriterId = request.RequestInfo.UserId,
             UpdatedAt = DateTime.UtcNow,
             UpdaterId = request.RequestInfo.UserId,
@@ -288,7 +288,7 @@ public class GetPostCategoryIssueByIdHandler : IRequestHandler<GetPostCategoryIs
 
     public async Task<OperationResult> Handle(GetPostCategoryIssueByIdQuery request, CancellationToken cancellationToken)
     {
-        var entity = await _unitOfWork.PostCategoryIssues.GetPostCategoryIssueByIdAsync(request.PostCategoryIssueId);
+        var entity = await _unitOfWork.PostCategoryIssues.GetPostCategoryIssueByIdAsync(request.Id);
         if (entity == null)
         {
             _unitOfWork.Dispose();
