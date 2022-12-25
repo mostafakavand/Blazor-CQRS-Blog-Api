@@ -182,7 +182,7 @@ public class CreatePostCategoryIssueHandler : IRequestHandler<CreatePostCategory
 
     public async Task<OperationResult> Handle(CreatePostCategoryIssueCommand request, CancellationToken cancellationToken)
     {
-        var isExist = await _unitOfWork.PostCategoryIssue
+        var isExist = await _unitOfWork.PostCategoryIssues
             .ExistsAsync(new DuplicatePostCategoryIssueSpecification(request.IssueTitle).ToExpression());
 
         if (isExist)
@@ -288,7 +288,7 @@ public class GetPostCategoryIssueByIdHandler : IRequestHandler<GetPostCategoryIs
 
     public async Task<OperationResult> Handle(GetPostCategoryIssueByIdQuery request, CancellationToken cancellationToken)
     {
-        var entity = await _unitOfWork.PostCategoryIssues.GetPostCategoryIssueByIdAsync(request.PostCategoryIssueId);
+        var entity = await _unitOfWork.PostCategoryIssues.GetPostCategoryIssueByIdAsync(request.Id);
         if (entity == null)
         {
             _unitOfWork.Dispose();

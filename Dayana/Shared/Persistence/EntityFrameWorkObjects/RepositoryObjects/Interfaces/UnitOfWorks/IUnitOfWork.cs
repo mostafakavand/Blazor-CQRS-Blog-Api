@@ -12,7 +12,7 @@ public interface IUnitOfWork : IDisposable
     IBlogPostCategoryRepository BlogPostCategories { get; }
     IBlogPostRepository BlogPosts { get; }
     IPostCategoryIssueCommentRepository PostCategoryIssueComments { get; }
-    IPostCategoryIssueRepository PostCategoryIssue { get; }
+    IPostCategoryIssueRepository PostCategoryIssues { get; }
     IPostCommentRepository PostComments { get; }
     IPostIssueCommentRepository PostIssueComments { get; }
     IPostIssueRepository PostIssues { get; }

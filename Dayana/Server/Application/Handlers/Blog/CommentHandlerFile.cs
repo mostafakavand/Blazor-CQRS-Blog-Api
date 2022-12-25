@@ -1,5 +1,11 @@
-﻿using Dayana.Shared.Infrastructure.Operations;
+﻿using AutoMapper;
+using Dayana.Shared.Domains.Blog.Comments;
+using Dayana.Shared.Infrastructure.Errors;
+using Dayana.Shared.Infrastructure.Operations;
+using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
+using Dayana.Shared.Persistence.Models.Blog.Base;
 using Dayana.Shared.Persistence.Models.Blog.Commands;
+using Dayana.Shared.Persistence.Models.Blog.Queries;
 using MediatR;
 
 namespace Dayana.Server.Application.Handlers.Blog;
@@ -17,29 +23,21 @@ public class CreatePostCommentHandler : IRequestHandler<CreatePostCommentCommand
 
     public async Task<OperationResult> Handle(CreatePostCommentCommand request, CancellationToken cancellationToken)
     {
-        var isExist = await _unitOfWork.BlogPostComments
-            .ExistsAsync(new DuplicatePostCommentSpecification(request.Title).ToExpression());
-
-        if (isExist)
-        {
-            _unitOfWork.Dispose();
-            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostComment>.DuplicateError("PostComment name"));
-        }
+       
 
         var entity = new PostComment()
         {
-            PostCommentTitle = request.Title,
-            PostCommentBody = request.TextContent,
-            PostCommentCategoryId = request.PostCommentCategoryId,
-            PostCommentWriterId = request.RequestInfo.UserId,
+            ReplyToCommentId = request.ReplyToCommentId,
             CreatedAt = DateTime.UtcNow,
-            Subject = request.Subject,
-            Summary = request.Summery,
             UpdatedAt = DateTime.UtcNow,
             CreatorId = request.RequestInfo.UserId,
+            CommentText= request.CommentText,
+            PostId= request.PostId,
+            IsReply= request.IsReply,
+            CommentOwnerId= request.CommentOwnerId,
         };
 
-        await _unitOfWork.BlogPostComments.AddAsync(entity);
+        await _unitOfWork.PostComments.AddAsync(entity);
         await _unitOfWork.CommitAsync();
         _unitOfWork.Dispose();
         return new OperationResult(OperationResultStatus.Ok, isPersistAble: true);
@@ -57,29 +55,21 @@ public class UpdatePostCommentHandler : IRequestHandler<UpdatePostCommentCommand
 
     public async Task<OperationResult> Handle(UpdatePostCommentCommand request, CancellationToken cancellationToken)
     {
-        var isExist = await _unitOfWork.BlogPostComments
-            .ExistsAsync(new DuplicatePostCommentSpecification(request.Title).ToExpression());
-
-        if (isExist)
-        {
-            _unitOfWork.Dispose();
-            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostComment>.DuplicateError("PostComment name"));
-        }
 
         var entity = new PostComment()
         {
             Id = request.Id,
-            PostCommentTitle = request.Title,
-            PostCommentBody = request.TextContent,
-            PostCommentCategoryId = request.PostCommentCategoryId,
-            PostCommentWriterId = request.RequestInfo.UserId,
-            Subject = request.Subject,
-            Summary = request.Summery,
+            ReplyToCommentId = request.ReplyToCommentId,
+            CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
             UpdaterId = request.RequestInfo.UserId,
+            CommentText = request.CommentText,
+            PostId = request.PostId,
+            IsReply = request.IsReply,
+            CommentOwnerId = request.CommentOwnerId,
         };
 
-        _unitOfWork.BlogPostComments.Update(entity);
+        _unitOfWork.PostComments.Update(entity);
         await _unitOfWork.CommitAsync();
         _unitOfWork.Dispose();
         return new OperationResult(OperationResultStatus.Ok, isPersistAble: true);
@@ -97,7 +87,7 @@ public class DeletePostCommentHandler : IRequestHandler<DeletePostCommentCommand
 
     public async Task<OperationResult> Handle(DeletePostCommentCommand request, CancellationToken cancellationToken)
     {
-        var entity = await _unitOfWork.BlogPostComments.GetPostCommentByIdAsync(request.Id);
+        var entity = await _unitOfWork.PostComments.GetPostCommentByIdAsync(request.Id);
 
         if (entity == null)
         {
@@ -105,7 +95,7 @@ public class DeletePostCommentHandler : IRequestHandler<DeletePostCommentCommand
             return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostComment>.NotFoundError("id"));
         }
 
-        _unitOfWork.BlogPostComments.Remove(entity);
+        _unitOfWork.PostComments.Remove(entity);
         await _unitOfWork.CommitAsync();
         _unitOfWork.Dispose();
         return new OperationResult(OperationResultStatus.Ok, isPersistAble: true);
@@ -124,7 +114,7 @@ public class GetPostCommentByIdHandler : IRequestHandler<GetPostCommentByIdQuery
 
     public async Task<OperationResult> Handle(GetPostCommentByIdQuery request, CancellationToken cancellationToken)
     {
-        var entity = await _unitOfWork.BlogPostComments.GetPostCommentByIdAsync(request.PostCommentId);
+        var entity = await _unitOfWork.PostComments.GetPostCommentByIdAsync(request.PostCommentId);
         if (entity == null)
         {
             _unitOfWork.Dispose();
@@ -149,15 +139,159 @@ public class GetPostCommentByFilterHandler : IRequestHandler<GetPostCommentByFil
 
     public async Task<OperationResult> Handle(GetPostCommentByFilterQuery request, CancellationToken cancellationToken)
     {
-        var entityList = await _unitOfWork.BlogPostComments.GetPostCommentsByFilterAsync(filter: request.Filter);
+        var entityList = await _unitOfWork.PostComments.GetPostCommentsByFilterAsync(filter: request.Filter);
         if (entityList == null)
         {
             _unitOfWork.Dispose();
-            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostCommentCategory>.DuplicateError("e"));
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostComment>.DuplicateError("filter"));
         }
 
         _unitOfWork.Dispose();
         return new OperationResult(OperationResultStatus.Ok, isPersistAble: true, value: _mapper.Map<List<PostCommentModel>>(entityList));
+    }
+}
+
+#endregion
+
+
+#region PostIssueComment
+
+public class CreatePostIssueCommentHandler : IRequestHandler<CreatePostIssueCommentCommand, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+
+    public CreatePostIssueCommentHandler(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<OperationResult> Handle(CreatePostIssueCommentCommand request, CancellationToken cancellationToken)
+    {
+
+
+        var entity = new PostIssueComment()
+        {
+            ReplyToCommentId = request.ReplyToCommentId,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            CreatorId = request.RequestInfo.UserId,
+            CommentText = request.CommentText,
+            PostIssueId = request.PostIssueId,
+            IsReply = request.IsReply,
+            CommentOwnerId = request.CommentOwnerId,
+        };
+
+        await _unitOfWork.PostIssueComments.AddAsync(entity);
+        await _unitOfWork.CommitAsync();
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true);
+    }
+}
+
+public class UpdatePostIssueCommentHandler : IRequestHandler<UpdatePostIssueCommentCommand, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+
+    public UpdatePostIssueCommentHandler(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<OperationResult> Handle(UpdatePostIssueCommentCommand request, CancellationToken cancellationToken)
+    {
+
+        var entity = new PostIssueComment()
+        {
+            Id = request.Id,
+            ReplyToCommentId = request.ReplyToCommentId,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            UpdaterId = request.RequestInfo.UserId,
+            CommentText = request.CommentText,
+            PostIssueId = request.PostIssueId,
+            IsReply = request.IsReply,
+            CommentOwnerId = request.CommentOwnerId,
+        };
+
+        _unitOfWork.PostIssueComments.Update(entity);
+        await _unitOfWork.CommitAsync();
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true);
+    }
+}
+
+public class DeletePostIssueCommentHandler : IRequestHandler<DeletePostIssueCommentCommand, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+
+    public DeletePostIssueCommentHandler(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<OperationResult> Handle(DeletePostIssueCommentCommand request, CancellationToken cancellationToken)
+    {
+        var entity = await _unitOfWork.PostIssueComments.GetPostIssueCommentByIdAsync(request.Id);
+
+        if (entity == null)
+        {
+            _unitOfWork.Dispose();
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostIssueComment>.NotFoundError("id"));
+        }
+
+        _unitOfWork.PostIssueComments.Remove(entity);
+        await _unitOfWork.CommitAsync();
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true);
+    }
+}
+
+public class GetPostIssueCommentByIdHandler : IRequestHandler<GetPostIssueCommentByIdQuery, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    public GetPostIssueCommentByIdHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    {
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
+    }
+
+    public async Task<OperationResult> Handle(GetPostIssueCommentByIdQuery request, CancellationToken cancellationToken)
+    {
+        var entity = await _unitOfWork.PostIssueComments.GetPostIssueCommentByIdAsync(request.PostIssueId);
+        if (entity == null)
+        {
+            _unitOfWork.Dispose();
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostIssueComment>.NotFoundError("id"));
+        }
+
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true, value: _mapper.Map<PostIssueCommentModel>(entity));
+    }
+}
+
+public class GetPostIssueCommentByFilterHandler : IRequestHandler<GetPostIssueCommentByFilterQuery, OperationResult>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+
+    public GetPostIssueCommentByFilterHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    {
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
+    }
+
+    public async Task<OperationResult> Handle(GetPostIssueCommentByFilterQuery request, CancellationToken cancellationToken)
+    {
+        var entityList = await _unitOfWork.PostIssueComments.GetPostIssueCommentsByFilterAsync(filter: request.Filter);
+        if (entityList == null)
+        {
+            _unitOfWork.Dispose();
+            return new OperationResult(OperationResultStatus.UnProcessable, value: GenericErrors<PostIssueComment>.DuplicateError("filter"));
+        }
+
+        _unitOfWork.Dispose();
+        return new OperationResult(OperationResultStatus.Ok, isPersistAble: true, value: _mapper.Map<List<PostIssueCommentModel>>(entityList));
     }
 }
 

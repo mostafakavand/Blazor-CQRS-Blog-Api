@@ -13,7 +13,7 @@ public class UnitOfWork : IUnitOfWork
 
     public IPostCategoryIssueCommentRepository PostCategoryIssueComments { get;}
 
-    public IPostCategoryIssueRepository PostCategoryIssue { get;}
+    public IPostCategoryIssueRepository PostCategoryIssues { get;}
 
     public IPostCommentRepository PostComments { get;}
 
@@ -38,7 +38,7 @@ public class UnitOfWork : IUnitOfWork
         BlogPostCategories = new BlogPostCategoryRepository(_context);
         BlogPosts = new BlogPostRepository(_context);
         PostCategoryIssueComments = new PostCategoryIssueCommentRepository(_context);
-        PostCategoryIssue = new PostCategoryIssueRepository(_context);
+        PostCategoryIssues = new PostCategoryIssueRepository(_context);
         PostComments = new PostCommentRepository(_context);
         PostIssueComments = new PostIssueCommentRepository(_context);
         PostIssues = new PostIssueRepository(_context);
