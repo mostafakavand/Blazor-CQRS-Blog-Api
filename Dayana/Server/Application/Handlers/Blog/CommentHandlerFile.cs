@@ -23,7 +23,7 @@ public class CreatePostCommentHandler : IRequestHandler<CreatePostCommentCommand
 
     public async Task<OperationResult> Handle(CreatePostCommentCommand request, CancellationToken cancellationToken)
     {
-       
+
 
         var entity = new PostComment()
         {
@@ -31,10 +31,10 @@ public class CreatePostCommentHandler : IRequestHandler<CreatePostCommentCommand
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
             CreatorId = request.RequestInfo.UserId,
-            CommentText= request.CommentText,
-            PostId= request.PostId,
-            IsReply= request.IsReply,
-            CommentOwnerId= request.CommentOwnerId,
+            CommentText = request.CommentText,
+            PostId = request.PostId,
+            IsReply = request.IsReply,
+            CommentOwnerId = request.CommentOwnerId,
         };
 
         await _unitOfWork.PostComments.AddAsync(entity);

@@ -35,9 +35,9 @@ public class CreatePostIssueHandler : IRequestHandler<CreatePostIssueCommand, Op
 
         var entity = new PostIssue()
         {
-            IssueDescription= request.IssueDescription,
-            IssueTitle= request.IssueTitle,
-            PostId= request.PostId,
+            IssueDescription = request.IssueDescription,
+            IssueTitle = request.IssueTitle,
+            PostId = request.PostId,
             IssueWriterId = request.RequestInfo.UserId,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
@@ -193,9 +193,9 @@ public class CreatePostCategoryIssueHandler : IRequestHandler<CreatePostCategory
 
         var entity = new PostCategoryIssue()
         {
-            IssueDescription= request.IssueDescription,
-            IssueTitle= request.IssueTitle,
-            PostCategoryId= request.PostCategoryId,
+            IssueDescription = request.IssueDescription,
+            IssueTitle = request.IssueTitle,
+            PostCategoryId = request.PostCategoryId,
             IssueWriterId = request.RequestInfo.UserId,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
