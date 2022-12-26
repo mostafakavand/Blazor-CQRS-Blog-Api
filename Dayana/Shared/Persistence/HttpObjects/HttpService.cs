@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dayana.Shared.Infrastructure.Errors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,20 +18,28 @@ public class HttpService : IHttpService
         _options = options;
     }
 
-    public Task<T> GetValue<T>()
+    public async Task<T> GetValue<T>(string requestUrl)
     {
-        throw new NotImplementedException();
+        var response = await _client.GetAsync(requestUrl);
+
+        var content = await response.Content.ReadAsStreamAsync();
+        if (!response.IsSuccessStatusCode)
+            throw new Exception("bad request | maybe wrong address");
+
+        return await JsonSerializer.DeserializeAsync<T>(content, _options);
     }
 
     public async Task<List<T>> GetValueList<T>(string requestUrl)
     {
         var response = await _client.GetAsync(requestUrl);
-        var content = await response.Content.ReadAsStringAsync();
+       
+        var content = await response.Content.ReadAsStreamAsync();
         if (!response.IsSuccessStatusCode)
-        {
-            throw new ApplicationException(content);
-        }
-        var dataList = JsonSerializer.Deserialize<List<T>>(content, _options);
-        return dataList;
+            throw new Exception("bad request | maybe wrong address");
+
+        return await JsonSerializer.DeserializeAsync<List<T>>(content, _options);
     }
 }
+//TODO: use this code for dynamic pagination
+//throw new ApplicationException(GenericErrors<T.ReferenceEquals>);
+// just look at "T.ReferenceEquals"
