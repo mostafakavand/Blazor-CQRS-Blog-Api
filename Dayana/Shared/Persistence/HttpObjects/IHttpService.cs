@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dayana.Shared.Infrastructure.Pagination;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,4 +11,9 @@ public interface IHttpService
 {
     Task<List<T>> GetValueList<T>(string requestUrl);
     Task<T> GetValue<T>(string requestUrl);
+    Task<HttpResponseMessage> PostValue<T>(string requestUrl,T data);
+    Task<HttpResponseMessage> PutValue<T>(string requestUrl, T data);
+    Task<HttpResponseMessage> PatchValue<T>(string requestUrl, T data);
+    Task<HttpResponseMessage> DeleteValue<T>(string requestUrl);
+    Task<PaginatedList<T>> GetPagedValue<T>(string requestUrl);
 }
