@@ -1,5 +1,5 @@
-﻿using Dayana.Server.Api.Routes;
-using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+﻿using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
+using Dayana.Shared.Infrastructure.Routes;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 

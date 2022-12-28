@@ -1,5 +1,6 @@
 ﻿@using System.Net.Http
 @using System.Net.Http.Json
+@using Dayana.Shared.Persistence.HttpObjects;
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
@@ -10,4 +11,5 @@
 @using Dayana.Client.Shared
 
 @inject IJSRuntime _JsRuntime;
-@inject HttpClient _httpClient;
+@inject HttpService _httpService;
+

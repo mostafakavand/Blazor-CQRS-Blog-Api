@@ -1,13 +1,6 @@
-﻿using Dayana.Shared.Infrastructure.Errors;
-using Dayana.Shared.Infrastructure.Pagination;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Dayana.Shared.Infrastructure.Pagination;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Dayana.Shared.Persistence.HttpObjects;
 public class HttpService : IHttpService
@@ -46,7 +39,7 @@ public class HttpService : IHttpService
     }
 
     #endregion
-   
+
     #region Post Put Patch
 
     public async Task<HttpResponseMessage> PostValue<T>(string requestUrl, T data)
@@ -78,6 +71,8 @@ public class HttpService : IHttpService
 
     #endregion
 
+    #region Pagination
+
     public async Task<PaginatedList<T>> GetPagedValue<T>(string requestUrl)
     {
         var response = await _client.GetAsync(requestUrl);
@@ -86,10 +81,8 @@ public class HttpService : IHttpService
         if (dataList == null)
             throw new NullReferenceException("there is not any data here, add some data man!!");
 
-        return  new PaginatedList<T>(){Data = dataList,TotalCount = dataList.Count};
+        return new PaginatedList<T>() { Data = dataList, TotalCount = dataList.Count };
     }
 
+    #endregion
 }
-//TODO: use this code for dynamic pagination
-//throw new ApplicationException(GenericErrors<T.ReferenceEquals>);
-// just look at "T.ReferenceEquals"

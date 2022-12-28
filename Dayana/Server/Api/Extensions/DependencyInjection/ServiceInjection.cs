@@ -2,6 +2,7 @@
 using Dayana.Shared.Persistence.EntityFrameWorkObjects;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfaces.UnitOfWorks;
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.UnitOfWorks;
+using Dayana.Shared.Persistence.HttpObjects;
 using MassTransit;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
@@ -31,7 +32,7 @@ public static class ServiceInjection
         //services.Configure<RedisCacheConfig>(configuration.GetSection(RedisCacheConfig.Key));
         //var config = configuration.GetSection(RedisCacheConfig.Key).Get<RedisCacheConfig>();
         //services.AddStackExchangeRedis("server", config);
-
+        services.AddScoped<IHttpService, HttpService>();
 
         services.Configure<RabbitMQConfig>(configuration.GetSection(RabbitMQConfig.Key));
 

@@ -1,8 +1,8 @@
 ﻿using Dayana.Server.Api.ResultFilters.Blog;
-using Dayana.Server.Api.Routes;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
 using Dayana.Shared.Infrastructure.Pagination;
+using Dayana.Shared.Infrastructure.Routes;
 using Dayana.Shared.Persistence.Models.Blog.Commands;
 using Dayana.Shared.Persistence.Models.Blog.Queries;
 using Dayana.Shared.Persistence.Models.Blog.Requests;
