@@ -1,4 +1,4 @@
-﻿namespace Dayana.Server.Api.Routes;
+﻿namespace Dayana.Shared.Infrastructure.Routes;
 
 public static class BlogRoutes
 {

@@ -1,7 +1,7 @@
 ﻿using Dayana.Server.Api.ResultFilters.Identity;
-using Dayana.Server.Api.Routes;
 using Dayana.Shared.Basic.ConfigAndConstants.Constants.ConstMethods;
 using Dayana.Shared.Basic.MethodsAndObjects.Extension;
+using Dayana.Shared.Infrastructure.Routes;
 using Dayana.Shared.Persistence.Models.Identity.Commands;
 using Dayana.Shared.Persistence.Models.Identity.Queries;
 using Dayana.Shared.Persistence.Models.Identity.Requests;

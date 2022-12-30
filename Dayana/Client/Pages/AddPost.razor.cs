@@ -1,5 +1,4 @@
 ﻿using Dayana.Shared.Persistence.Models.Blog.Requests;
-using System.Net.Http.Json;
 
 namespace Dayana.Client.Pages;
 
@@ -12,7 +11,6 @@ public partial class AddPost
         var b = model;
         try
         {
-            var cb = await _httpClient.PostAsJsonAsync("api/post/add", model);
         }
         catch (Exception e)
         {
