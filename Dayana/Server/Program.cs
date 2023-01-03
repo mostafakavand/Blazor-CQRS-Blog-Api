@@ -26,6 +26,7 @@ try
     string address = configuration.GetValue<string>("urls");
 
     #region builder
+
     // Add services to the container.
     builder.Services.AddServices(configuration);
     builder.Services.AddConfiguredMediatR();

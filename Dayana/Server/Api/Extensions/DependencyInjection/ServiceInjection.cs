@@ -32,6 +32,8 @@ public static class ServiceInjection
         //services.Configure<RedisCacheConfig>(configuration.GetSection(RedisCacheConfig.Key));
         //var config = configuration.GetSection(RedisCacheConfig.Key).Get<RedisCacheConfig>();
         //services.AddStackExchangeRedis("server", config);
+        //services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+        
         services.AddScoped<IHttpService, HttpService>();
 
         services.Configure<RabbitMQConfig>(configuration.GetSection(RabbitMQConfig.Key));

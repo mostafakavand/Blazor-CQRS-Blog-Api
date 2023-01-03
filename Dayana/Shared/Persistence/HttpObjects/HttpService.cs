@@ -8,10 +8,10 @@ public class HttpService : IHttpService
     private readonly HttpClient _client;
     private readonly JsonSerializerOptions _options;
 
-    public HttpService(HttpClient client, JsonSerializerOptions options)
+    public HttpService(HttpClient client)
     {
         _client = client;
-        _options = options;
+        _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     }
 
     #region Post
