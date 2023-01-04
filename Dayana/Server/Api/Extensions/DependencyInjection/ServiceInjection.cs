@@ -28,12 +28,13 @@ public static class ServiceInjection
             return new HttpClient { BaseAddress = new Uri(baseAddress) };
         });
 
+        #region cache redis todo
         // todo  todo todo todo todo todo todo todo todo todo todo todo todo todo todo todo todo todo todo todo todo
         //services.Configure<RedisCacheConfig>(configuration.GetSection(RedisCacheConfig.Key));
         //var config = configuration.GetSection(RedisCacheConfig.Key).Get<RedisCacheConfig>();
         //services.AddStackExchangeRedis("server", config);
-        //services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-        
+        #endregion
+
         services.AddScoped<IHttpService, HttpService>();
 
         services.Configure<RabbitMQConfig>(configuration.GetSection(RabbitMQConfig.Key));
@@ -41,7 +42,7 @@ public static class ServiceInjection
         services.AddDbContext<AppDbContext>(options =>
           options.UseSqlServer(configuration.GetConnectionString("ServerDbConnection"))
           .EnableDetailedErrors());
-
+        services.AddMediator(configuration);
         var rabbitConfig = configuration.GetSection(RabbitMQConfig.Key).Get<RabbitMQConfig>();
         services.AddMassTransit(x =>
         {
@@ -60,7 +61,7 @@ public static class ServiceInjection
         //services.AddMassTransitHostedService();
 
         services.AddScoped<IUnitOfWorkIdentity, UnitOfWorkIdentity>();
-
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         return services;
     }
 }

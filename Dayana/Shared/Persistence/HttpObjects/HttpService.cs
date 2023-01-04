@@ -14,7 +14,7 @@ public class HttpService : IHttpService
         _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     }
 
-    #region Post
+    #region Get
 
     public async Task<T> GetValue<T>(string requestUrl)
     {
@@ -45,7 +45,8 @@ public class HttpService : IHttpService
     public async Task<HttpResponseMessage> PostValue<T>(string requestUrl, T data)
     {
         var serializedData = JsonSerializer.Serialize(data, _options);
-        return await _client.PostAsJsonAsync(requestUrl, serializedData);
+        var response = await _client.PostAsJsonAsync(requestUrl, serializedData);
+        return response;
     }
 
     public async Task<HttpResponseMessage> PutValue<T>(string requestUrl, T data)
