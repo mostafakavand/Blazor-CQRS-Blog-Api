@@ -44,9 +44,17 @@ public class HttpService : IHttpService
 
     public async Task<HttpResponseMessage> PostValue<T>(string requestUrl, T data)
     {
-        var serializedData = JsonSerializer.Serialize(data, _options);
-        var response = await _client.PostAsJsonAsync(requestUrl, serializedData);
-        return response;
+        try
+        {
+            var serializedData = JsonSerializer.Serialize(data, _options);
+            var response = await _client.PostAsJsonAsync(requestUrl, serializedData);
+            return response;
+        }
+        catch (Exception e)
+        {
+
+            throw new Exception(e.Message, e);
+        }
     }
 
     public async Task<HttpResponseMessage> PutValue<T>(string requestUrl, T data)

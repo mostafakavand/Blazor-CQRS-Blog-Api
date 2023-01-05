@@ -42,7 +42,6 @@ public static class ServiceInjection
         services.AddDbContext<AppDbContext>(options =>
           options.UseSqlServer(configuration.GetConnectionString("ServerDbConnection"))
           .EnableDetailedErrors());
-        services.AddMediator(configuration);
         var rabbitConfig = configuration.GetSection(RabbitMQConfig.Key).Get<RabbitMQConfig>();
         services.AddMassTransit(x =>
         {
