@@ -3,9 +3,9 @@ using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Interfa
 using Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.BlogRepositories;
 
 namespace Dayana.Shared.Persistence.EntityFrameWorkObjects.RepositoryObjects.Repositories.UnitOfWorks;
-public class UnitOfWork : IUnitOfWork
-{
-    private readonly AppDbContext _context;
+    public class UnitOfWork : IUnitOfWork
+    {
+        private readonly AppDbContext _context;
 
     public IBlogPostCategoryRepository BlogPostCategories { get; }
 

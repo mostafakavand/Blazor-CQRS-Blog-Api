@@ -48,6 +48,7 @@ public class HttpService : IHttpService
         {
             var serializedData = JsonSerializer.Serialize(data, _options);
             var response = await _client.PostAsJsonAsync(requestUrl, serializedData);
+            Console.WriteLine(response);
             return response;
         }
         catch (Exception e)
