@@ -20,11 +20,12 @@ public class PostCategoryController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost(BlogRoutes.PostCategory + "add")]
-    [CreatePostCategoryResultFilter]
+    [HttpPost]
+    [Route(BlogRoutes.PostCategory + "add")]
+    //[CreatePostCategoryResultFilter]
     public async Task<IActionResult> AddPostCategory([FromBody] CreatePostCategoryRequest request)
     {
-        var operation = await _mediator.Send(new CreatePostCategoryCommand(Request.GetRequestInfo())
+        var operation = await _mediator.Send(new CreatePostCategoryCommand()
         {
             CategoryTitle = request.CategoryTitle,
             CategoryIcon = request.CategoryIcon

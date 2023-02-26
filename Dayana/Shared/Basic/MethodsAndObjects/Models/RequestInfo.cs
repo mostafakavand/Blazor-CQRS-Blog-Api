@@ -2,6 +2,6 @@
 
 public class RequestInfo
 {
-    public int UserId { get; set; }
-    public string IpAddress { get; set; }
+    public int? UserId { get; set; }
+    public string? IpAddress { get; set; }
 }
